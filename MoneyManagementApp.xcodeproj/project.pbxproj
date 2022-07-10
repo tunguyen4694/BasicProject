@@ -12,6 +12,16 @@
 		A56D1CB728770D0B008A508A /* MoneyManagementApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A56D1CB528770D0B008A508A /* MoneyManagementApp.xcdatamodeld */; };
 		A56D1CB928770D0C008A508A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A56D1CB828770D0C008A508A /* Assets.xcassets */; };
 		A56D1CBC28770D0C008A508A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A56D1CBA28770D0C008A508A /* LaunchScreen.storyboard */; };
+		A56D1CC728770F39008A508A /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56D1CC628770F39008A508A /* Extension+UIColor.swift */; };
+		A56D1CCC287713F4008A508A /* Extension+UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56D1CCB287713F4008A508A /* Extension+UIFont.swift */; };
+		A56D1CCF287715D5008A508A /* ConvertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56D1CCE287715D5008A508A /* ConvertHelper.swift */; };
+		A56D1CD228771CBC008A508A /* NormalLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56D1CD128771CBC008A508A /* NormalLabel.swift */; };
+		A56D1CD52879F1FA008A508A /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56D1CD32879F1FA008A508A /* LoginVC.swift */; };
+		A56D1CD62879F1FA008A508A /* LoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A56D1CD42879F1FA008A508A /* LoginVC.xib */; };
+		A56D1CD9287A7734008A508A /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56D1CD7287A7734008A508A /* SignupVC.swift */; };
+		A56D1CDA287A7734008A508A /* SignupVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A56D1CD8287A7734008A508A /* SignupVC.xib */; };
+		A56D1CDD287AD360008A508A /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56D1CDB287AD360008A508A /* HomeVC.swift */; };
+		A56D1CDE287AD360008A508A /* HomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A56D1CDC287AD360008A508A /* HomeVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +32,16 @@
 		A56D1CB828770D0C008A508A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A56D1CBB28770D0C008A508A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A56D1CBD28770D0C008A508A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A56D1CC628770F39008A508A /* Extension+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
+		A56D1CCB287713F4008A508A /* Extension+UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIFont.swift"; sourceTree = "<group>"; };
+		A56D1CCE287715D5008A508A /* ConvertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertHelper.swift; sourceTree = "<group>"; };
+		A56D1CD128771CBC008A508A /* NormalLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalLabel.swift; sourceTree = "<group>"; };
+		A56D1CD32879F1FA008A508A /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		A56D1CD42879F1FA008A508A /* LoginVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginVC.xib; sourceTree = "<group>"; };
+		A56D1CD7287A7734008A508A /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
+		A56D1CD8287A7734008A508A /* SignupVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignupVC.xib; sourceTree = "<group>"; };
+		A56D1CDB287AD360008A508A /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		A56D1CDC287AD360008A508A /* HomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,21 +75,71 @@
 			isa = PBXGroup;
 			children = (
 				A56D1CAC28770D0B008A508A /* AppDelegate.swift */,
-				A56D1CC328770D37008A508A /* ViewControllers */,
+				A56D1CC428770F04008A508A /* Extension */,
+				A56D1CCD2877158E008A508A /* Helpers */,
+				A56D1CC328770D37008A508A /* Controllers */,
+				A56D1CC528770F17008A508A /* Views */,
+				A56D1CC828770F75008A508A /* Model */,
+				A56D1CD0287719E2008A508A /* Resources */,
 				A56D1CB828770D0C008A508A /* Assets.xcassets */,
 				A56D1CBA28770D0C008A508A /* LaunchScreen.storyboard */,
 				A56D1CBD28770D0C008A508A /* Info.plist */,
 				A56D1CB528770D0B008A508A /* MoneyManagementApp.xcdatamodeld */,
+				A56D1CD32879F1FA008A508A /* LoginVC.swift */,
+				A56D1CD42879F1FA008A508A /* LoginVC.xib */,
+				A56D1CD7287A7734008A508A /* SignupVC.swift */,
+				A56D1CD8287A7734008A508A /* SignupVC.xib */,
+				A56D1CDB287AD360008A508A /* HomeVC.swift */,
+				A56D1CDC287AD360008A508A /* HomeVC.xib */,
 			);
 			path = MoneyManagementApp;
 			sourceTree = "<group>";
 		};
-		A56D1CC328770D37008A508A /* ViewControllers */ = {
+		A56D1CC328770D37008A508A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				A56D1CB028770D0B008A508A /* FirstViewController.swift */,
 			);
-			path = ViewControllers;
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A56D1CC428770F04008A508A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A56D1CC628770F39008A508A /* Extension+UIColor.swift */,
+				A56D1CCB287713F4008A508A /* Extension+UIFont.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		A56D1CC528770F17008A508A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A56D1CD128771CBC008A508A /* NormalLabel.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A56D1CC828770F75008A508A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A56D1CCD2877158E008A508A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A56D1CCE287715D5008A508A /* ConvertHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		A56D1CD0287719E2008A508A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,6 +200,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A56D1CDA287A7734008A508A /* SignupVC.xib in Resources */,
+				A56D1CD62879F1FA008A508A /* LoginVC.xib in Resources */,
+				A56D1CDE287AD360008A508A /* HomeVC.xib in Resources */,
 				A56D1CBC28770D0C008A508A /* LaunchScreen.storyboard in Resources */,
 				A56D1CB928770D0C008A508A /* Assets.xcassets in Resources */,
 			);
@@ -142,9 +215,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A56D1CCC287713F4008A508A /* Extension+UIFont.swift in Sources */,
+				A56D1CDD287AD360008A508A /* HomeVC.swift in Sources */,
 				A56D1CB128770D0B008A508A /* FirstViewController.swift in Sources */,
+				A56D1CD52879F1FA008A508A /* LoginVC.swift in Sources */,
+				A56D1CD9287A7734008A508A /* SignupVC.swift in Sources */,
+				A56D1CD228771CBC008A508A /* NormalLabel.swift in Sources */,
+				A56D1CCF287715D5008A508A /* ConvertHelper.swift in Sources */,
 				A56D1CB728770D0B008A508A /* MoneyManagementApp.xcdatamodeld in Sources */,
 				A56D1CAD28770D0B008A508A /* AppDelegate.swift in Sources */,
+				A56D1CC728770F39008A508A /* Extension+UIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,7 +368,6 @@
 				INFOPLIST_FILE = MoneyManagementApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -316,7 +395,6 @@
 				INFOPLIST_FILE = MoneyManagementApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

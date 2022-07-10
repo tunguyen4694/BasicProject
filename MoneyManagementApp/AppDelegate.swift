@@ -11,14 +11,18 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let firstVC = FirstViewController()
+        
+        window?.rootViewController = firstVC
+        window?.makeKeyAndVisible()
         return true
     }
 
-
-
 }
 
+// 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
