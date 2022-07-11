@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -10,6 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginVC" customModule="MoneyManagementApp" customModuleProvider="target">
             <connections>
+                <outlet property="btnLogin" destination="dAY-6l-KzH" id="xOs-es-8K5"/>
+                <outlet property="vPassword" destination="3ad-Pz-1c0" id="2A9-tx-8aR"/>
+                <outlet property="vUser" destination="FK4-ue-ZQg" id="frf-kI-1VK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -129,6 +133,9 @@
                     <state key="normal" title="Forgot password?">
                         <color key="titleColor" red="0.0" green="0.68627450980000004" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
+                    <connections>
+                        <action selector="onForgotPassword:" destination="-1" eventType="touchUpInside" id="55U-pX-NQQ"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dAY-6l-KzH">
                     <rect key="frame" x="24" y="370" width="366" height="56"/>
@@ -160,6 +167,9 @@
                             <state key="normal" title="Sign up">
                                 <color key="titleColor" red="0.0" green="0.68627450980000004" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
+                            <connections>
+                                <action selector="onSignup:" destination="-1" eventType="touchUpInside" id="EFd-eZ-fJR"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>

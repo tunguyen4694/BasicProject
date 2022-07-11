@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -55,8 +56,27 @@
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bd7-zR-Q8X">
                             <rect key="frame" x="24" y="87" width="327" height="82"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6HL-AM-Sob">
+                                    <rect key="frame" x="12" y="11.999999999999998" width="303" height="19.333333333333329"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                    <color key="textColor" red="0.40784313725490196" green="0.40784313725490196" blue="0.40784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10.000.000đ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXh-zi-HYf">
+                                    <rect key="frame" x="12" y="41.333333333333343" width="144.66666666666666" height="28.666666666666671"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
+                                <constraint firstItem="6HL-AM-Sob" firstAttribute="leading" secondItem="Bd7-zR-Q8X" secondAttribute="leading" constant="12" id="3eX-ME-1Iv"/>
+                                <constraint firstAttribute="trailing" secondItem="6HL-AM-Sob" secondAttribute="trailing" constant="12" id="RG3-Ld-JnO"/>
+                                <constraint firstAttribute="bottom" secondItem="cXh-zi-HYf" secondAttribute="bottom" constant="12" id="XZW-gd-qSK"/>
+                                <constraint firstItem="6HL-AM-Sob" firstAttribute="top" secondItem="Bd7-zR-Q8X" secondAttribute="top" constant="12" id="bhL-nO-yfg"/>
+                                <constraint firstItem="cXh-zi-HYf" firstAttribute="leading" secondItem="6HL-AM-Sob" secondAttribute="leading" id="hCM-O3-BQy"/>
                                 <constraint firstAttribute="height" constant="82" id="sHN-oZ-pA5"/>
                             </constraints>
                         </view>
@@ -72,13 +92,21 @@
                         <constraint firstItem="Mbh-du-4OM" firstAttribute="top" secondItem="yxs-8W-oD9" secondAttribute="top" id="sA4-W0-zD7"/>
                     </constraints>
                 </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Lk4-Oq-Imy">
+                    <rect key="frame" x="24" y="213" width="327" height="565"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="Lk4-Oq-Imy" firstAttribute="top" secondItem="yxs-8W-oD9" secondAttribute="bottom" id="D31-RU-Z5B"/>
                 <constraint firstItem="yxs-8W-oD9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="DE9-L1-Sci"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="qKc-in-bN3" secondAttribute="bottom" id="OKf-Oq-lTW"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Lk4-Oq-Imy" secondAttribute="bottom" id="OQk-uE-Nd9"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yxs-8W-oD9" secondAttribute="trailing" id="Vap-qZ-3eW"/>
+                <constraint firstItem="Lk4-Oq-Imy" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="ZW2-eh-UfR"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Lk4-Oq-Imy" secondAttribute="trailing" constant="24" id="fEX-DY-nEV"/>
                 <constraint firstItem="qKc-in-bN3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fal-zj-Quw"/>
                 <constraint firstItem="yxs-8W-oD9" firstAttribute="top" secondItem="qKc-in-bN3" secondAttribute="bottom" id="kMe-xo-VAz"/>
                 <constraint firstItem="qKc-in-bN3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="p9k-Jk-MVV"/>

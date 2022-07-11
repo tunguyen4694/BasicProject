@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D2AB6F7B010CC2842D8328A /* Pods_MoneyManagementApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC88FADAC7D912CEBC421A75 /* Pods_MoneyManagementApp.framework */; };
 		A56D1CAD28770D0B008A508A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56D1CAC28770D0B008A508A /* AppDelegate.swift */; };
 		A56D1CB128770D0B008A508A /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56D1CB028770D0B008A508A /* FirstViewController.swift */; };
 		A56D1CB728770D0B008A508A /* MoneyManagementApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A56D1CB528770D0B008A508A /* MoneyManagementApp.xcdatamodeld */; };
@@ -22,9 +23,12 @@
 		A56D1CDA287A7734008A508A /* SignupVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A56D1CD8287A7734008A508A /* SignupVC.xib */; };
 		A56D1CDD287AD360008A508A /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56D1CDB287AD360008A508A /* HomeVC.swift */; };
 		A56D1CDE287AD360008A508A /* HomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A56D1CDC287AD360008A508A /* HomeVC.xib */; };
+		A56D1CE1287C755C008A508A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A56D1CE0287C755C008A508A /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C569671D01E6DFD8C85E158 /* Pods-MoneyManagementApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoneyManagementApp.debug.xcconfig"; path = "Target Support Files/Pods-MoneyManagementApp/Pods-MoneyManagementApp.debug.xcconfig"; sourceTree = "<group>"; };
+		85E32A231D5E0E067E8F483E /* Pods-MoneyManagementApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoneyManagementApp.release.xcconfig"; path = "Target Support Files/Pods-MoneyManagementApp/Pods-MoneyManagementApp.release.xcconfig"; sourceTree = "<group>"; };
 		A56D1CA928770D0B008A508A /* MoneyManagementApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyManagementApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A56D1CAC28770D0B008A508A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A56D1CB028770D0B008A508A /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -42,6 +46,9 @@
 		A56D1CD8287A7734008A508A /* SignupVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignupVC.xib; sourceTree = "<group>"; };
 		A56D1CDB287AD360008A508A /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		A56D1CDC287AD360008A508A /* HomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeVC.xib; sourceTree = "<group>"; };
+		A56D1CE0287C755C008A508A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A5852B16287C8EF200268D8B /* MoneyManagementApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MoneyManagementApp.entitlements; sourceTree = "<group>"; };
+		EC88FADAC7D912CEBC421A75 /* Pods_MoneyManagementApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoneyManagementApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,17 +56,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D2AB6F7B010CC2842D8328A /* Pods_MoneyManagementApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		73F2B599FE7B568AF6C63115 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1C569671D01E6DFD8C85E158 /* Pods-MoneyManagementApp.debug.xcconfig */,
+				85E32A231D5E0E067E8F483E /* Pods-MoneyManagementApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		A56D1CA028770D0B008A508A = {
 			isa = PBXGroup;
 			children = (
 				A56D1CAB28770D0B008A508A /* MoneyManagementApp */,
 				A56D1CAA28770D0B008A508A /* Products */,
+				73F2B599FE7B568AF6C63115 /* Pods */,
+				D3FB57AD122360FDB7D3BC55 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,6 +93,7 @@
 		A56D1CAB28770D0B008A508A /* MoneyManagementApp */ = {
 			isa = PBXGroup;
 			children = (
+				A5852B16287C8EF200268D8B /* MoneyManagementApp.entitlements */,
 				A56D1CAC28770D0B008A508A /* AppDelegate.swift */,
 				A56D1CC428770F04008A508A /* Extension */,
 				A56D1CCD2877158E008A508A /* Helpers */,
@@ -85,12 +105,7 @@
 				A56D1CBA28770D0C008A508A /* LaunchScreen.storyboard */,
 				A56D1CBD28770D0C008A508A /* Info.plist */,
 				A56D1CB528770D0B008A508A /* MoneyManagementApp.xcdatamodeld */,
-				A56D1CD32879F1FA008A508A /* LoginVC.swift */,
-				A56D1CD42879F1FA008A508A /* LoginVC.xib */,
-				A56D1CD7287A7734008A508A /* SignupVC.swift */,
-				A56D1CD8287A7734008A508A /* SignupVC.xib */,
-				A56D1CDB287AD360008A508A /* HomeVC.swift */,
-				A56D1CDC287AD360008A508A /* HomeVC.xib */,
+				A56D1CE0287C755C008A508A /* GoogleService-Info.plist */,
 			);
 			path = MoneyManagementApp;
 			sourceTree = "<group>";
@@ -98,6 +113,12 @@
 		A56D1CC328770D37008A508A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A56D1CD32879F1FA008A508A /* LoginVC.swift */,
+				A56D1CD42879F1FA008A508A /* LoginVC.xib */,
+				A56D1CD7287A7734008A508A /* SignupVC.swift */,
+				A56D1CD8287A7734008A508A /* SignupVC.xib */,
+				A56D1CDB287AD360008A508A /* HomeVC.swift */,
+				A56D1CDC287AD360008A508A /* HomeVC.xib */,
 				A56D1CB028770D0B008A508A /* FirstViewController.swift */,
 			);
 			path = Controllers;
@@ -142,6 +163,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		D3FB57AD122360FDB7D3BC55 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EC88FADAC7D912CEBC421A75 /* Pods_MoneyManagementApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -149,9 +178,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A56D1CC028770D0C008A508A /* Build configuration list for PBXNativeTarget "MoneyManagementApp" */;
 			buildPhases = (
+				EA1348944394977E0C2313B5 /* [CP] Check Pods Manifest.lock */,
 				A56D1CA528770D0B008A508A /* Sources */,
 				A56D1CA628770D0B008A508A /* Frameworks */,
 				A56D1CA728770D0B008A508A /* Resources */,
+				9BF8D128D3430896AFB2C05C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -205,10 +236,53 @@
 				A56D1CDE287AD360008A508A /* HomeVC.xib in Resources */,
 				A56D1CBC28770D0C008A508A /* LaunchScreen.storyboard in Resources */,
 				A56D1CB928770D0C008A508A /* Assets.xcassets in Resources */,
+				A56D1CE1287C755C008A508A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9BF8D128D3430896AFB2C05C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MoneyManagementApp/Pods-MoneyManagementApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MoneyManagementApp/Pods-MoneyManagementApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MoneyManagementApp/Pods-MoneyManagementApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EA1348944394977E0C2313B5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MoneyManagementApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A56D1CA528770D0B008A508A /* Sources */ = {
@@ -292,7 +366,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -346,7 +420,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -358,9 +432,11 @@
 		};
 		A56D1CC128770D0C008A508A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C569671D01E6DFD8C85E158 /* Pods-MoneyManagementApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MoneyManagementApp/MoneyManagementApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V36979MSZD;
@@ -370,6 +446,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -385,9 +462,11 @@
 		};
 		A56D1CC228770D0C008A508A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85E32A231D5E0E067E8F483E /* Pods-MoneyManagementApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MoneyManagementApp/MoneyManagementApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V36979MSZD;
@@ -397,6 +476,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
