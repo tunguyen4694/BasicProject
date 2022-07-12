@@ -9,6 +9,6 @@ target 'MoneyManagementApp' do
 	pod 'FirebaseAuth'
 	pod 'FirebaseFirestore'
   pod 'FBSDKLoginKit'
-
+  pod 'GoogleSignIn'
 
 end
