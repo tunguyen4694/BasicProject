@@ -38,7 +38,7 @@ class CustomTabBarController: UITabBarController {
         controller4.tabBarItem = UITabBarItem(title: "Wallet", image: UIImage(systemName: "creditcard.fill", withConfiguration: iconConfig), tag: 4)
         let nav4 = UINavigationController(rootViewController: controller4)
         
-        let controller5 = SettingVC()
+        let controller5 = AccountVC()
         controller5.tabBarItem = UITabBarItem(title: "Account", image: UIImage(systemName: "person.fill", withConfiguration: iconConfig), tag: 5)
         let nav5 = UINavigationController(rootViewController: controller5)
         
