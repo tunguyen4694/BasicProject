@@ -11,6 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeVC" customModule="MoneyManagementApp" customModuleProvider="target">
             <connections>
+                <outlet property="headerHeightConstraint" destination="g4j-Tx-CJf" id="eTj-cE-qKb"/>
+                <outlet property="lblHello" destination="t9y-xx-BKx" id="cIG-Gv-4lt"/>
+                <outlet property="lblUserName" destination="Mt1-dz-wp7" id="5HB-GJ-zgY"/>
+                <outlet property="vBalance" destination="Bd7-zR-Q8X" id="9nk-UD-Tu4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,11 +23,11 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qKc-in-bN3">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qKc-in-bN3" userLabel="vStatus">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                     <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yxs-8W-oD9">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yxs-8W-oD9" userLabel="vHeader">
                     <rect key="frame" x="0.0" y="44" width="375" height="169"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mbh-du-4OM">
@@ -54,7 +58,7 @@
                                 <constraint firstItem="6aE-aj-dzZ" firstAttribute="top" secondItem="Mbh-du-4OM" secondAttribute="top" constant="12" id="rje-P2-YUJ"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bd7-zR-Q8X">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bd7-zR-Q8X" userLabel="vBalance">
                             <rect key="frame" x="24" y="87" width="327" height="82"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6HL-AM-Sob">
@@ -94,7 +98,7 @@
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Lk4-Oq-Imy">
                     <rect key="frame" x="24" y="213" width="327" height="565"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
