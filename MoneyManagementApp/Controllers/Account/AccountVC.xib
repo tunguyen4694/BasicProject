@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AccountVC" customModule="MoneyManagementApp" customModuleProvider="target">
+            <connections>
+                <outlet property="imgAvatar" destination="dkJ-6s-rml" id="boE-rx-eir"/>
+                <outlet property="tableView" destination="3Hb-wZ-K5D" id="9no-ZG-7vi"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3n-SZ-MYK">
+                    <rect key="frame" x="24" y="60" width="366" height="29"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="dkJ-6s-rml">
+                    <rect key="frame" x="179" y="114.5" width="56" height="53"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="56" id="EV1-LA-JUu"/>
+                        <constraint firstAttribute="width" secondItem="dkJ-6s-rml" secondAttribute="height" id="kOx-US-7xb"/>
+                    </constraints>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3Hb-wZ-K5D">
+                    <rect key="frame" x="0.0" y="193" width="414" height="669"/>
+                    <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                </tableView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3Hb-wZ-K5D" secondAttribute="trailing" id="0st-mp-zbU"/>
+                <constraint firstItem="c3n-SZ-MYK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="9Br-kB-Omd"/>
+                <constraint firstItem="3Hb-wZ-K5D" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Frk-sE-ett"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="c3n-SZ-MYK" secondAttribute="trailing" constant="24" id="H3n-wa-SDF"/>
+                <constraint firstItem="dkJ-6s-rml" firstAttribute="top" secondItem="c3n-SZ-MYK" secondAttribute="bottom" constant="24" id="Kn2-KQ-xHg"/>
+                <constraint firstItem="dkJ-6s-rml" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="aHE-IF-aKh"/>
+                <constraint firstItem="3Hb-wZ-K5D" firstAttribute="top" secondItem="dkJ-6s-rml" secondAttribute="bottom" constant="24" id="jcs-jN-J2l"/>
+                <constraint firstItem="c3n-SZ-MYK" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="l9h-lr-w3c"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="3Hb-wZ-K5D" secondAttribute="bottom" id="v05-N6-upy"/>
+            </constraints>
+            <point key="canvasLocation" x="133" y="94"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
