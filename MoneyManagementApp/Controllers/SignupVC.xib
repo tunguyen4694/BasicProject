@@ -12,8 +12,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignupVC" customModule="MoneyManagementApp" customModuleProvider="target">
             <connections>
                 <outlet property="btnCheck" destination="mDR-dX-mHt" id="Ik4-kP-G5Z"/>
+                <outlet property="btnShowPassword" destination="vaa-g4-Wsv" id="BZx-yu-GUQ"/>
                 <outlet property="btnSignup" destination="StC-Wi-YTE" id="ihR-2R-S35"/>
+                <outlet property="tfPassword" destination="iPX-pw-9pR" id="Ht9-Ek-yoP"/>
                 <outlet property="vPassword" destination="Tmf-MV-ZyU" id="kwJ-bn-SLw"/>
+                <outlet property="vSignup" destination="8ba-W8-P8l" id="FK8-Z9-f3y"/>
                 <outlet property="vUser" destination="2Xr-iE-Hs4" id="fbY-cU-TCJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -102,15 +105,30 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vaa-g4-Wsv">
+                                    <rect key="frame" x="318" y="8" width="40" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="vaa-g4-Wsv" secondAttribute="height" id="EN4-eW-yai"/>
+                                    </constraints>
+                                    <color key="tintColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="0.89803921568627454" colorSpace="calibratedRGB"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" image="eye" catalog="system"/>
+                                    <connections>
+                                        <action selector="onShowPassword:" destination="-1" eventType="touchUpInside" id="s20-d8-MT6"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="Tqs-O4-I6g" secondAttribute="bottom" constant="14" id="6M9-6Q-Un1"/>
+                                <constraint firstItem="vaa-g4-Wsv" firstAttribute="top" secondItem="Tmf-MV-ZyU" secondAttribute="top" constant="8" id="F4T-Oj-fWP"/>
                                 <constraint firstItem="iPX-pw-9pR" firstAttribute="top" secondItem="Tmf-MV-ZyU" secondAttribute="top" constant="8" id="FgX-yD-JqS"/>
                                 <constraint firstAttribute="height" constant="56" id="JZY-gh-HCS"/>
                                 <constraint firstItem="Tqs-O4-I6g" firstAttribute="top" secondItem="Tmf-MV-ZyU" secondAttribute="top" constant="14" id="L5U-gk-7oC"/>
                                 <constraint firstItem="Tqs-O4-I6g" firstAttribute="leading" secondItem="Tmf-MV-ZyU" secondAttribute="leading" constant="12" id="WF2-xI-2QS"/>
+                                <constraint firstAttribute="trailing" secondItem="vaa-g4-Wsv" secondAttribute="trailing" constant="8" id="YrY-gf-Z08"/>
                                 <constraint firstAttribute="bottom" secondItem="iPX-pw-9pR" secondAttribute="bottom" constant="8" id="mfg-yE-NSR"/>
+                                <constraint firstAttribute="bottom" secondItem="vaa-g4-Wsv" secondAttribute="bottom" constant="8" id="mrl-pO-w9K"/>
                                 <constraint firstAttribute="trailing" secondItem="iPX-pw-9pR" secondAttribute="trailing" constant="12" id="pGy-xB-Idb"/>
                                 <constraint firstItem="iPX-pw-9pR" firstAttribute="leading" secondItem="Tqs-O4-I6g" secondAttribute="trailing" constant="12" id="xNT-Nd-vFy"/>
                             </constraints>
@@ -138,6 +156,10 @@
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal" title="Sign Up"/>
                 </button>
+                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ba-W8-P8l">
+                    <rect key="frame" x="24" y="341" width="366" height="56"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BjB-ic-gyv">
                     <rect key="frame" x="24" y="413" width="366" height="50"/>
                     <subviews>
@@ -206,12 +228,16 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="6lL-Ji-wYm" firstAttribute="leading" secondItem="sjO-wW-EPD" secondAttribute="leading" id="1p3-sb-vss"/>
+                <constraint firstItem="8ba-W8-P8l" firstAttribute="centerX" secondItem="StC-Wi-YTE" secondAttribute="centerX" id="5Ih-A7-HXn"/>
+                <constraint firstItem="8ba-W8-P8l" firstAttribute="height" secondItem="StC-Wi-YTE" secondAttribute="height" id="FVV-Pf-oon"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sjO-wW-EPD" secondAttribute="trailing" constant="24" id="ICJ-bI-hTE"/>
                 <constraint firstItem="6lL-Ji-wYm" firstAttribute="top" secondItem="sjO-wW-EPD" secondAttribute="bottom" constant="20" id="IL9-FY-egY"/>
                 <constraint firstItem="sjO-wW-EPD" firstAttribute="top" secondItem="frW-pZ-kAk" secondAttribute="bottom" constant="24" id="Kbu-KW-FXP"/>
                 <constraint firstItem="BjB-ic-gyv" firstAttribute="top" secondItem="StC-Wi-YTE" secondAttribute="bottom" constant="16" id="RLL-XW-O0w"/>
                 <constraint firstItem="BjB-ic-gyv" firstAttribute="leading" secondItem="StC-Wi-YTE" secondAttribute="leading" id="VM4-q0-sIh"/>
+                <constraint firstItem="8ba-W8-P8l" firstAttribute="width" secondItem="StC-Wi-YTE" secondAttribute="width" id="W9n-21-EQa"/>
                 <constraint firstItem="Klg-uK-f0t" firstAttribute="leading" secondItem="BjB-ic-gyv" secondAttribute="leading" id="XA5-ry-HGr"/>
+                <constraint firstItem="8ba-W8-P8l" firstAttribute="centerY" secondItem="StC-Wi-YTE" secondAttribute="centerY" id="b7c-7L-ujR"/>
                 <constraint firstItem="Klg-uK-f0t" firstAttribute="top" secondItem="BjB-ic-gyv" secondAttribute="bottom" constant="20" id="gQe-gY-qHg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="frW-pZ-kAk" secondAttribute="trailing" constant="24" id="hgM-GJ-9Ca"/>
                 <constraint firstItem="frW-pZ-kAk" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="32" id="rYu-tT-rJm"/>
@@ -227,6 +253,7 @@
         </view>
     </objects>
     <resources>
+        <image name="eye" catalog="system" width="128" height="81"/>
         <image name="lock.fill" catalog="system" width="128" height="128"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="square" catalog="system" width="128" height="114"/>

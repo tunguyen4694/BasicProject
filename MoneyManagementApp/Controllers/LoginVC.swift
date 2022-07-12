@@ -11,6 +11,8 @@ class LoginVC: UIViewController {
     
     @IBOutlet weak var vUser: UIView!
     @IBOutlet weak var vPassword: UIView!
+    @IBOutlet weak var tfPassword: UITextField!
+    @IBOutlet weak var btnShowPassword: UIButton!
     @IBOutlet weak var btnLogin: UIButton!
 
     override func viewDidLoad() {
@@ -28,9 +30,18 @@ class LoginVC: UIViewController {
         vPassword.layer.borderColor = UIColor.borderColor().cgColor
         vPassword.layer.cornerRadius = 10
         
+        tfPassword.isSecureTextEntry = true
+        btnShowPassword.isHidden = true
+        tfPassword.delegate = self
+        
         btnLogin.layer.cornerRadius = 10
     }
 
+    @IBAction func onShowPassword(_ sender: Any) {
+        tfPassword.isSecureTextEntry = !tfPassword.isSecureTextEntry
+        tfPassword.isSecureTextEntry ? btnShowPassword.setImage(UIImage(systemName: "eye"), for: .normal    ) : btnShowPassword.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+    }
+    
     @IBAction func onSignup(_ sender: Any) {
         let vc = SignupVC()
         vc.modalPresentationStyle = .fullScreen
@@ -39,5 +50,14 @@ class LoginVC: UIViewController {
     
     @IBAction func onForgotPassword(_ sender: Any) {
     }
-    
+}
+
+extension LoginVC: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField.text != nil {
+            btnShowPassword.isHidden = false
+        } else {
+            btnShowPassword.isHidden = true
+        }
+    }
 }
