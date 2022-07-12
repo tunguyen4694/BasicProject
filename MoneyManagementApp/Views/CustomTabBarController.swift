@@ -39,7 +39,7 @@ class CustomTabBarController: UITabBarController {
         let nav4 = UINavigationController(rootViewController: controller4)
         
         let controller5 = SettingVC()
-        controller5.tabBarItem = UITabBarItem(title: "Setting", image: UIImage(systemName: "person.fill", withConfiguration: iconConfig), tag: 5)
+        controller5.tabBarItem = UITabBarItem(title: "Account", image: UIImage(systemName: "person.fill", withConfiguration: iconConfig), tag: 5)
         let nav5 = UINavigationController(rootViewController: controller5)
         
         viewControllers = [nav1, nav2, nav3, nav4, nav5]
