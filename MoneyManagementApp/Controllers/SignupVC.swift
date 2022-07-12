@@ -6,15 +6,16 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SignupVC: UIViewController {
 
     @IBOutlet weak var vUser: UIView!
+    @IBOutlet weak var tfUser: UITextField!
     @IBOutlet weak var vPassword: UIView!
     @IBOutlet weak var tfPassword: UITextField!
     @IBOutlet weak var btnShowPassword: UIButton!
     @IBOutlet weak var btnSignup: UIButton!
-    @IBOutlet weak var vSignup: UIView!
     @IBOutlet weak var btnCheck: UIButton!
     
     var isCheck = false
@@ -38,11 +39,40 @@ class SignupVC: UIViewController {
         tfPassword.delegate = self
         
         btnSignup.layer.cornerRadius = 10
+        btnSignup.layer.opacity = 0.5
     }
     
     @IBAction func onShowPassword(_ sender: Any) {
         tfPassword.isSecureTextEntry = !tfPassword.isSecureTextEntry
         tfPassword.isSecureTextEntry ? btnShowPassword.setImage(UIImage(systemName: "eye"), for: .normal    ) : btnShowPassword.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+    }
+    
+    @IBAction func signUp(_ sender: Any) {
+        let user = tfUser.text ?? ""
+        let password = tfPassword.text ?? ""
+        var errorMessage = ""
+        var alertController = UIAlertController()
+        let ok = UIAlertAction(title: "OK", style: .cancel)
+        
+        if isCheck {
+            Auth.auth().createUser(withEmail: user, password: password) { authResult, error in
+                if let _ = authResult?.user {
+                    let vc = CustomTabBarController()
+                    vc.modalPresentationStyle = .fullScreen
+                    self.present(vc, animated: true)
+                } else {
+                    errorMessage = error?.localizedDescription ?? ""
+                    alertController = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
+                    alertController.addAction(ok)
+                    self.present(alertController, animated: true)
+                }
+            }
+        } else {
+            errorMessage = "Please! Agree with our Policy"
+            alertController = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
+            alertController.addAction(ok)
+            self.present(alertController, animated: true)
+        }
     }
     
     @IBAction func onLogin(_ sender: Any) {
@@ -54,11 +84,11 @@ class SignupVC: UIViewController {
     @IBAction func onCheck(_ sender: Any) {
         if !isCheck {
             btnCheck.setImage(UIImage(systemName: "checkmark.square.fill"), for: .normal)
-            vSignup.isHidden = true
+            btnSignup.layer.opacity = 1
             isCheck = true
         } else {
             btnCheck.setImage(UIImage(systemName: "square"), for: .normal)
-            vSignup.isHidden = false
+            btnSignup.layer.opacity = 0.5
             isCheck = false
         }
     }

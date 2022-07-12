@@ -15,8 +15,8 @@
                 <outlet property="btnShowPassword" destination="vaa-g4-Wsv" id="BZx-yu-GUQ"/>
                 <outlet property="btnSignup" destination="StC-Wi-YTE" id="ihR-2R-S35"/>
                 <outlet property="tfPassword" destination="iPX-pw-9pR" id="Ht9-Ek-yoP"/>
+                <outlet property="tfUser" destination="peT-Km-Zan" id="Pj0-rC-TH3"/>
                 <outlet property="vPassword" destination="Tmf-MV-ZyU" id="kwJ-bn-SLw"/>
-                <outlet property="vSignup" destination="8ba-W8-P8l" id="FK8-Z9-f3y"/>
                 <outlet property="vUser" destination="2Xr-iE-Hs4" id="fbY-cU-TCJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -155,11 +155,10 @@
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal" title="Sign Up"/>
+                    <connections>
+                        <action selector="signUp:" destination="-1" eventType="touchUpInside" id="pZ2-OK-ZjH"/>
+                    </connections>
                 </button>
-                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ba-W8-P8l">
-                    <rect key="frame" x="24" y="341" width="366" height="56"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BjB-ic-gyv">
                     <rect key="frame" x="24" y="413" width="366" height="50"/>
                     <subviews>
@@ -228,16 +227,12 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="6lL-Ji-wYm" firstAttribute="leading" secondItem="sjO-wW-EPD" secondAttribute="leading" id="1p3-sb-vss"/>
-                <constraint firstItem="8ba-W8-P8l" firstAttribute="centerX" secondItem="StC-Wi-YTE" secondAttribute="centerX" id="5Ih-A7-HXn"/>
-                <constraint firstItem="8ba-W8-P8l" firstAttribute="height" secondItem="StC-Wi-YTE" secondAttribute="height" id="FVV-Pf-oon"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sjO-wW-EPD" secondAttribute="trailing" constant="24" id="ICJ-bI-hTE"/>
                 <constraint firstItem="6lL-Ji-wYm" firstAttribute="top" secondItem="sjO-wW-EPD" secondAttribute="bottom" constant="20" id="IL9-FY-egY"/>
                 <constraint firstItem="sjO-wW-EPD" firstAttribute="top" secondItem="frW-pZ-kAk" secondAttribute="bottom" constant="24" id="Kbu-KW-FXP"/>
                 <constraint firstItem="BjB-ic-gyv" firstAttribute="top" secondItem="StC-Wi-YTE" secondAttribute="bottom" constant="16" id="RLL-XW-O0w"/>
                 <constraint firstItem="BjB-ic-gyv" firstAttribute="leading" secondItem="StC-Wi-YTE" secondAttribute="leading" id="VM4-q0-sIh"/>
-                <constraint firstItem="8ba-W8-P8l" firstAttribute="width" secondItem="StC-Wi-YTE" secondAttribute="width" id="W9n-21-EQa"/>
                 <constraint firstItem="Klg-uK-f0t" firstAttribute="leading" secondItem="BjB-ic-gyv" secondAttribute="leading" id="XA5-ry-HGr"/>
-                <constraint firstItem="8ba-W8-P8l" firstAttribute="centerY" secondItem="StC-Wi-YTE" secondAttribute="centerY" id="b7c-7L-ujR"/>
                 <constraint firstItem="Klg-uK-f0t" firstAttribute="top" secondItem="BjB-ic-gyv" secondAttribute="bottom" constant="20" id="gQe-gY-qHg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="frW-pZ-kAk" secondAttribute="trailing" constant="24" id="hgM-GJ-9Ca"/>
                 <constraint firstItem="frW-pZ-kAk" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="32" id="rYu-tT-rJm"/>
