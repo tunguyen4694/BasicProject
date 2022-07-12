@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1D2AB6F7B010CC2842D8328A /* Pods_MoneyManagementApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC88FADAC7D912CEBC421A75 /* Pods_MoneyManagementApp.framework */; };
 		A56D1CAD28770D0B008A508A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56D1CAC28770D0B008A508A /* AppDelegate.swift */; };
-		A56D1CB128770D0B008A508A /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56D1CB028770D0B008A508A /* FirstViewController.swift */; };
 		A56D1CB728770D0B008A508A /* MoneyManagementApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A56D1CB528770D0B008A508A /* MoneyManagementApp.xcdatamodeld */; };
 		A56D1CB928770D0C008A508A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A56D1CB828770D0C008A508A /* Assets.xcassets */; };
 		A56D1CBC28770D0C008A508A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A56D1CBA28770D0C008A508A /* LaunchScreen.storyboard */; };
@@ -24,6 +23,15 @@
 		A56D1CDD287AD360008A508A /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56D1CDB287AD360008A508A /* HomeVC.swift */; };
 		A56D1CDE287AD360008A508A /* HomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A56D1CDC287AD360008A508A /* HomeVC.xib */; };
 		A56D1CE1287C755C008A508A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A56D1CE0287C755C008A508A /* GoogleService-Info.plist */; };
+		DA98AA72287D527000434125 /* ReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98AA70287D527000434125 /* ReportVC.swift */; };
+		DA98AA73287D527000434125 /* ReportVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA98AA71287D527000434125 /* ReportVC.xib */; };
+		DA98AA76287D52C600434125 /* AddTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98AA74287D52C600434125 /* AddTransactionVC.swift */; };
+		DA98AA77287D52C600434125 /* AddTransactionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA98AA75287D52C600434125 /* AddTransactionVC.xib */; };
+		DA98AA7A287D52DC00434125 /* WalletVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98AA78287D52DC00434125 /* WalletVC.swift */; };
+		DA98AA7B287D52DC00434125 /* WalletVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA98AA79287D52DC00434125 /* WalletVC.xib */; };
+		DA98AA7E287D52F800434125 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98AA7C287D52F800434125 /* SettingVC.swift */; };
+		DA98AA7F287D52F800434125 /* SettingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA98AA7D287D52F800434125 /* SettingVC.xib */; };
+		DA98AA82287D540000434125 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98AA80287D540000434125 /* CustomTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +39,6 @@
 		85E32A231D5E0E067E8F483E /* Pods-MoneyManagementApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoneyManagementApp.release.xcconfig"; path = "Target Support Files/Pods-MoneyManagementApp/Pods-MoneyManagementApp.release.xcconfig"; sourceTree = "<group>"; };
 		A56D1CA928770D0B008A508A /* MoneyManagementApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyManagementApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A56D1CAC28770D0B008A508A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A56D1CB028770D0B008A508A /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		A56D1CB628770D0B008A508A /* MoneyManagementApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MoneyManagementApp.xcdatamodel; sourceTree = "<group>"; };
 		A56D1CB828770D0C008A508A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A56D1CBB28770D0C008A508A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -48,6 +55,15 @@
 		A56D1CDC287AD360008A508A /* HomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeVC.xib; sourceTree = "<group>"; };
 		A56D1CE0287C755C008A508A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A5852B16287C8EF200268D8B /* MoneyManagementApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MoneyManagementApp.entitlements; sourceTree = "<group>"; };
+		DA98AA70287D527000434125 /* ReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportVC.swift; sourceTree = "<group>"; };
+		DA98AA71287D527000434125 /* ReportVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportVC.xib; sourceTree = "<group>"; };
+		DA98AA74287D52C600434125 /* AddTransactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionVC.swift; sourceTree = "<group>"; };
+		DA98AA75287D52C600434125 /* AddTransactionVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTransactionVC.xib; sourceTree = "<group>"; };
+		DA98AA78287D52DC00434125 /* WalletVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletVC.swift; sourceTree = "<group>"; };
+		DA98AA79287D52DC00434125 /* WalletVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletVC.xib; sourceTree = "<group>"; };
+		DA98AA7C287D52F800434125 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
+		DA98AA7D287D52F800434125 /* SettingVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingVC.xib; sourceTree = "<group>"; };
+		DA98AA80287D540000434125 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		EC88FADAC7D912CEBC421A75 /* Pods_MoneyManagementApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoneyManagementApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -119,7 +135,14 @@
 				A56D1CD8287A7734008A508A /* SignupVC.xib */,
 				A56D1CDB287AD360008A508A /* HomeVC.swift */,
 				A56D1CDC287AD360008A508A /* HomeVC.xib */,
-				A56D1CB028770D0B008A508A /* FirstViewController.swift */,
+				DA98AA70287D527000434125 /* ReportVC.swift */,
+				DA98AA71287D527000434125 /* ReportVC.xib */,
+				DA98AA74287D52C600434125 /* AddTransactionVC.swift */,
+				DA98AA75287D52C600434125 /* AddTransactionVC.xib */,
+				DA98AA78287D52DC00434125 /* WalletVC.swift */,
+				DA98AA79287D52DC00434125 /* WalletVC.xib */,
+				DA98AA7C287D52F800434125 /* SettingVC.swift */,
+				DA98AA7D287D52F800434125 /* SettingVC.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -137,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				A56D1CD128771CBC008A508A /* NormalLabel.swift */,
+				DA98AA80287D540000434125 /* CustomTabBarController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -234,7 +258,11 @@
 				A56D1CDA287A7734008A508A /* SignupVC.xib in Resources */,
 				A56D1CD62879F1FA008A508A /* LoginVC.xib in Resources */,
 				A56D1CDE287AD360008A508A /* HomeVC.xib in Resources */,
+				DA98AA7F287D52F800434125 /* SettingVC.xib in Resources */,
 				A56D1CBC28770D0C008A508A /* LaunchScreen.storyboard in Resources */,
+				DA98AA73287D527000434125 /* ReportVC.xib in Resources */,
+				DA98AA7B287D52DC00434125 /* WalletVC.xib in Resources */,
+				DA98AA77287D52C600434125 /* AddTransactionVC.xib in Resources */,
 				A56D1CB928770D0C008A508A /* Assets.xcassets in Resources */,
 				A56D1CE1287C755C008A508A /* GoogleService-Info.plist in Resources */,
 			);
@@ -291,14 +319,18 @@
 			files = (
 				A56D1CCC287713F4008A508A /* Extension+UIFont.swift in Sources */,
 				A56D1CDD287AD360008A508A /* HomeVC.swift in Sources */,
-				A56D1CB128770D0B008A508A /* FirstViewController.swift in Sources */,
 				A56D1CD52879F1FA008A508A /* LoginVC.swift in Sources */,
 				A56D1CD9287A7734008A508A /* SignupVC.swift in Sources */,
 				A56D1CD228771CBC008A508A /* NormalLabel.swift in Sources */,
 				A56D1CCF287715D5008A508A /* ConvertHelper.swift in Sources */,
+				DA98AA72287D527000434125 /* ReportVC.swift in Sources */,
+				DA98AA7A287D52DC00434125 /* WalletVC.swift in Sources */,
+				DA98AA82287D540000434125 /* CustomTabBarController.swift in Sources */,
 				A56D1CB728770D0B008A508A /* MoneyManagementApp.xcdatamodeld in Sources */,
+				DA98AA76287D52C600434125 /* AddTransactionVC.swift in Sources */,
 				A56D1CAD28770D0B008A508A /* AppDelegate.swift in Sources */,
 				A56D1CC728770F39008A508A /* Extension+UIColor.swift in Sources */,
+				DA98AA7E287D52F800434125 /* SettingVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
