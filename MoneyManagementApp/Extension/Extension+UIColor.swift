@@ -24,6 +24,10 @@ extension UIColor {
         return UIColor(red: 0.87, green: 0.87, blue: 0.87, alpha: 1.00)
     }
     
+    class func separatorColor() -> UIColor {
+        return UIColor(red: 0.96, green: 0.96, blue: 0.96, alpha: 1.00)
+    }
+    
     class func iconTabBarColor() -> UIColor {
         return UIColor(red: 0.67, green: 0.67, blue: 0.67, alpha: 1.00)
     }
