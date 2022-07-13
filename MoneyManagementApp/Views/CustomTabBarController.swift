@@ -55,6 +55,11 @@ class CustomTabBarController: UITabBarController {
         //        tabBar.items![2].isEnabled = false
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+    
     func configTabBar() {
         tabBar.addSubview(vTopLineTabbar)
         vTopLineTabbar.frame = .init(x: tabBar.frame.width/20, y: 0, width: tabBar.frame.width/10, height: 2)

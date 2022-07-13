@@ -15,6 +15,7 @@ class AccountVC: UIViewController {
     var arrElement = ["General setting", "Edit account", "Rate application", "Share", "Help & About"]
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.isNavigationBarHidden = true
         setupUI()
     }
     

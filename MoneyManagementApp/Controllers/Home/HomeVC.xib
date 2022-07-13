@@ -11,10 +11,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeVC" customModule="MoneyManagementApp" customModuleProvider="target">
             <connections>
+                <outlet property="balanceHeightConstraint" destination="sHN-oZ-pA5" id="Tbo-ag-DT0"/>
+                <outlet property="btnNotiTopConstraint" destination="sZh-d3-R5q" id="65D-UW-YVb"/>
                 <outlet property="headerHeightConstraint" destination="g4j-Tx-CJf" id="eTj-cE-qKb"/>
                 <outlet property="lblHello" destination="t9y-xx-BKx" id="cIG-Gv-4lt"/>
                 <outlet property="lblTotalBalance" destination="cXh-zi-HYf" id="j23-4B-nVZ"/>
                 <outlet property="lblUserName" destination="Mt1-dz-wp7" id="5HB-GJ-zgY"/>
+                <outlet property="subHeaderConstraint" destination="EGj-3z-zM8" id="MhN-IS-JvL"/>
                 <outlet property="tableView" destination="Lk4-Oq-Imy" id="yLh-kp-lFN"/>
                 <outlet property="vBalance" destination="Bd7-zR-Q8X" id="9nk-UD-Tu4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -32,7 +35,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yxs-8W-oD9" userLabel="vHeader">
                     <rect key="frame" x="0.0" y="44" width="375" height="169"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mbh-du-4OM">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mbh-du-4OM" userLabel="vSub">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6aE-aj-dzZ">
@@ -52,12 +55,24 @@
                                         </label>
                                     </subviews>
                                 </stackView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Nx-MI-EO2">
+                                    <rect key="frame" x="319" y="18" width="32" height="32"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="32" id="3Na-6M-J5f"/>
+                                        <constraint firstAttribute="width" secondItem="5Nx-MI-EO2" secondAttribute="height" id="QRC-Zh-KVN"/>
+                                    </constraints>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" image="bell.fill" catalog="system"/>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.0" green="0.68627450980000004" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="128" id="EGj-3z-zM8"/>
+                                <constraint firstAttribute="trailing" secondItem="5Nx-MI-EO2" secondAttribute="trailing" constant="24" id="Iva-Ug-4Er"/>
                                 <constraint firstItem="6aE-aj-dzZ" firstAttribute="leading" secondItem="Mbh-du-4OM" secondAttribute="leading" constant="24" id="eUf-hQ-oQR"/>
                                 <constraint firstItem="6aE-aj-dzZ" firstAttribute="top" secondItem="Mbh-du-4OM" secondAttribute="top" constant="12" id="rje-P2-YUJ"/>
+                                <constraint firstItem="5Nx-MI-EO2" firstAttribute="top" secondItem="Mbh-du-4OM" secondAttribute="top" constant="18" id="sZh-d3-R5q"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bd7-zR-Q8X" userLabel="vBalance">
@@ -122,6 +137,7 @@
         </view>
     </objects>
     <resources>
+        <image name="bell.fill" catalog="system" width="128" height="124"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
