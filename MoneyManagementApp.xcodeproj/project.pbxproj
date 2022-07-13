@@ -34,6 +34,16 @@
 		DA98AA82287D540000434125 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98AA80287D540000434125 /* CustomTabBarController.swift */; };
 		DA98AA88287D773700434125 /* AccountTBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98AA86287D773700434125 /* AccountTBVC.swift */; };
 		DA98AA89287D773700434125 /* AccountTBVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA98AA87287D773700434125 /* AccountTBVC.xib */; };
+		DA98AA93287E707000434125 /* AdsTBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98AA91287E707000434125 /* AdsTBVC.swift */; };
+		DA98AA94287E707000434125 /* AdsTBVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA98AA92287E707000434125 /* AdsTBVC.xib */; };
+		DA98AA97287E710C00434125 /* AdsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98AA95287E710C00434125 /* AdsCVC.swift */; };
+		DA98AA98287E710C00434125 /* AdsCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA98AA96287E710C00434125 /* AdsCVC.xib */; };
+		DA98AA9D287E7A2B00434125 /* ads1.png in Resources */ = {isa = PBXBuildFile; fileRef = DA98AA9B287E7A2A00434125 /* ads1.png */; };
+		DA98AA9E287E7A2B00434125 /* ads2.png in Resources */ = {isa = PBXBuildFile; fileRef = DA98AA9C287E7A2B00434125 /* ads2.png */; };
+		DA98AAA1287E7E3F00434125 /* IncomeExpenseTBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98AA9F287E7E3F00434125 /* IncomeExpenseTBVC.swift */; };
+		DA98AAA2287E7E3F00434125 /* IncomeExpenseTBVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA98AAA0287E7E3F00434125 /* IncomeExpenseTBVC.xib */; };
+		DA98AAA5287E809000434125 /* TransactionTBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98AAA3287E809000434125 /* TransactionTBVC.swift */; };
+		DA98AAA6287E809000434125 /* TransactionTBVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA98AAA4287E809000434125 /* TransactionTBVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +78,16 @@
 		DA98AA80287D540000434125 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		DA98AA86287D773700434125 /* AccountTBVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTBVC.swift; sourceTree = "<group>"; };
 		DA98AA87287D773700434125 /* AccountTBVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountTBVC.xib; sourceTree = "<group>"; };
+		DA98AA91287E707000434125 /* AdsTBVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsTBVC.swift; sourceTree = "<group>"; };
+		DA98AA92287E707000434125 /* AdsTBVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdsTBVC.xib; sourceTree = "<group>"; };
+		DA98AA95287E710C00434125 /* AdsCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsCVC.swift; sourceTree = "<group>"; };
+		DA98AA96287E710C00434125 /* AdsCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdsCVC.xib; sourceTree = "<group>"; };
+		DA98AA9B287E7A2A00434125 /* ads1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ads1.png; sourceTree = "<group>"; };
+		DA98AA9C287E7A2B00434125 /* ads2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ads2.png; sourceTree = "<group>"; };
+		DA98AA9F287E7E3F00434125 /* IncomeExpenseTBVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseTBVC.swift; sourceTree = "<group>"; };
+		DA98AAA0287E7E3F00434125 /* IncomeExpenseTBVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomeExpenseTBVC.xib; sourceTree = "<group>"; };
+		DA98AAA3287E809000434125 /* TransactionTBVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTBVC.swift; sourceTree = "<group>"; };
+		DA98AAA4287E809000434125 /* TransactionTBVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionTBVC.xib; sourceTree = "<group>"; };
 		EC88FADAC7D912CEBC421A75 /* Pods_MoneyManagementApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoneyManagementApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -119,8 +139,7 @@
 				A56D1CCD2877158E008A508A /* Helpers */,
 				A56D1CC328770D37008A508A /* Controllers */,
 				A56D1CC528770F17008A508A /* Views */,
-				A56D1CC828770F75008A508A /* Model */,
-				A56D1CD0287719E2008A508A /* Resources */,
+				DA98AA99287E797D00434125 /* Resource */,
 				A56D1CB828770D0C008A508A /* Assets.xcassets */,
 				A56D1CBA28770D0C008A508A /* LaunchScreen.storyboard */,
 				A56D1CBD28770D0C008A508A /* Info.plist */,
@@ -162,26 +181,12 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		A56D1CC828770F75008A508A /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		A56D1CCD2877158E008A508A /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				A56D1CCE287715D5008A508A /* ConvertHelper.swift */,
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		A56D1CD0287719E2008A508A /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		D3FB57AD122360FDB7D3BC55 /* Frameworks */ = {
@@ -269,8 +274,33 @@
 		DA98AA90287E5F1F00434125 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				DA98AA9F287E7E3F00434125 /* IncomeExpenseTBVC.swift */,
+				DA98AAA0287E7E3F00434125 /* IncomeExpenseTBVC.xib */,
+				DA98AA91287E707000434125 /* AdsTBVC.swift */,
+				DA98AA92287E707000434125 /* AdsTBVC.xib */,
+				DA98AA95287E710C00434125 /* AdsCVC.swift */,
+				DA98AA96287E710C00434125 /* AdsCVC.xib */,
+				DA98AAA3287E809000434125 /* TransactionTBVC.swift */,
+				DA98AAA4287E809000434125 /* TransactionTBVC.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		DA98AA99287E797D00434125 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				DA98AA9A287E799A00434125 /* Image */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		DA98AA9A287E799A00434125 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				DA98AA9B287E7A2A00434125 /* ads1.png */,
+				DA98AA9C287E7A2B00434125 /* ads2.png */,
+			);
+			path = Image;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,11 +367,17 @@
 				A56D1CD62879F1FA008A508A /* LoginVC.xib in Resources */,
 				A56D1CDE287AD360008A508A /* HomeVC.xib in Resources */,
 				DA98AA89287D773700434125 /* AccountTBVC.xib in Resources */,
+				DA98AA9D287E7A2B00434125 /* ads1.png in Resources */,
+				DA98AAA6287E809000434125 /* TransactionTBVC.xib in Resources */,
+				DA98AA98287E710C00434125 /* AdsCVC.xib in Resources */,
 				DA98AA7F287D52F800434125 /* AccountVC.xib in Resources */,
 				A56D1CBC28770D0C008A508A /* LaunchScreen.storyboard in Resources */,
+				DA98AAA2287E7E3F00434125 /* IncomeExpenseTBVC.xib in Resources */,
 				DA98AA73287D527000434125 /* ReportVC.xib in Resources */,
 				DA98AA7B287D52DC00434125 /* WalletVC.xib in Resources */,
 				DA98AA77287D52C600434125 /* AddTransactionVC.xib in Resources */,
+				DA98AA9E287E7A2B00434125 /* ads2.png in Resources */,
+				DA98AA94287E707000434125 /* AdsTBVC.xib in Resources */,
 				A56D1CB928770D0C008A508A /* Assets.xcassets in Resources */,
 				A56D1CE1287C755C008A508A /* GoogleService-Info.plist in Resources */,
 			);
@@ -400,14 +436,18 @@
 				A56D1CDD287AD360008A508A /* HomeVC.swift in Sources */,
 				A56D1CD52879F1FA008A508A /* LoginVC.swift in Sources */,
 				A56D1CD9287A7734008A508A /* SignupVC.swift in Sources */,
+				DA98AAA5287E809000434125 /* TransactionTBVC.swift in Sources */,
 				A56D1CD228771CBC008A508A /* NormalLabel.swift in Sources */,
+				DA98AA93287E707000434125 /* AdsTBVC.swift in Sources */,
 				A56D1CCF287715D5008A508A /* ConvertHelper.swift in Sources */,
 				DA98AA72287D527000434125 /* ReportVC.swift in Sources */,
+				DA98AA97287E710C00434125 /* AdsCVC.swift in Sources */,
 				DA98AA7A287D52DC00434125 /* WalletVC.swift in Sources */,
 				DA98AA82287D540000434125 /* CustomTabBarController.swift in Sources */,
 				A56D1CB728770D0B008A508A /* MoneyManagementApp.xcdatamodeld in Sources */,
 				DA98AA88287D773700434125 /* AccountTBVC.swift in Sources */,
 				DA98AA76287D52C600434125 /* AddTransactionVC.swift in Sources */,
+				DA98AAA1287E7E3F00434125 /* IncomeExpenseTBVC.swift in Sources */,
 				A56D1CAD28770D0B008A508A /* AppDelegate.swift in Sources */,
 				A56D1CC728770F39008A508A /* Extension+UIColor.swift in Sources */,
 				DA98AA7E287D52F800434125 /* AccountVC.swift in Sources */,

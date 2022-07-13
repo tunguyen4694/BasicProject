@@ -38,7 +38,7 @@ extension AccountVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let vSection = UIView()
-        vSection.backgroundColor = .borderColor()
+        vSection.backgroundColor = .separatorColor()
         return vSection
     }
     
