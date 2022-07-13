@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class AccountVC: UIViewController {
     @IBOutlet weak var imgAvatar: UIImageView!
@@ -73,5 +74,19 @@ extension AccountVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            let firebaseAuth = Auth.auth()
+        do {
+          try firebaseAuth.signOut()
+            let vc = LoginVC()
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true)
+        } catch let signOutError as NSError {
+          print("Error signing out: %@", signOutError)
+        }
+        }
     }
 }

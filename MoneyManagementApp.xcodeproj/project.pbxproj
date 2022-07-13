@@ -133,18 +133,12 @@
 		A56D1CC328770D37008A508A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A56D1CD32879F1FA008A508A /* LoginVC.swift */,
-				A56D1CD42879F1FA008A508A /* LoginVC.xib */,
-				A56D1CD7287A7734008A508A /* SignupVC.swift */,
-				A56D1CD8287A7734008A508A /* SignupVC.xib */,
-				A56D1CDB287AD360008A508A /* HomeVC.swift */,
-				A56D1CDC287AD360008A508A /* HomeVC.xib */,
-				DA98AA70287D527000434125 /* ReportVC.swift */,
-				DA98AA71287D527000434125 /* ReportVC.xib */,
-				DA98AA74287D52C600434125 /* AddTransactionVC.swift */,
-				DA98AA75287D52C600434125 /* AddTransactionVC.xib */,
-				DA98AA78287D52DC00434125 /* WalletVC.swift */,
-				DA98AA79287D52DC00434125 /* WalletVC.xib */,
+				DA98AA8A287E5EC500434125 /* Login */,
+				DA98AA8B287E5ED100434125 /* Signup */,
+				DA98AA8C287E5EE200434125 /* Home */,
+				DA98AA8D287E5EEA00434125 /* Report */,
+				DA98AA8E287E5EF400434125 /* AddTransaction */,
+				DA98AA8F287E5EFD00434125 /* Wallet */,
 				DA98AA84287D76FF00434125 /* Account */,
 			);
 			path = Controllers;
@@ -213,6 +207,68 @@
 			children = (
 				DA98AA86287D773700434125 /* AccountTBVC.swift */,
 				DA98AA87287D773700434125 /* AccountTBVC.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		DA98AA8A287E5EC500434125 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				A56D1CD32879F1FA008A508A /* LoginVC.swift */,
+				A56D1CD42879F1FA008A508A /* LoginVC.xib */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		DA98AA8B287E5ED100434125 /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				A56D1CD7287A7734008A508A /* SignupVC.swift */,
+				A56D1CD8287A7734008A508A /* SignupVC.xib */,
+			);
+			path = Signup;
+			sourceTree = "<group>";
+		};
+		DA98AA8C287E5EE200434125 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				DA98AA90287E5F1F00434125 /* Cell */,
+				A56D1CDB287AD360008A508A /* HomeVC.swift */,
+				A56D1CDC287AD360008A508A /* HomeVC.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		DA98AA8D287E5EEA00434125 /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				DA98AA70287D527000434125 /* ReportVC.swift */,
+				DA98AA71287D527000434125 /* ReportVC.xib */,
+			);
+			path = Report;
+			sourceTree = "<group>";
+		};
+		DA98AA8E287E5EF400434125 /* AddTransaction */ = {
+			isa = PBXGroup;
+			children = (
+				DA98AA74287D52C600434125 /* AddTransactionVC.swift */,
+				DA98AA75287D52C600434125 /* AddTransactionVC.xib */,
+			);
+			path = AddTransaction;
+			sourceTree = "<group>";
+		};
+		DA98AA8F287E5EFD00434125 /* Wallet */ = {
+			isa = PBXGroup;
+			children = (
+				DA98AA78287D52DC00434125 /* WalletVC.swift */,
+				DA98AA79287D52DC00434125 /* WalletVC.xib */,
+			);
+			path = Wallet;
+			sourceTree = "<group>";
+		};
+		DA98AA90287E5F1F00434125 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = Cell;
 			sourceTree = "<group>";

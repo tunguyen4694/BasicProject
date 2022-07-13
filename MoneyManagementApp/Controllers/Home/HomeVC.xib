@@ -14,6 +14,7 @@
                 <outlet property="headerHeightConstraint" destination="g4j-Tx-CJf" id="eTj-cE-qKb"/>
                 <outlet property="lblHello" destination="t9y-xx-BKx" id="cIG-Gv-4lt"/>
                 <outlet property="lblUserName" destination="Mt1-dz-wp7" id="5HB-GJ-zgY"/>
+                <outlet property="tableView" destination="Lk4-Oq-Imy" id="jbe-BG-dB4"/>
                 <outlet property="vBalance" destination="Bd7-zR-Q8X" id="9nk-UD-Tu4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
