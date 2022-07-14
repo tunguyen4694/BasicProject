@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CategoryVC" customModule="MoneyManagementApp" customModuleProvider="target">
+            <connections>
+                <outlet property="tableView" destination="n7S-4Q-b2I" id="OkC-QN-7bF"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F55-ZY-N7b" userLabel="vNavigation">
+                    <rect key="frame" x="0.0" y="44" width="414" height="62"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogI-lc-nfu">
+                            <rect key="frame" x="133.5" y="20" width="147" height="22"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Je-J8-G0p">
+                            <rect key="frame" x="0.0" y="61" width="414" height="1"/>
+                            <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="N3U-DD-Qs6"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SaZ-f8-Zyy">
+                            <rect key="frame" x="16" y="15" width="32" height="32"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="32" id="MDJ-aS-Jhv"/>
+                                <constraint firstAttribute="width" secondItem="SaZ-f8-Zyy" secondAttribute="height" id="tlK-dC-mY9"/>
+                            </constraints>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="chevron.backward" catalog="system"/>
+                            <connections>
+                                <action selector="onBack:" destination="-1" eventType="touchUpInside" id="4JX-HX-wVG"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="SaZ-f8-Zyy" firstAttribute="leading" secondItem="F55-ZY-N7b" secondAttribute="leading" constant="16" id="1wj-4Q-jFF"/>
+                        <constraint firstAttribute="height" constant="62" id="GpQ-x0-FSD"/>
+                        <constraint firstItem="SaZ-f8-Zyy" firstAttribute="centerY" secondItem="F55-ZY-N7b" secondAttribute="centerY" id="J6R-n7-mBu"/>
+                        <constraint firstItem="ogI-lc-nfu" firstAttribute="centerX" secondItem="F55-ZY-N7b" secondAttribute="centerX" id="LX3-xf-Kd1"/>
+                        <constraint firstItem="ogI-lc-nfu" firstAttribute="centerY" secondItem="F55-ZY-N7b" secondAttribute="centerY" id="RxO-kS-cFb"/>
+                        <constraint firstAttribute="bottom" secondItem="3Je-J8-G0p" secondAttribute="bottom" id="Ynf-Ly-ZZT"/>
+                        <constraint firstAttribute="trailing" secondItem="3Je-J8-G0p" secondAttribute="trailing" id="cBE-dt-cgH"/>
+                        <constraint firstItem="3Je-J8-G0p" firstAttribute="leading" secondItem="F55-ZY-N7b" secondAttribute="leading" id="v8p-Ee-pEz"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="n7S-4Q-b2I">
+                    <rect key="frame" x="0.0" y="106" width="414" height="756"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="n7S-4Q-b2I" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="1i2-iq-aW6"/>
+                <constraint firstItem="F55-ZY-N7b" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Mc3-ZD-dSz"/>
+                <constraint firstItem="F55-ZY-N7b" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Mkj-Cc-uVI"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="n7S-4Q-b2I" secondAttribute="bottom" id="PAC-ws-CT8"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="n7S-4Q-b2I" secondAttribute="trailing" id="Z9U-2z-gCd"/>
+                <constraint firstItem="n7S-4Q-b2I" firstAttribute="top" secondItem="F55-ZY-N7b" secondAttribute="bottom" id="haQ-c3-y3U"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="F55-ZY-N7b" secondAttribute="trailing" id="rE2-Uj-Ako"/>
+            </constraints>
+            <point key="canvasLocation" x="131.8840579710145" y="91.741071428571431"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
