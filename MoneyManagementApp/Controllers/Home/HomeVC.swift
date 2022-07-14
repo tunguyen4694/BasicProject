@@ -64,10 +64,6 @@ class HomeVC: UIViewController {
         tableView.register(UINib(nibName: "IncomeExpenseTBVC", bundle: nil), forCellReuseIdentifier: "IncomeExpenseTBVC")
         tableView.register(UINib(nibName: "AdsTBVC", bundle: nil), forCellReuseIdentifier: "AdsTBVC")
         tableView.register(UINib(nibName: "TransactionTBVC", bundle: nil), forCellReuseIdentifier: "TransactionTBVC")
-        // Disable cố định header khi scroll tableView
-        let dummyViewHeight = CGFloat(40)
-        self.tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.size.width, height: dummyViewHeight))
-        self.tableView.contentInset = UIEdgeInsets(top: -dummyViewHeight, left: 0, bottom: 0, right: 0)
     }
     
 }
@@ -78,14 +74,47 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         return 3
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "This month"
-        } else if section == 2 {
-            return "History"
+    // Custom view in header
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: .init(x: 0, y: 0, width: tableView.frame.width, height: 40))
+        headerView.backgroundColor = .clear
+        
+        let lblTitleHeader = UILabel(frame: .init(x: 24, y: 0, width: 100, height: 40))
+        headerView.addSubview(lblTitleHeader)
+        lblTitleHeader.center.y = headerView.center.y
+        lblTitleHeader.font = .bold(ofSize: 16)
+        lblTitleHeader.textColor = .black
+        
+        let btnHeader = UIButton(frame: .init(x: headerView.frame.maxX-124, y: 0, width: 100, height: 40))
+        headerView.addSubview(btnHeader)
+        btnHeader.center.y = lblTitleHeader.center.y
+        btnHeader.setTitleColor(.mainColor(), for: .normal)
+        btnHeader.titleLabel?.font = .semibold(ofSize: 14)
+        btnHeader.contentHorizontalAlignment = .right
+        
+        if section == 2 {
+            lblTitleHeader.text = "History"
+            btnHeader.setTitle("See all", for: .normal)
+            return headerView
+        } else if section == 0 {
+            lblTitleHeader.text = "This month"
+            btnHeader.setTitle("View report", for: .normal)
+            return headerView
         } else {
-          return ""
+             return nil
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 1 {
+            return 0
+        } else {
+            return 40
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -119,12 +148,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    // Set header text color
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        guard let headerView = view as? UITableViewHeaderFooterView else { return }
-        headerView.textLabel?.textColor = .black
-    }
-    
+    // Animate header when scroll
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let scrollDiff = scrollView.contentOffset.y - previousScrollOffSet
         
@@ -138,15 +162,18 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         var newHeaderHeight = headerHeightConstraint.constant
         var newSubHeaderHeight = subHeaderConstraint.constant
         var newBalanceHeight = balanceHeightConstraint.constant
+        var newBtnNotiTopConstraint = btnNotiTopConstraint.constant
         
         if isScrollingDown {
             newHeaderHeight = max(minHeaderHeight, headerHeightConstraint.constant - abs(scrollDiff))
             newSubHeaderHeight = max(minSubHeight, subHeaderConstraint.constant - abs(scrollDiff))
             newBalanceHeight = max(minBalanceHeight, balanceHeightConstraint.constant - abs(scrollDiff))
+            newBtnNotiTopConstraint = max(6, btnNotiTopConstraint.constant - abs(scrollDiff))
         } else if isScrollingUp {
             newHeaderHeight = min(maxHeaderHeight, headerHeightConstraint.constant + abs(scrollDiff))
             newSubHeaderHeight = min(maxSubHeight, subHeaderConstraint.constant + abs(scrollDiff))
             newBalanceHeight = min(maxBalanceHeight, balanceHeightConstraint.constant + abs(scrollDiff))
+            newBtnNotiTopConstraint = min(18, btnNotiTopConstraint.constant + abs(scrollDiff))
         }
         
         // Tính theo view có height contraint thay đổi lớn nhất trong 2 view
@@ -155,6 +182,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
             headerHeightConstraint.constant = newHeaderHeight
             subHeaderConstraint.constant = newSubHeaderHeight
             balanceHeightConstraint.constant = newBalanceHeight
+            btnNotiTopConstraint.constant = newBtnNotiTopConstraint
             updateHeader()
             setScrollPosition(previousScrollOffSet)
         }
@@ -173,6 +201,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+// Animate header when scroll
 extension HomeVC {
     func canAnimateHeader(_ scrollView: UIScrollView) -> Bool {
         // Tính theo height constraint của view nhỏ nhât trong 2 view thay đổi height constraint
@@ -198,7 +227,6 @@ extension HomeVC {
     
     // Thu vào
     func collapseHeader() {
-        view.layoutIfNeeded()
         UIView.animate(withDuration: 0.2, animations: {
             self.headerHeightConstraint.constant = self.minHeaderHeight
             self.subHeaderConstraint.constant = self.minSubHeight
@@ -211,7 +239,6 @@ extension HomeVC {
     
     // Kéo ra
     func expandHeader() {
-        view.layoutIfNeeded()
         UIView.animate(withDuration: 0.2, animations: {
             self.headerHeightConstraint.constant = self.maxHeaderHeight
             self.subHeaderConstraint.constant = self.maxSubHeight
@@ -231,5 +258,4 @@ extension HomeVC {
         lblHello.alpha = percentage
         lblUserName.alpha = percentage
     }
-    
 }
