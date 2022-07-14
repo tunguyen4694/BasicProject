@@ -52,7 +52,7 @@ class CustomTabBarController: UITabBarController {
              NSAttributedString.Key.foregroundColor: UIColor.mainColor()], for: .selected)
         
         configTabBar()
-        //        tabBar.items![2].isEnabled = false
+                tabBar.items![2].isEnabled = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,11 +75,11 @@ class CustomTabBarController: UITabBarController {
         
         tabBar.layer.insertSublayer(shadowLayer, at: 0)
         
-        let vClear = UIView()
-        tabBar.addSubview(vClear)
-        vClear.frame = .init(x: 0, y: tabBar.bounds.minY, width: 60, height: 60)
-        vClear.center.x = tabBar.center.x
-        vClear.backgroundColor = .clear
+//        let vClear = UIView()
+//        tabBar.addSubview(vClear)
+//        vClear.frame = .init(x: 0, y: tabBar.bounds.minY, width: 60, height: 60)
+//        vClear.center.x = tabBar.center.x
+//        vClear.backgroundColor = .clear
         
         let vBigCircle = UIView()
         tabBar.addSubview(vBigCircle)
@@ -98,18 +98,19 @@ class CustomTabBarController: UITabBarController {
         vSmallCircle.layer.shadowOffset = .init(width: 0, height: 2)
         vSmallCircle.layer.shadowOpacity = 0.3
         
-        let btnSearch = UIButton()
-        vBigCircle.addSubview(btnSearch)
-        btnSearch.setImage(UIImage(systemName: "plus"), for: .normal)
-        btnSearch.tintColor = .white
-        btnSearch.frame = .init(x: 0, y: 0, width: 70, height: 70)
-        btnSearch.addTarget(self, action: #selector(onSearch(_:)), for: .touchUpInside)
-        
+        let btnAdd = UIButton()
+        vBigCircle.addSubview(btnAdd)
+        btnAdd.setImage(UIImage(systemName: "plus"), for: .normal)
+        btnAdd.tintColor = .white
+        btnAdd.frame = .init(x: 0, y: 0, width: 70, height: 70)
+        btnAdd.layer.cornerRadius = 35
+        btnAdd.addTarget(self, action: #selector(onSearch(_:)), for: .touchUpInside)
     }
     
     @objc func onSearch(_ sender: UIButton) {
         let vc = AddTransactionVC()
-        present(vc, animated: true)
+//        present(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: false)
     }
 }
 
