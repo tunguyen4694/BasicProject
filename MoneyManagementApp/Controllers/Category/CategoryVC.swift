@@ -25,7 +25,8 @@ class CategoryVC: UIViewController {
         tableView.register(UINib(nibName: "CategoryTBVC", bundle: nil), forCellReuseIdentifier: "CategoryTBVC")
     }
     @IBAction func onBack(_ sender: Any) {
-        self.dismiss(animated: true)
+//        self.dismiss(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
 }

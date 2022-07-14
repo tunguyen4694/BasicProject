@@ -23,6 +23,9 @@
 		A56D1CDD287AD360008A508A /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56D1CDB287AD360008A508A /* HomeVC.swift */; };
 		A56D1CDE287AD360008A508A /* HomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = A56D1CDC287AD360008A508A /* HomeVC.xib */; };
 		A56D1CE1287C755C008A508A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A56D1CE0287C755C008A508A /* GoogleService-Info.plist */; };
+		DA7BB06A287FF42E0068F257 /* CategoryTBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BB068287FF42E0068F257 /* CategoryTBVC.swift */; };
+		DA7BB06B287FF42E0068F257 /* CategoryTBVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7BB069287FF42E0068F257 /* CategoryTBVC.xib */; };
+		DA7BB06E287FF7960068F257 /* ModelCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BB06D287FF7960068F257 /* ModelCategory.swift */; };
 		DA98AA72287D527000434125 /* ReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98AA70287D527000434125 /* ReportVC.swift */; };
 		DA98AA73287D527000434125 /* ReportVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA98AA71287D527000434125 /* ReportVC.xib */; };
 		DA98AA76287D52C600434125 /* AddTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98AA74287D52C600434125 /* AddTransactionVC.swift */; };
@@ -44,6 +47,8 @@
 		DA98AAA2287E7E3F00434125 /* IncomeExpenseTBVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA98AAA0287E7E3F00434125 /* IncomeExpenseTBVC.xib */; };
 		DA98AAA5287E809000434125 /* TransactionTBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98AAA3287E809000434125 /* TransactionTBVC.swift */; };
 		DA98AAA6287E809000434125 /* TransactionTBVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA98AAA4287E809000434125 /* TransactionTBVC.xib */; };
+		DA98AAB6287FF38700434125 /* CategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98AAB4287FF38700434125 /* CategoryVC.swift */; };
+		DA98AAB7287FF38700434125 /* CategoryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA98AAB5287FF38700434125 /* CategoryVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +72,9 @@
 		A56D1CDC287AD360008A508A /* HomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeVC.xib; sourceTree = "<group>"; };
 		A56D1CE0287C755C008A508A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A5852B16287C8EF200268D8B /* MoneyManagementApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MoneyManagementApp.entitlements; sourceTree = "<group>"; };
+		DA7BB068287FF42E0068F257 /* CategoryTBVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTBVC.swift; sourceTree = "<group>"; };
+		DA7BB069287FF42E0068F257 /* CategoryTBVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryTBVC.xib; sourceTree = "<group>"; };
+		DA7BB06D287FF7960068F257 /* ModelCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCategory.swift; sourceTree = "<group>"; };
 		DA98AA70287D527000434125 /* ReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportVC.swift; sourceTree = "<group>"; };
 		DA98AA71287D527000434125 /* ReportVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportVC.xib; sourceTree = "<group>"; };
 		DA98AA74287D52C600434125 /* AddTransactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionVC.swift; sourceTree = "<group>"; };
@@ -88,6 +96,8 @@
 		DA98AAA0287E7E3F00434125 /* IncomeExpenseTBVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IncomeExpenseTBVC.xib; sourceTree = "<group>"; };
 		DA98AAA3287E809000434125 /* TransactionTBVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTBVC.swift; sourceTree = "<group>"; };
 		DA98AAA4287E809000434125 /* TransactionTBVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionTBVC.xib; sourceTree = "<group>"; };
+		DA98AAB4287FF38700434125 /* CategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVC.swift; sourceTree = "<group>"; };
+		DA98AAB5287FF38700434125 /* CategoryVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryVC.xib; sourceTree = "<group>"; };
 		EC88FADAC7D912CEBC421A75 /* Pods_MoneyManagementApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoneyManagementApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -140,6 +150,7 @@
 				A56D1CC328770D37008A508A /* Controllers */,
 				A56D1CC528770F17008A508A /* Views */,
 				DA98AA99287E797D00434125 /* Resource */,
+				DA7BB06C287FF7860068F257 /* Model */,
 				A56D1CB828770D0C008A508A /* Assets.xcassets */,
 				A56D1CBA28770D0C008A508A /* LaunchScreen.storyboard */,
 				A56D1CBD28770D0C008A508A /* Info.plist */,
@@ -159,6 +170,7 @@
 				DA98AA8E287E5EF400434125 /* AddTransaction */,
 				DA98AA8F287E5EFD00434125 /* Wallet */,
 				DA98AA84287D76FF00434125 /* Account */,
+				DA7BB066287FF3E80068F257 /* Category */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -195,6 +207,33 @@
 				EC88FADAC7D912CEBC421A75 /* Pods_MoneyManagementApp.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DA7BB066287FF3E80068F257 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				DA7BB067287FF4060068F257 /* Cell */,
+				DA98AAB4287FF38700434125 /* CategoryVC.swift */,
+				DA98AAB5287FF38700434125 /* CategoryVC.xib */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		DA7BB067287FF4060068F257 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DA7BB068287FF42E0068F257 /* CategoryTBVC.swift */,
+				DA7BB069287FF42E0068F257 /* CategoryTBVC.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		DA7BB06C287FF7860068F257 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DA7BB06D287FF7960068F257 /* ModelCategory.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		DA98AA84287D76FF00434125 /* Account */ = {
@@ -367,6 +406,7 @@
 				A56D1CD62879F1FA008A508A /* LoginVC.xib in Resources */,
 				A56D1CDE287AD360008A508A /* HomeVC.xib in Resources */,
 				DA98AA89287D773700434125 /* AccountTBVC.xib in Resources */,
+				DA7BB06B287FF42E0068F257 /* CategoryTBVC.xib in Resources */,
 				DA98AA9D287E7A2B00434125 /* ads1.png in Resources */,
 				DA98AAA6287E809000434125 /* TransactionTBVC.xib in Resources */,
 				DA98AA98287E710C00434125 /* AdsCVC.xib in Resources */,
@@ -377,6 +417,7 @@
 				DA98AA7B287D52DC00434125 /* WalletVC.xib in Resources */,
 				DA98AA77287D52C600434125 /* AddTransactionVC.xib in Resources */,
 				DA98AA9E287E7A2B00434125 /* ads2.png in Resources */,
+				DA98AAB7287FF38700434125 /* CategoryVC.xib in Resources */,
 				DA98AA94287E707000434125 /* AdsTBVC.xib in Resources */,
 				A56D1CB928770D0C008A508A /* Assets.xcassets in Resources */,
 				A56D1CE1287C755C008A508A /* GoogleService-Info.plist in Resources */,
@@ -439,12 +480,15 @@
 				DA98AAA5287E809000434125 /* TransactionTBVC.swift in Sources */,
 				A56D1CD228771CBC008A508A /* NormalLabel.swift in Sources */,
 				DA98AA93287E707000434125 /* AdsTBVC.swift in Sources */,
+				DA7BB06E287FF7960068F257 /* ModelCategory.swift in Sources */,
 				A56D1CCF287715D5008A508A /* ConvertHelper.swift in Sources */,
 				DA98AA72287D527000434125 /* ReportVC.swift in Sources */,
 				DA98AA97287E710C00434125 /* AdsCVC.swift in Sources */,
+				DA98AAB6287FF38700434125 /* CategoryVC.swift in Sources */,
 				DA98AA7A287D52DC00434125 /* WalletVC.swift in Sources */,
 				DA98AA82287D540000434125 /* CustomTabBarController.swift in Sources */,
 				A56D1CB728770D0B008A508A /* MoneyManagementApp.xcdatamodeld in Sources */,
+				DA7BB06A287FF42E0068F257 /* CategoryTBVC.swift in Sources */,
 				DA98AA88287D773700434125 /* AccountTBVC.swift in Sources */,
 				DA98AA76287D52C600434125 /* AddTransactionVC.swift in Sources */,
 				DA98AAA1287E7E3F00434125 /* IncomeExpenseTBVC.swift in Sources */,
