@@ -9,13 +9,17 @@ import UIKit
 
 class TransactionTBVC: UITableViewCell {
 
+    @IBOutlet weak var vIcon: UIView!
     @IBOutlet weak var imgIcon: UIImageView!
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var lblAmount: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        vIcon.layer.cornerRadius = 20
+        vIcon.backgroundColor = .iconColor()
+        imgIcon.tintColor = .white
         lblName.font = .medium(ofSize: 14)
         lblName.textColor = .black
         lblDate.font = .regular(ofSize: 12)
