@@ -10,7 +10,9 @@ import UIKit
 class CategoryVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    
     var datas: Category = dataCategory()
+    var passData: ((_ name: String?) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +27,7 @@ class CategoryVC: UIViewController {
         tableView.register(UINib(nibName: "CategoryTBVC", bundle: nil), forCellReuseIdentifier: "CategoryTBVC")
     }
     @IBAction func onBack(_ sender: Any) {
-//        self.dismiss(animated: true)
-        navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true)
     }
     
 }
@@ -101,21 +102,18 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = AddTransactionVC()
         switch indexPath.section {
         case 0:
-            vc.name = datas.essentials[indexPath.row].name ?? ""
+            passData?(datas.essentials[indexPath.row].name)
         case 1:
-            vc.name = datas.entertaiments[indexPath.row].name ?? ""
+            passData?(datas.entertaiments[indexPath.row].name)
         case 2:
-            vc.name = datas.educations[indexPath.row].name ?? ""
+            passData?(datas.educations[indexPath.row].name)
         case 3:
-            vc.name = datas.investments[indexPath.row].name ?? ""
+            passData?(datas.investments[indexPath.row].name)
         default:
-            vc.name = datas.incomes[indexPath.row].name ?? ""
+            passData?(datas.incomes[indexPath.row].name)
         }
         dismiss(animated: true)
-//        present(vc, animated: false)
-        navigationController?.pushViewController(vc, animated: false)
     }
 }
