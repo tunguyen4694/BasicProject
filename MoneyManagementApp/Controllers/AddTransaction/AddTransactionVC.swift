@@ -39,6 +39,7 @@ class AddTransactionVC: UIViewController {
         return datePicker
     }()
     
+    var transaction: Transaction?
     var passData: ((_ transaction: Transaction?) -> Void)?
     
     override func viewDidLoad() {
@@ -48,9 +49,21 @@ class AddTransactionVC: UIViewController {
         configNavigationBar()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        guard let transaction = transaction else {
+            return
+        }
+        imgIcon.image = transaction.image
+        tfCategory.text = transaction.name
+        tfAmount.text = transaction.amount
+        tfDate.text = transaction.date
+    }
+    
     @IBAction func onBack(_ sender: Any) {
-        let vc = CustomTabBarController()
-        navigationController?.pushViewController(vc, animated: true)
+//        let vc = CustomTabBarController()
+//        navigationController?.pushViewController(vc, animated: true)
+        dismiss(animated: true)
     }
     
     @IBAction func addExpense(_ sender: Any) {
@@ -90,9 +103,17 @@ class AddTransactionVC: UIViewController {
     }
     
     @IBAction func onSave(_ sender: Any) {
-        let transaction = Transaction(image: imgIcon.image, name: tfCategory.text, date: tfDate.text, amount: tfAmount.text)
+        if tfCategory.text != "" && tfAmount.text != "" && tfDate.text != "" {
+        transaction = Transaction(image: imgIcon.image, name: tfCategory.text, date: tfDate.text, amount: tfAmount.text)
         passData?(transaction)
-        navigationController?.popViewController(animated: true)
+        dismiss(animated: true)
+//        navigationController?.popViewController(animated: true)
+        } else {
+            let alertController = UIAlertController(title: "Can't save", message: "Please! Enter full information", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "Ok", style: .cancel)
+            alertController.addAction(ok)
+            present(alertController, animated: true)
+        }
     }
     
     @objc func handleDatePicker(_ sender: UIDatePicker) {
