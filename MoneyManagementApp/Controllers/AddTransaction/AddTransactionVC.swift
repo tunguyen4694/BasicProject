@@ -19,6 +19,9 @@ class AddTransactionVC: UIViewController {
     @IBOutlet weak var vAmount: UIView!
     @IBOutlet weak var vDate: UIView!
     
+    @IBOutlet weak var imgIcon: UIImageView!
+    @IBOutlet weak var iconWithConstraint: NSLayoutConstraint!
+    @IBOutlet weak var categoryLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var tfCategory: UITextField!
     @IBOutlet weak var tfAmount: UITextField!
     @IBOutlet weak var tfDate: UITextField!
@@ -35,6 +38,8 @@ class AddTransactionVC: UIViewController {
         }
         return datePicker
     }()
+    
+    var passData: ((_ transaction: Transaction?) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,16 +79,25 @@ class AddTransactionVC: UIViewController {
     
     @IBAction func enterCategory(_ sender: Any) {
         let vc = CategoryVC()
-        vc.passData = { [weak self] name in
-            guard let strongSelf = self, let name = name else { return }
+        vc.passData = { [weak self] name, image, imageWidth, leadingTextField in
+            guard let strongSelf = self, let name = name, let image = image else { return }
             strongSelf.tfCategory.text = name
+            strongSelf.imgIcon.image = image
+            strongSelf.iconWithConstraint.constant = imageWidth
+            strongSelf.categoryLeadingConstraint.constant = leadingTextField
         }
         present(vc, animated: true)
     }
     
+    @IBAction func onSave(_ sender: Any) {
+        let transaction = Transaction(image: imgIcon.image, name: tfCategory.text, date: tfDate.text, amount: tfAmount.text)
+        passData?(transaction)
+        navigationController?.popViewController(animated: true)
+    }
+    
     @objc func handleDatePicker(_ sender: UIDatePicker) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
+        dateFormatter.dateFormat = "EEE, dd MMM yyyy"
         tfDate.text = dateFormatter.string(from: sender.date)
     }
     
@@ -122,7 +136,7 @@ class AddTransactionVC: UIViewController {
         btnSave.tag = 0
         
         tfAmount.keyboardType = .numberPad
-        tfDate.placeholder = ConvertHelper.share.stringFromDate(date: Date(), format: "dd/MM/yyyy")
+        tfDate.placeholder = ConvertHelper.share.stringFromDate(date: Date(), format: "EEE, dd MMM yyyy")
         // Setup Date Picker input Text Field
         tfDate.inputView = datePicker
         datePicker.addTarget(self, action: #selector(handleDatePicker(_:)), for: .valueChanged)
@@ -136,6 +150,7 @@ class AddTransactionVC: UIViewController {
     // Currenct Fomatter in TextField
     func formatCurrency(string: String) {
         let formatter = NumberFormatter()
+//        formatter.numberStyle = .decimal
         formatter.numberStyle = NumberFormatter.Style.currency
         formatter.locale = NSLocale(localeIdentifier: "vi_VN") as Locale
         let numberFromField = NSString(string: currentString).doubleValue

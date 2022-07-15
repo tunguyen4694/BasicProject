@@ -34,6 +34,8 @@ class HomeVC: UIViewController {
     // OffSet trước khi scroll
     var previousScrollOffSet: CGFloat = 0
     
+    var transaction: [Transaction] = []
+    
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,7 +121,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 2 {
-            return 20
+            return transaction.count
         } else {
             return 1
         }
@@ -137,6 +139,10 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTBVC", for: indexPath) as? TransactionTBVC else { return UITableViewCell() }
             cell.selectionStyle = .none
+            cell.imgIcon.image = transaction[indexPath.row].image
+            cell.lblName.text = transaction[indexPath.row].name
+            cell.lblDate.text = transaction[indexPath.row].date
+            cell.lblAmount.text = transaction[indexPath.row].amount
             return cell
         }
     }

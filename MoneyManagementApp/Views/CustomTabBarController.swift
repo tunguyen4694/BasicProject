@@ -11,6 +11,8 @@ class CustomTabBarController: UITabBarController {
 
     let vTopLineTabbar = UIView()
     
+    let controller1 = HomeVC()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBar.backgroundColor = .white
@@ -22,7 +24,6 @@ class CustomTabBarController: UITabBarController {
         
         let iconConfig = UIImage.SymbolConfiguration(pointSize: 18, weight: .medium, scale: .default)
         
-        let controller1 = HomeVC()
         controller1.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house.fill", withConfiguration: iconConfig), tag: 1)
         let nav1 = UINavigationController(rootViewController: controller1)
         
@@ -104,12 +105,18 @@ class CustomTabBarController: UITabBarController {
         btnAdd.tintColor = .white
         btnAdd.frame = .init(x: 0, y: 0, width: 70, height: 70)
         btnAdd.layer.cornerRadius = 35
-        btnAdd.addTarget(self, action: #selector(onSearch(_:)), for: .touchUpInside)
+        btnAdd.addTarget(self, action: #selector(onAdd(_:)), for: .touchUpInside)
     }
     
-    @objc func onSearch(_ sender: UIButton) {
+    @objc func onAdd(_ sender: UIButton) {
         let vc = AddTransactionVC()
-//        present(vc, animated: true)
+        //        present(vc, animated: true)
+        vc.passData = {[weak self] transaction in
+            guard let strongSelf = self, let transaction = transaction else { return }
+            strongSelf.controller1.transaction.insert(transaction, at: 0)
+            strongSelf.controller1.transaction.sort(by: { $0.date ?? "" < $1.date ?? "" })
+            strongSelf.controller1.tableView.reloadData()
+        }
         navigationController?.pushViewController(vc, animated: false)
     }
 }

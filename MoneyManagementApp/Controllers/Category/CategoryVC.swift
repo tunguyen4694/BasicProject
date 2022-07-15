@@ -12,7 +12,7 @@ class CategoryVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var datas: Category = dataCategory()
-    var passData: ((_ name: String?) -> Void)?
+    var passData: ((_ name: String?, _ image: UIImage?, _ imageWidth: CGFloat, _ leadingTextField: CGFloat) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,15 +104,15 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
-            passData?(datas.essentials[indexPath.row].name)
+            passData?(datas.essentials[indexPath.row].name, datas.essentials[indexPath.row].image, 24, 8)
         case 1:
-            passData?(datas.entertaiments[indexPath.row].name)
+            passData?(datas.entertaiments[indexPath.row].name, datas.entertaiments[indexPath.row].image, 24, 8)
         case 2:
-            passData?(datas.educations[indexPath.row].name)
+            passData?(datas.educations[indexPath.row].name, datas.educations[indexPath.row].image, 24, 8)
         case 3:
-            passData?(datas.investments[indexPath.row].name)
+            passData?(datas.investments[indexPath.row].name, datas.investments[indexPath.row].image, 24, 8)
         default:
-            passData?(datas.incomes[indexPath.row].name)
+            passData?(datas.incomes[indexPath.row].name, datas.incomes[indexPath.row].image, 24, 8)
         }
         dismiss(animated: true)
     }
