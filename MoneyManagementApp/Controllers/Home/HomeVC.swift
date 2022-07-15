@@ -157,6 +157,27 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
+            self.transaction.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        
+        let edit = UIContextualAction(style: .normal, title: "Edit") { _, _, _ in
+            let editVC = AddTransactionVC()
+            editVC.transaction = self.transaction[indexPath.row]
+            editVC.passData = { [weak self] transaction in
+                guard let strongSelf = self, let transaction = transaction else { return }
+                strongSelf.transaction[indexPath.row] = transaction
+                strongSelf.tableView.reloadData()
+            }
+            self.present(editVC, animated: true)
+        }
+        
+        let configure = UISwipeActionsConfiguration(actions: [delete, edit])
+        return configure
+    }
+    
     // Animate header when scroll
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let scrollDiff = scrollView.contentOffset.y - previousScrollOffSet
