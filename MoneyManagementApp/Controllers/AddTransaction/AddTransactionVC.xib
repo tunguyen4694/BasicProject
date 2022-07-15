@@ -155,28 +155,28 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nMP-5v-xIm">
                                     <rect key="frame" x="0.0" y="21" width="382" height="44"/>
                                     <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Nry-Ol-Z3m">
+                                            <rect key="frame" x="334" y="11" width="24" height="21.5"/>
+                                            <color key="tintColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="Nry-Ol-Z3m" secondAttribute="height" id="CWb-uA-ZLf"/>
+                                                <constraint firstAttribute="height" constant="24" id="coJ-Su-3AF"/>
+                                            </constraints>
+                                        </imageView>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CZE-CW-Ahh">
-                                            <rect key="frame" x="24" y="0.0" width="326" height="44"/>
+                                            <rect key="frame" x="24" y="0.0" width="334" height="44"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qUM-lw-zKW">
-                                            <rect key="frame" x="0.0" y="0.0" width="362" height="44"/>
-                                            <color key="tintColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
-                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                            <state key="normal" image="calendar" catalog="system"/>
-                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="qUM-lw-zKW" secondAttribute="trailing" constant="20" id="HOJ-2Y-2xO"/>
-                                        <constraint firstItem="qUM-lw-zKW" firstAttribute="top" secondItem="nMP-5v-xIm" secondAttribute="top" id="PPB-aw-BZM"/>
-                                        <constraint firstAttribute="bottom" secondItem="qUM-lw-zKW" secondAttribute="bottom" id="Pzv-Fq-GJc"/>
-                                        <constraint firstAttribute="trailing" secondItem="CZE-CW-Ahh" secondAttribute="trailing" constant="32" id="Rsy-E6-oCm"/>
+                                        <constraint firstAttribute="trailing" secondItem="CZE-CW-Ahh" secondAttribute="trailing" constant="24" id="Rsy-E6-oCm"/>
+                                        <constraint firstItem="Nry-Ol-Z3m" firstAttribute="centerY" secondItem="nMP-5v-xIm" secondAttribute="centerY" id="VSH-xe-dQj"/>
                                         <constraint firstItem="CZE-CW-Ahh" firstAttribute="top" secondItem="nMP-5v-xIm" secondAttribute="top" id="Vrz-Xf-1M1"/>
                                         <constraint firstAttribute="height" constant="44" id="WhE-UH-s1T"/>
                                         <constraint firstAttribute="bottom" secondItem="CZE-CW-Ahh" secondAttribute="bottom" id="gir-bG-kEC"/>
-                                        <constraint firstItem="qUM-lw-zKW" firstAttribute="leading" secondItem="nMP-5v-xIm" secondAttribute="leading" id="jAt-gh-Yoa"/>
+                                        <constraint firstItem="Nry-Ol-Z3m" firstAttribute="trailing" secondItem="CZE-CW-Ahh" secondAttribute="trailing" id="nKw-J6-2al"/>
                                         <constraint firstItem="CZE-CW-Ahh" firstAttribute="leading" secondItem="nMP-5v-xIm" secondAttribute="leading" constant="24" id="nmt-fS-44G"/>
                                     </constraints>
                                 </view>

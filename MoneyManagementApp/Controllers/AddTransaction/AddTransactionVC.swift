@@ -8,7 +8,7 @@
 import UIKit
 
 class AddTransactionVC: UIViewController {
-
+    
     @IBOutlet weak var vSafe: UIView!
     @IBOutlet weak var vLine: UIView!
     
@@ -24,12 +24,21 @@ class AddTransactionVC: UIViewController {
     @IBOutlet weak var tfDate: UITextField!
     
     @IBOutlet weak var btnSave: UIButton!
+    var currentString = ""
     
-    var name = ""
+    var datePicker: UIDatePicker = {
+        let datePicker = UIDatePicker(frame: .zero)
+        datePicker.datePickerMode = .date
+        datePicker.timeZone = TimeZone.current
+        if #available(iOS 14, *) {
+            datePicker.preferredDatePickerStyle = .inline
+        }
+        return datePicker
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tfCategory.text = name
-        tfAmount.keyboardType = .numberPad
+        tfAmount.delegate = self
         setupUI()
         configNavigationBar()
     }
@@ -65,8 +74,21 @@ class AddTransactionVC: UIViewController {
     
     @IBAction func enterCategory(_ sender: Any) {
         let vc = CategoryVC()
-//        present(vc, animated: true)
-        navigationController?.pushViewController(vc, animated: true)
+        vc.passData = { [weak self] name in
+            guard let strongSelf = self, let name = name else { return }
+            strongSelf.tfCategory.text = name
+        }
+        present(vc, animated: true)
+    }
+    
+    @objc func handleDatePicker(_ sender: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        tfDate.text = dateFormatter.string(from: sender.date)
+    }
+    
+    @objc func datePickerDone() {
+        tfDate.resignFirstResponder()
     }
     
     func configNavigationBar() {
@@ -81,9 +103,8 @@ class AddTransactionVC: UIViewController {
     }
     
     func setupUI() {
-//        vSafe.backgroundColor = .mainColor()
         vLine.backgroundColor = .mainColor()
-            
+        
         vCategory.layer.borderWidth = 1
         vCategory.layer.borderColor = UIColor.borderColor().cgColor
         vCategory.layer.cornerRadius = 10
@@ -99,5 +120,43 @@ class AddTransactionVC: UIViewController {
         btnSave.layer.cornerRadius = 10
         btnSave.tintColor = .mainColor()
         btnSave.tag = 0
+        
+        tfAmount.keyboardType = .numberPad
+        tfDate.placeholder = ConvertHelper.share.stringFromDate(date: Date(), format: "dd/MM/yyyy")
+        // Setup Date Picker input Text Field
+        tfDate.inputView = datePicker
+        datePicker.addTarget(self, action: #selector(handleDatePicker(_:)), for: .valueChanged)
+        // Set btnDone in datePicker view
+        let doneButton = UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(self.datePickerDone))
+        let toolBar = UIToolbar.init(frame: CGRect(x: 0, y: 0, width: view.bounds.size.width, height: 44))
+        toolBar.setItems([UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil), doneButton], animated: true)
+        tfDate.inputAccessoryView = toolBar
+    }
+    
+    // Currenct Fomatter in TextField
+    func formatCurrency(string: String) {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = NumberFormatter.Style.currency
+        formatter.locale = NSLocale(localeIdentifier: "vi_VN") as Locale
+        let numberFromField = NSString(string: currentString).doubleValue
+        tfAmount.text = formatter.string(from: NSNumber(value: numberFromField))
+    }
+}
+
+// Extension Currenct Fomatter in TextField
+extension AddTransactionVC: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        switch string {
+        case "0","1","2","3","4","5","6","7","8","9":
+            currentString += string
+            formatCurrency(string: currentString)
+        default:
+            if string.count == 0 && currentString.count != 0 {
+                currentString = String(currentString.dropLast())
+                formatCurrency(string: currentString)
+            }
+        }
+        return false
     }
 }
