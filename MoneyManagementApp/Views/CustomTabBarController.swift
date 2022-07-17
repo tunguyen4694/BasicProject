@@ -114,7 +114,7 @@ class CustomTabBarController: UITabBarController {
         vc.passData = {[weak self] transaction in
             guard let strongSelf = self, let transaction = transaction else { return }
             strongSelf.controller1.transaction.insert(transaction, at: 0)
-            strongSelf.controller1.transaction.sort(by: { $1.date ?? "" < $0.date ?? "" })
+            strongSelf.controller1.transaction.sort(by: { $1.date ?? Date() < $0.date ?? Date() })
             strongSelf.controller1.tableView.reloadData()
         }
         present(vc, animated: true)
