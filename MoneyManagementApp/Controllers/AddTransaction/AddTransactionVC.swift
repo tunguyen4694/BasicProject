@@ -54,10 +54,13 @@ class AddTransactionVC: UIViewController {
         guard let transaction = transaction else {
             return
         }
+        if transaction.stt == "+" {
+            addIncome(self)
+        }
         imgIcon.image = transaction.image
         tfCategory.text = transaction.name
         tfAmount.text = transaction.amount
-        tfDate.text = transaction.date
+        tfDate.text = ConvertHelper.share.stringFromDate(date: transaction.date ?? Date(), format: "dd MMM yyyy")
     }
     
     @IBAction func onBack(_ sender: Any) {
@@ -103,11 +106,16 @@ class AddTransactionVC: UIViewController {
     }
     
     @IBAction func onSave(_ sender: Any) {
+        let date = ConvertHelper.share.dateFormString(string: tfDate.text ?? "", format: "dd MMM yyyy")
         if tfCategory.text != "" && tfAmount.text != "" && tfDate.text != "" {
-        transaction = Transaction(image: imgIcon.image, name: tfCategory.text, date: tfDate.text, amount: tfAmount.text)
-        passData?(transaction)
-        dismiss(animated: true)
-//        navigationController?.popViewController(animated: true)
+            if btnSave.tag == 0 {
+                transaction = Transaction(image: imgIcon.image, name: tfCategory.text, date: date, amount: tfAmount.text, stt: "-", color: .expenseColor())
+            } else if btnSave.tag == 1 {
+                transaction = Transaction(image: imgIcon.image, name: tfCategory.text, date: date, amount: tfAmount.text, stt: "+", color: .incomeColor())
+            }
+            passData?(transaction)
+            dismiss(animated: true)
+            //        navigationController?.popViewController(animated: true)
         } else {
             let alertController = UIAlertController(title: "Can't save", message: "Please! Enter full information", preferredStyle: .alert)
             let ok = UIAlertAction(title: "Ok", style: .cancel)
@@ -117,9 +125,7 @@ class AddTransactionVC: UIViewController {
     }
     
     @objc func handleDatePicker(_ sender: UIDatePicker) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEE, dd MMM yyyy"
-        tfDate.text = dateFormatter.string(from: sender.date)
+        tfDate.text = ConvertHelper.share.stringFromDate(date: sender.date, format: "dd MMM yyyy")
     }
     
     @objc func datePickerDone() {
@@ -158,6 +164,7 @@ class AddTransactionVC: UIViewController {
         
         tfAmount.keyboardType = .numberPad
         tfDate.placeholder = ConvertHelper.share.stringFromDate(date: Date(), format: "EEE, dd MMM yyyy")
+        tfDate.text = ConvertHelper.share.stringFromDate(date: Date(), format: "dd MMM yyyy")
         // Setup Date Picker input Text Field
         tfDate.inputView = datePicker
         datePicker.addTarget(self, action: #selector(handleDatePicker(_:)), for: .valueChanged)
@@ -171,7 +178,6 @@ class AddTransactionVC: UIViewController {
     // Currenct Fomatter in TextField
     func formatCurrency(string: String) {
         let formatter = NumberFormatter()
-//        formatter.numberStyle = .decimal
         formatter.numberStyle = NumberFormatter.Style.currency
         formatter.locale = NSLocale(localeIdentifier: "vi_VN") as Locale
         let numberFromField = NSString(string: currentString).doubleValue
