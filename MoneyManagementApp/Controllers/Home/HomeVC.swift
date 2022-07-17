@@ -67,7 +67,6 @@ class HomeVC: UIViewController {
         tableView.register(UINib(nibName: "AdsTBVC", bundle: nil), forCellReuseIdentifier: "AdsTBVC")
         tableView.register(UINib(nibName: "TransactionTBVC", bundle: nil), forCellReuseIdentifier: "TransactionTBVC")
     }
-    
 }
 
 extension HomeVC: UITableViewDelegate, UITableViewDataSource {
@@ -103,7 +102,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
             btnHeader.setTitle("View report", for: .normal)
             return headerView
         } else {
-             return nil
+            return nil
         }
     }
     
@@ -131,18 +130,48 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "IncomeExpenseTBVC", for: indexPath) as? IncomeExpenseTBVC else { return UITableViewCell() }
             cell.selectionStyle = .none
+            
+            var totalE: Int = 0
+            var totalI: Int = 0
+            
+            for i in 0..<transaction.count {
+                switch transaction[i].stt {
+                case "-":
+                    totalE += (ConvertHelper.share.numberFromCurrencyString(string: transaction[i].amount!).intValue)
+                default:
+                    totalI += (ConvertHelper.share.numberFromCurrencyString(string: transaction[i].amount!).intValue)
+                }
+            }
+            
+            cell.lblExpense.text = ConvertHelper.share.stringFromNumber(currency: totalE)
+            
+            cell.lblIncome.text = ConvertHelper.share.stringFromNumber(currency: totalI)
+            
+            lblTotalBalance.text = ConvertHelper.share.stringFromNumber(currency: totalI - totalE)
+            
             return cell
+            
         } else if indexPath.section == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "AdsTBVC", for: indexPath) as? AdsTBVC else { return UITableViewCell() }
             cell.selectionStyle = .none
+            
             return cell
+            
         } else {
+            
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTBVC", for: indexPath) as? TransactionTBVC else { return UITableViewCell() }
             cell.selectionStyle = .none
             cell.imgIcon.image = transaction[indexPath.row].image
             cell.lblName.text = transaction[indexPath.row].name
-            cell.lblDate.text = transaction[indexPath.row].date
-            cell.lblAmount.text = transaction[indexPath.row].amount
+            cell.lblDate.text = ConvertHelper.share.stringFromDate(date: transaction[indexPath.row].date ?? Date(), format: "dd/MM/yyyy")
+            
+            let stt = transaction[indexPath.row].stt ?? ""
+            let amount = transaction[indexPath.row].amount ?? ""
+            let a = stt.appending(amount)
+            
+            cell.lblAmount.text = a
+            cell.lblAmount.textColor = transaction[indexPath.row].color
+            
             return cell
         }
     }
@@ -158,24 +187,31 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let delete = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
-            self.transaction.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        }
         
-        let edit = UIContextualAction(style: .normal, title: "Edit") { _, _, _ in
-            let editVC = AddTransactionVC()
-            editVC.transaction = self.transaction[indexPath.row]
-            editVC.passData = { [weak self] transaction in
-                guard let strongSelf = self, let transaction = transaction else { return }
-                strongSelf.transaction[indexPath.row] = transaction
-                strongSelf.tableView.reloadData()
+        if indexPath.section == 2 {
+            let delete = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
+                self.transaction.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                tableView.reloadData()
             }
-            self.present(editVC, animated: true)
+            
+            let edit = UIContextualAction(style: .normal, title: "Edit") { _, _, _ in
+                let editVC = AddTransactionVC()
+                editVC.transaction = self.transaction[indexPath.row]
+                editVC.passData = { [weak self] transaction in
+                    guard let strongSelf = self, let transaction = transaction else { return }
+                    strongSelf.transaction[indexPath.row] = transaction
+                    strongSelf.transaction.sort(by: { $1.date ?? Date() < $0.date ?? Date() })
+                    strongSelf.tableView.reloadData()
+                }
+                self.present(editVC, animated: true)
+            }
+            
+            let configure = UISwipeActionsConfiguration(actions: [delete, edit])
+            return configure
+        } else {
+            return UISwipeActionsConfiguration()
         }
-        
-        let configure = UISwipeActionsConfiguration(actions: [delete, edit])
-        return configure
     }
     
     // Animate header when scroll
