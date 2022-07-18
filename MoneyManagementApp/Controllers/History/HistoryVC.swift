@@ -6,14 +6,21 @@
 //
 
 import UIKit
+import MonthYearPicker
 
 class HistoryVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
     var month = "This month"
-    var toolBar = UIToolbar()
-    var datePicker  = UIDatePicker()
+    var datePicker  = MonthYearPickerView(frame: .init(x: 0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300))
+    var toolBar: UIToolbar = {
+        let tool = UIToolbar(frame: CGRect(origin: CGPoint(x: 0, y: UIScreen.main.bounds.size.height - 300), size: CGSize(width: UIScreen.main.bounds.size.width, height: 44)))
+        tool.barStyle = .default
+        tool.sizeToFit()
+        
+        return tool
+    }()
     
     var transaction: [Transaction] = []
     
@@ -106,19 +113,11 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            datePicker.backgroundColor = .white
-            datePicker.autoresizingMask = .flexibleHeight
-            datePicker.datePickerMode = .date
-            datePicker.timeZone = TimeZone.current
-            if #available(iOS 13.4, *) {
-                datePicker.preferredDatePickerStyle = .wheels
-            }
-            datePicker.frame = CGRect(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
+            
             datePicker.addTarget(self, action: #selector(self.monthChanged(_:)), for: .valueChanged)
-            toolBar = UIToolbar(frame: CGRect(x: 0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
-            toolBar.barStyle = .default
+            
             toolBar.items = [UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.onDoneButtonClick))]
-            toolBar.sizeToFit()
+            
             view.addSubview(datePicker)
             view.addSubview(toolBar)
         }
@@ -126,7 +125,7 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension HistoryVC {
-    @objc func monthChanged(_ sender: UIDatePicker) {
+    @objc func monthChanged(_ sender: MonthYearPickerView) {
         month = ConvertHelper.share.stringFromDate(date: sender.date, format: "MMM yyy")
         tableView.reloadData()
     }

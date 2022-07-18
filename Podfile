@@ -10,5 +10,6 @@ target 'MoneyManagementApp' do
 	pod 'FirebaseFirestore'
   pod 'FBSDKLoginKit'
   pod 'GoogleSignIn'
-
+  pod "MonthYearPicker", '~> 4.0.2'
+  
 end

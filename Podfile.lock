@@ -731,6 +731,7 @@ PODS:
   - Libuv-gRPC/Implementation (0.0.10):
     - Libuv-gRPC/Interface (= 0.0.10)
   - Libuv-gRPC/Interface (0.0.10)
+  - MonthYearPicker (4.0.2)
   - nanopb (2.30909.0):
     - nanopb/decode (= 2.30909.0)
     - nanopb/encode (= 2.30909.0)
@@ -743,6 +744,7 @@ DEPENDENCIES:
   - FirebaseAuth
   - FirebaseFirestore
   - GoogleSignIn
+  - MonthYearPicker (~> 4.0.2)
 
 SPEC REPOS:
   trunk:
@@ -767,6 +769,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - leveldb-library
     - Libuv-gRPC
+    - MonthYearPicker
     - nanopb
     - PromisesObjC
 
@@ -792,9 +795,10 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 5595ec75acf5be50814f81e9189490412bad82ba
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   Libuv-gRPC: 55e51798e14ef436ad9bc45d12d43b77b49df378
+  MonthYearPicker: 91f77106e6806d8c93c69e943ab0795fd420657f
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
 
-PODFILE CHECKSUM: b09b689a4ccda8949e00174b66ff3b5125706d59
+PODFILE CHECKSUM: 6c9311867d15d9839a3b6ee5d73114845c21d317
 
 COCOAPODS: 1.11.3
