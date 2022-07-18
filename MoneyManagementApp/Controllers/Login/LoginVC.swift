@@ -73,10 +73,6 @@ class LoginVC: UIViewController {
                 return
             }
             
-            let vc = CustomTabBarController()
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true)
-            
             let credential = GoogleAuthProvider.credential(withIDToken: idToken,
                                                            accessToken: authentication.accessToken)
             Auth.auth().signIn(with: credential) { authResult, error in
@@ -100,7 +96,9 @@ class LoginVC: UIViewController {
                     return
                 }
                 // User is signed in
-                // ...
+                let vc = CustomTabBarController()
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: true)
             }
         }
     }
@@ -114,9 +112,7 @@ class LoginVC: UIViewController {
                 print("Cancelled")
             } else {
                 print("Logged In")
-                let vc = CustomTabBarController()
-                vc.modalPresentationStyle = .fullScreen
-                self.present(vc, animated: true)
+                
                 let credential = FacebookAuthProvider
                     .credential(withAccessToken: AccessToken.current!.tokenString)
                 Auth.auth().signIn(with: credential) { authResult, error in
@@ -138,7 +134,9 @@ class LoginVC: UIViewController {
                         return
                     }
                     // User is signed in
-                    // ...
+                    let vc = CustomTabBarController()
+                    vc.modalPresentationStyle = .fullScreen
+                    self.present(vc, animated: true)
                 }
             }
         }
@@ -165,10 +163,11 @@ class LoginVC: UIViewController {
 // MARK: -
 extension LoginVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField.text != nil {
-            btnShowPassword.isHidden = false
-        } else {
-            btnShowPassword.isHidden = true
-        }
+//        if textField.text != nil {
+//            btnShowPassword.isHidden = false
+//        } else {
+//            btnShowPassword.isHidden = true
+//        }
+        btnShowPassword.isHidden = textField.text == nil
     }
 }

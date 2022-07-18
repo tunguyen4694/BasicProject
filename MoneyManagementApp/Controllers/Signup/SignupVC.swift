@@ -96,10 +96,11 @@ class SignupVC: UIViewController {
 
 extension SignupVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField.text == nil {
-            btnShowPassword.isHidden = true
-        } else {
-            btnShowPassword.isHidden = false
-        }
+//        if textField.text == nil {
+//            btnShowPassword.isHidden = true
+//        } else {
+//            btnShowPassword.isHidden = false
+//        }
+        btnShowPassword.isHidden = textField.text == nil
     }
 }
