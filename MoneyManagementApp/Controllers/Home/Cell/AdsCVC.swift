@@ -16,6 +16,6 @@ class AdsCVC: UICollectionViewCell {
         super.awakeFromNib()
         vContent.clipsToBounds = true
         vContent.layer.cornerRadius = 10
-        imgAds.contentMode = .scaleToFill
+        imgAds.contentMode = .scaleAspectFill
     }
 }

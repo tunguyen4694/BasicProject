@@ -22,13 +22,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="223" height="123"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mpv-ci-xHr">
-                                <rect key="frame" x="0.0" y="8" width="223" height="107"/>
+                                <rect key="frame" x="0.0" y="0.0" width="223" height="123"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="mpv-ci-xHr" firstAttribute="top" secondItem="QB2-sW-Rvt" secondAttribute="top" constant="8" id="P2p-Yj-HfX"/>
-                            <constraint firstAttribute="bottom" secondItem="mpv-ci-xHr" secondAttribute="bottom" constant="8" id="Xhv-ZE-c05"/>
+                            <constraint firstItem="mpv-ci-xHr" firstAttribute="top" secondItem="QB2-sW-Rvt" secondAttribute="top" id="P2p-Yj-HfX"/>
+                            <constraint firstAttribute="bottom" secondItem="mpv-ci-xHr" secondAttribute="bottom" id="Xhv-ZE-c05"/>
                             <constraint firstItem="mpv-ci-xHr" firstAttribute="leading" secondItem="QB2-sW-Rvt" secondAttribute="leading" id="avW-eZ-g2R"/>
                             <constraint firstAttribute="trailing" secondItem="mpv-ci-xHr" secondAttribute="trailing" id="mDt-iz-NBc"/>
                         </constraints>

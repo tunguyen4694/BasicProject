@@ -27,6 +27,10 @@
 		DA7BB06B287FF42E0068F257 /* CategoryTBVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7BB069287FF42E0068F257 /* CategoryTBVC.xib */; };
 		DA7BB06E287FF7960068F257 /* ModelCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BB06D287FF7960068F257 /* ModelCategory.swift */; };
 		DA7BB070288131F20068F257 /* ModelTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BB06F288131F20068F257 /* ModelTransaction.swift */; };
+		DA7BB0732884FC380068F257 /* HistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BB0712884FC380068F257 /* HistoryVC.swift */; };
+		DA7BB0742884FC380068F257 /* HistoryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7BB0722884FC380068F257 /* HistoryVC.xib */; };
+		DA7BB07928851E720068F257 /* MonthTBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BB07728851E720068F257 /* MonthTBVC.swift */; };
+		DA7BB07A28851E720068F257 /* MonthTBVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7BB07828851E720068F257 /* MonthTBVC.xib */; };
 		DA98AA72287D527000434125 /* ReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98AA70287D527000434125 /* ReportVC.swift */; };
 		DA98AA73287D527000434125 /* ReportVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA98AA71287D527000434125 /* ReportVC.xib */; };
 		DA98AA76287D52C600434125 /* AddTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98AA74287D52C600434125 /* AddTransactionVC.swift */; };
@@ -77,6 +81,10 @@
 		DA7BB069287FF42E0068F257 /* CategoryTBVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryTBVC.xib; sourceTree = "<group>"; };
 		DA7BB06D287FF7960068F257 /* ModelCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCategory.swift; sourceTree = "<group>"; };
 		DA7BB06F288131F20068F257 /* ModelTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTransaction.swift; sourceTree = "<group>"; };
+		DA7BB0712884FC380068F257 /* HistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
+		DA7BB0722884FC380068F257 /* HistoryVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryVC.xib; sourceTree = "<group>"; };
+		DA7BB07728851E720068F257 /* MonthTBVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthTBVC.swift; sourceTree = "<group>"; };
+		DA7BB07828851E720068F257 /* MonthTBVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthTBVC.xib; sourceTree = "<group>"; };
 		DA98AA70287D527000434125 /* ReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportVC.swift; sourceTree = "<group>"; };
 		DA98AA71287D527000434125 /* ReportVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportVC.xib; sourceTree = "<group>"; };
 		DA98AA74287D52C600434125 /* AddTransactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionVC.swift; sourceTree = "<group>"; };
@@ -173,6 +181,7 @@
 				DA98AA8F287E5EFD00434125 /* Wallet */,
 				DA98AA84287D76FF00434125 /* Account */,
 				DA7BB066287FF3E80068F257 /* Category */,
+				DA7BB075288503770068F257 /* History */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -237,6 +246,25 @@
 				DA7BB06F288131F20068F257 /* ModelTransaction.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		DA7BB075288503770068F257 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				DA7BB076288503840068F257 /* Cell */,
+				DA7BB0712884FC380068F257 /* HistoryVC.swift */,
+				DA7BB0722884FC380068F257 /* HistoryVC.xib */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		DA7BB076288503840068F257 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DA7BB07728851E720068F257 /* MonthTBVC.swift */,
+				DA7BB07828851E720068F257 /* MonthTBVC.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		DA98AA84287D76FF00434125 /* Account */ = {
@@ -408,6 +436,7 @@
 				A56D1CDA287A7734008A508A /* SignupVC.xib in Resources */,
 				A56D1CD62879F1FA008A508A /* LoginVC.xib in Resources */,
 				A56D1CDE287AD360008A508A /* HomeVC.xib in Resources */,
+				DA7BB07A28851E720068F257 /* MonthTBVC.xib in Resources */,
 				DA98AA89287D773700434125 /* AccountTBVC.xib in Resources */,
 				DA7BB06B287FF42E0068F257 /* CategoryTBVC.xib in Resources */,
 				DA98AA9D287E7A2B00434125 /* ads1.png in Resources */,
@@ -422,6 +451,7 @@
 				DA98AA9E287E7A2B00434125 /* ads2.png in Resources */,
 				DA98AAB7287FF38700434125 /* CategoryVC.xib in Resources */,
 				DA98AA94287E707000434125 /* AdsTBVC.xib in Resources */,
+				DA7BB0742884FC380068F257 /* HistoryVC.xib in Resources */,
 				A56D1CB928770D0C008A508A /* Assets.xcassets in Resources */,
 				A56D1CE1287C755C008A508A /* GoogleService-Info.plist in Resources */,
 			);
@@ -482,6 +512,7 @@
 				A56D1CD9287A7734008A508A /* SignupVC.swift in Sources */,
 				DA98AAA5287E809000434125 /* TransactionTBVC.swift in Sources */,
 				A56D1CD228771CBC008A508A /* NormalLabel.swift in Sources */,
+				DA7BB07928851E720068F257 /* MonthTBVC.swift in Sources */,
 				DA7BB070288131F20068F257 /* ModelTransaction.swift in Sources */,
 				DA98AA93287E707000434125 /* AdsTBVC.swift in Sources */,
 				DA7BB06E287FF7960068F257 /* ModelCategory.swift in Sources */,
@@ -489,6 +520,7 @@
 				DA98AA72287D527000434125 /* ReportVC.swift in Sources */,
 				DA98AA97287E710C00434125 /* AdsCVC.swift in Sources */,
 				DA98AAB6287FF38700434125 /* CategoryVC.swift in Sources */,
+				DA7BB0732884FC380068F257 /* HistoryVC.swift in Sources */,
 				DA98AA7A287D52DC00434125 /* WalletVC.swift in Sources */,
 				DA98AA82287D540000434125 /* CustomTabBarController.swift in Sources */,
 				A56D1CB728770D0B008A508A /* MoneyManagementApp.xcdatamodeld in Sources */,
