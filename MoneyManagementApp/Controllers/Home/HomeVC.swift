@@ -96,6 +96,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         if section == 2 {
             lblTitleHeader.text = "History"
             btnHeader.setTitle("See all", for: .normal)
+            btnHeader.addTarget(self, action: #selector(onHistory(_:)), for: .touchUpInside)
             return headerView
         } else if section == 0 {
             lblTitleHeader.text = "This month"
@@ -104,6 +105,13 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         } else {
             return nil
         }
+    }
+    
+    @objc func onHistory(_ sender: UIButton) {
+        let vc = HistoryVC()
+        vc.transaction = transaction
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
