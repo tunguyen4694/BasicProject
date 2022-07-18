@@ -8,10 +8,15 @@
 import UIKit
 
 class HistoryVC: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
+    var month = "This month"
+    var toolBar = UIToolbar()
+    var datePicker  = UIDatePicker()
+    
     var transaction: [Transaction] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,7 +29,7 @@ class HistoryVC: UIViewController {
             tableView.sectionHeaderTopPadding = 0.0
         }
     }
-
+    
     @IBAction func onDismiss(_ sender: Any) {
         dismiss(animated: true)
     }
@@ -60,16 +65,17 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "IncomeExpenseTBVC", for: indexPath) as! IncomeExpenseTBVC
             cell.selectionStyle = .none
             cell.stvContent.layer.borderWidth = 0
-            var total = 0
+            var totalE = 0
+            var totalI = 0
             for i in 0..<transaction.count {
                 if transaction[i].stt == "-" {
-                    total += (ConvertHelper.share.numberFromCurrencyString(string: transaction[i].amount!).intValue)
-                    cell.lblExpense.text = ConvertHelper.share.stringFromNumber(currency: total)
+                    totalE += (ConvertHelper.share.numberFromCurrencyString(string: transaction[i].amount!).intValue)
                 } else {
-                    total += (ConvertHelper.share.numberFromCurrencyString(string: transaction[i].amount!).intValue)
-                    cell.lblIncome.text = ConvertHelper.share.stringFromNumber(currency: total)
+                    totalI += (ConvertHelper.share.numberFromCurrencyString(string: transaction[i].amount!).intValue)
                 }
             }
+            cell.lblExpense.text = ConvertHelper.share.stringFromNumber(currency: totalE)
+            cell.lblIncome.text = ConvertHelper.share.stringFromNumber(currency: totalI)
             return cell
         } else if indexPath.section == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTBVC", for: indexPath) as! TransactionTBVC
@@ -85,7 +91,7 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MonthTBVC", for: indexPath) as! MonthTBVC
             cell.selectionStyle = .none
-            
+            cell.lblMonth.text = month
             return cell
         }
     }
@@ -96,5 +102,37 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
         } else {
             return UITableView.automaticDimension
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            datePicker.backgroundColor = .white
+            datePicker.autoresizingMask = .flexibleHeight
+            datePicker.datePickerMode = .date
+            datePicker.timeZone = TimeZone.current
+            if #available(iOS 13.4, *) {
+                datePicker.preferredDatePickerStyle = .wheels
+            }
+            datePicker.frame = CGRect(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
+            datePicker.addTarget(self, action: #selector(self.monthChanged(_:)), for: .valueChanged)
+            toolBar = UIToolbar(frame: CGRect(x: 0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
+            toolBar.barStyle = .default
+            toolBar.items = [UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.onDoneButtonClick))]
+            toolBar.sizeToFit()
+            view.addSubview(datePicker)
+            view.addSubview(toolBar)
+        }
+    }
+}
+
+extension HistoryVC {
+    @objc func monthChanged(_ sender: UIDatePicker) {
+        month = ConvertHelper.share.stringFromDate(date: sender.date, format: "MMM yyy")
+        tableView.reloadData()
+    }
+    
+    @objc func onDoneButtonClick() {
+        toolBar.removeFromSuperview()
+        datePicker.removeFromSuperview()
     }
 }
