@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class HomeVC: UIViewController {
     @IBOutlet weak var lblHello: UILabel!
@@ -41,6 +42,7 @@ class HomeVC: UIViewController {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
         setupUI()
+        welcomeUser()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,6 +68,36 @@ class HomeVC: UIViewController {
         tableView.register(UINib(nibName: "IncomeExpenseTBVC", bundle: nil), forCellReuseIdentifier: "IncomeExpenseTBVC")
         tableView.register(UINib(nibName: "AdsTBVC", bundle: nil), forCellReuseIdentifier: "AdsTBVC")
         tableView.register(UINib(nibName: "TransactionTBVC", bundle: nil), forCellReuseIdentifier: "TransactionTBVC")
+    }
+    
+    func welcomeUser() {
+        let hourStr = ConvertHelper.share.stringFromDate(date: Date(), format: "HH")
+        guard let hourInt = Int(hourStr) else { return }
+        
+        switch hourInt {
+        case 0..<6:
+            lblHello.text = "Good night,"
+        case 6..<12:
+            lblHello.text = "Good morning,"
+        case 12..<18:
+            lblHello.text = "Good afternoon,"
+        case 18..<24:
+            lblHello.text = "Good evening,"
+        default:
+            lblHello.text = "Welcome,"
+        }
+        
+        guard let user = Auth.auth().currentUser else { return }
+        if let providerData = Auth.auth().currentUser?.providerData {
+            for userInfo in providerData {
+                switch userInfo.providerID {
+                case "facebook.com":
+                    lblUserName.text = user.displayName
+                default:
+                    lblUserName.text = user.email
+                }
+            }
+        }
     }
 }
 
