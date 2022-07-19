@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ReportVC" customModule="MoneyManagementApp" customModuleProvider="target">
             <connections>
+                <outlet property="tableView" destination="Tx6-rj-xUI" id="iax-PV-Sv1"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,25 +20,34 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chức năng chưa update" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RRP-jP-xBv">
-                    <rect key="frame" x="111" y="442" width="192" height="22"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Report" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bwe-EN-98r">
+                    <rect key="frame" x="24" y="60" width="366" height="29"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Tx6-rj-xUI">
+                    <rect key="frame" x="0.0" y="113" width="414" height="749"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemOrangeColor"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="RRP-jP-xBv" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="MG6-aH-Bx1"/>
-                <constraint firstItem="RRP-jP-xBv" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="tvh-27-SUG"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Bwe-EN-98r" secondAttribute="trailing" constant="24" id="4OJ-mL-qqR"/>
+                <constraint firstItem="Bwe-EN-98r" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="6mM-pG-Lue"/>
+                <constraint firstItem="Tx6-rj-xUI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Ef0-UM-scR"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Tx6-rj-xUI" secondAttribute="trailing" id="KeA-dD-JjN"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Tx6-rj-xUI" secondAttribute="bottom" id="nuA-7v-3Nq"/>
+                <constraint firstItem="Bwe-EN-98r" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="she-bv-yT0"/>
+                <constraint firstItem="Tx6-rj-xUI" firstAttribute="top" secondItem="Bwe-EN-98r" secondAttribute="bottom" constant="24" id="zzq-Cr-WeV"/>
             </constraints>
-            <point key="canvasLocation" x="132" y="92"/>
+            <point key="canvasLocation" x="131.8840579710145" y="91.741071428571431"/>
         </view>
     </objects>
     <resources>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

@@ -31,6 +31,7 @@
 		DA7BB0742884FC380068F257 /* HistoryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7BB0722884FC380068F257 /* HistoryVC.xib */; };
 		DA7BB07928851E720068F257 /* MonthTBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BB07728851E720068F257 /* MonthTBVC.swift */; };
 		DA7BB07A28851E720068F257 /* MonthTBVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7BB07828851E720068F257 /* MonthTBVC.xib */; };
+		DA7BB07D28865F450068F257 /* ChartTBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BB07C28865F450068F257 /* ChartTBVC.swift */; };
 		DA98AA72287D527000434125 /* ReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98AA70287D527000434125 /* ReportVC.swift */; };
 		DA98AA73287D527000434125 /* ReportVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA98AA71287D527000434125 /* ReportVC.xib */; };
 		DA98AA76287D52C600434125 /* AddTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98AA74287D52C600434125 /* AddTransactionVC.swift */; };
@@ -85,6 +86,7 @@
 		DA7BB0722884FC380068F257 /* HistoryVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryVC.xib; sourceTree = "<group>"; };
 		DA7BB07728851E720068F257 /* MonthTBVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthTBVC.swift; sourceTree = "<group>"; };
 		DA7BB07828851E720068F257 /* MonthTBVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthTBVC.xib; sourceTree = "<group>"; };
+		DA7BB07C28865F450068F257 /* ChartTBVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTBVC.swift; sourceTree = "<group>"; };
 		DA98AA70287D527000434125 /* ReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportVC.swift; sourceTree = "<group>"; };
 		DA98AA71287D527000434125 /* ReportVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportVC.xib; sourceTree = "<group>"; };
 		DA98AA74287D52C600434125 /* AddTransactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionVC.swift; sourceTree = "<group>"; };
@@ -267,6 +269,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		DA7BB07B28865EC50068F257 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				DA7BB07C28865F450068F257 /* ChartTBVC.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		DA98AA84287D76FF00434125 /* Account */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +327,7 @@
 		DA98AA8D287E5EEA00434125 /* Report */ = {
 			isa = PBXGroup;
 			children = (
+				DA7BB07B28865EC50068F257 /* Cell */,
 				DA98AA70287D527000434125 /* ReportVC.swift */,
 				DA98AA71287D527000434125 /* ReportVC.xib */,
 			);
@@ -519,6 +530,7 @@
 				A56D1CCF287715D5008A508A /* ConvertHelper.swift in Sources */,
 				DA98AA72287D527000434125 /* ReportVC.swift in Sources */,
 				DA98AA97287E710C00434125 /* AdsCVC.swift in Sources */,
+				DA7BB07D28865F450068F257 /* ChartTBVC.swift in Sources */,
 				DA98AAB6287FF38700434125 /* CategoryVC.swift in Sources */,
 				DA7BB0732884FC380068F257 /* HistoryVC.swift in Sources */,
 				DA98AA7A287D52DC00434125 /* WalletVC.swift in Sources */,
