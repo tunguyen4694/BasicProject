@@ -11,5 +11,6 @@ target 'MoneyManagementApp' do
   pod 'FBSDKLoginKit'
   pod 'GoogleSignIn'
   pod "MonthYearPicker", '~> 4.0.2'
+  pod 'Charts'
   
 end
