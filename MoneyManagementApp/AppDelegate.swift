@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        if Auth.auth().currentUser?.uid != nil {
+        if Auth.auth().currentUser != nil {
         self.window?.rootViewController = UINavigationController.init(rootViewController: CustomTabBarController())
         } else {
         self.window?.rootViewController = UINavigationController.init(rootViewController: LoginVC())
