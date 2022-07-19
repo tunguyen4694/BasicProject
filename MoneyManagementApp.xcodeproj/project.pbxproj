@@ -32,6 +32,7 @@
 		DA7BB07928851E720068F257 /* MonthTBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BB07728851E720068F257 /* MonthTBVC.swift */; };
 		DA7BB07A28851E720068F257 /* MonthTBVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7BB07828851E720068F257 /* MonthTBVC.xib */; };
 		DA7BB07D28865F450068F257 /* ChartTBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BB07C28865F450068F257 /* ChartTBVC.swift */; };
+		DA7BB08528868F670068F257 /* ModelCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BB08428868F670068F257 /* ModelCategories.swift */; };
 		DA98AA72287D527000434125 /* ReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98AA70287D527000434125 /* ReportVC.swift */; };
 		DA98AA73287D527000434125 /* ReportVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA98AA71287D527000434125 /* ReportVC.xib */; };
 		DA98AA76287D52C600434125 /* AddTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98AA74287D52C600434125 /* AddTransactionVC.swift */; };
@@ -87,6 +88,7 @@
 		DA7BB07728851E720068F257 /* MonthTBVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthTBVC.swift; sourceTree = "<group>"; };
 		DA7BB07828851E720068F257 /* MonthTBVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthTBVC.xib; sourceTree = "<group>"; };
 		DA7BB07C28865F450068F257 /* ChartTBVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTBVC.swift; sourceTree = "<group>"; };
+		DA7BB08428868F670068F257 /* ModelCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCategories.swift; sourceTree = "<group>"; };
 		DA98AA70287D527000434125 /* ReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportVC.swift; sourceTree = "<group>"; };
 		DA98AA71287D527000434125 /* ReportVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportVC.xib; sourceTree = "<group>"; };
 		DA98AA74287D52C600434125 /* AddTransactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionVC.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				DA7BB06D287FF7960068F257 /* ModelCategory.swift */,
+				DA7BB08428868F670068F257 /* ModelCategories.swift */,
 				DA7BB06F288131F20068F257 /* ModelTransaction.swift */,
 			);
 			path = Model;
@@ -537,6 +540,7 @@
 				DA98AA82287D540000434125 /* CustomTabBarController.swift in Sources */,
 				A56D1CB728770D0B008A508A /* MoneyManagementApp.xcdatamodeld in Sources */,
 				DA7BB06A287FF42E0068F257 /* CategoryTBVC.swift in Sources */,
+				DA7BB08528868F670068F257 /* ModelCategories.swift in Sources */,
 				DA98AA88287D773700434125 /* AccountTBVC.swift in Sources */,
 				DA98AA76287D52C600434125 /* AddTransactionVC.swift in Sources */,
 				DA98AAA1287E7E3F00434125 /* IncomeExpenseTBVC.swift in Sources */,
