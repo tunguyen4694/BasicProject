@@ -743,6 +743,7 @@ PODS:
   - nanopb/encode (2.30909.0)
   - PromisesObjC (2.1.1)
   - SwiftAlgorithms (1.0.0)
+  - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - Charts
@@ -751,6 +752,7 @@ DEPENDENCIES:
   - FirebaseFirestore
   - GoogleSignIn
   - MonthYearPicker (~> 4.0.2)
+  - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
   trunk:
@@ -780,6 +782,7 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - SwiftAlgorithms
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
   abseil: ebe5b5529fb05d93a8bdb7951607be08b7fa71bc
@@ -808,7 +811,8 @@ SPEC CHECKSUMS:
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 6f96c94b271786a1da542ddc11b26581120ad383
+PODFILE CHECKSUM: 774ec0e70f3a26c178260786e0855b7dc3cabdc0
 
 COCOAPODS: 1.11.3

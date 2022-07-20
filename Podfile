@@ -12,5 +12,6 @@ target 'MoneyManagementApp' do
   pod 'GoogleSignIn'
   pod "MonthYearPicker", '~> 4.0.2'
   pod 'Charts'
+  pod 'SwiftyJSON', '~> 4.0'
   
 end

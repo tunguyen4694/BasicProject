@@ -5,34 +5,18 @@
 //  Created by MorHN on 19/07/2022.
 //
 
-import Foundation
 import UIKit
+import SwiftyJSON
 
-struct Categories {
-    init(header: Categories.Header, items: [DataItem]) {
-        self.header = header
-        self.items = items
-    }
-    
-    
-    enum Header {
-        case Essential
-        case Entertaiment
-        case Education
-        case Investment
-        case Income
-    }
-    
-    var header: Header
-    var items: [DataItem]
+struct Categories: Decodable {
+    var essentials: [Item]
+    var entertaiments: [Item]
+    var educations: [Item]
+    var investments: [Item]
+    var incomes: [Item]
 }
 
-struct DataItem {
-    init(image: UIImage, name: String) {
-        self.image = image
-        self.name = name
-    }
-    
-    var image: UIImage
+struct Item: Decodable {
     var name: String
+    var image: String
 }

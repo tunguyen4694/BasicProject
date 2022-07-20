@@ -56,6 +56,11 @@
 		DA98AAA6287E809000434125 /* TransactionTBVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA98AAA4287E809000434125 /* TransactionTBVC.xib */; };
 		DA98AAB6287FF38700434125 /* CategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98AAB4287FF38700434125 /* CategoryVC.swift */; };
 		DA98AAB7287FF38700434125 /* CategoryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA98AAB5287FF38700434125 /* CategoryVC.xib */; };
+		DAF14AD52887AACF00A8C09A /* TestGetApiVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF14AD32887AACF00A8C09A /* TestGetApiVC.swift */; };
+		DAF14AD62887AACF00A8C09A /* TestGetApiVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAF14AD42887AACF00A8C09A /* TestGetApiVC.xib */; };
+		DAF14ADC2887B04300A8C09A /* CategoryJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = DAF14ADB2887B04300A8C09A /* CategoryJSON.json */; };
+		DAF14ADE2887F27A00A8C09A /* JSONKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF14ADD2887F27A00A8C09A /* JSONKey.swift */; };
+		DAF14AE02888003E00A8C09A /* TestJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = DAF14ADF2888003E00A8C09A /* TestJSON.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,6 +117,11 @@
 		DA98AAA4287E809000434125 /* TransactionTBVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionTBVC.xib; sourceTree = "<group>"; };
 		DA98AAB4287FF38700434125 /* CategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVC.swift; sourceTree = "<group>"; };
 		DA98AAB5287FF38700434125 /* CategoryVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryVC.xib; sourceTree = "<group>"; };
+		DAF14AD32887AACF00A8C09A /* TestGetApiVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestGetApiVC.swift; sourceTree = "<group>"; };
+		DAF14AD42887AACF00A8C09A /* TestGetApiVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestGetApiVC.xib; sourceTree = "<group>"; };
+		DAF14ADB2887B04300A8C09A /* CategoryJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CategoryJSON.json; sourceTree = "<group>"; };
+		DAF14ADD2887F27A00A8C09A /* JSONKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONKey.swift; sourceTree = "<group>"; };
+		DAF14ADF2888003E00A8C09A /* TestJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestJSON.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
 		EC88FADAC7D912CEBC421A75 /* Pods_MoneyManagementApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoneyManagementApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -139,6 +149,10 @@
 		A56D1CA028770D0B008A508A = {
 			isa = PBXGroup;
 			children = (
+				DAF14ADB2887B04300A8C09A /* CategoryJSON.json */,
+				DAF14ADF2888003E00A8C09A /* TestJSON.json */,
+				DAF14AD32887AACF00A8C09A /* TestGetApiVC.swift */,
+				DAF14AD42887AACF00A8C09A /* TestGetApiVC.xib */,
 				A56D1CAB28770D0B008A508A /* MoneyManagementApp */,
 				A56D1CAA28770D0B008A508A /* Products */,
 				73F2B599FE7B568AF6C63115 /* Pods */,
@@ -249,6 +263,7 @@
 				DA7BB06D287FF7960068F257 /* ModelCategory.swift */,
 				DA7BB08428868F670068F257 /* ModelCategories.swift */,
 				DA7BB06F288131F20068F257 /* ModelTransaction.swift */,
+				DAF14ADD2887F27A00A8C09A /* JSONKey.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -459,6 +474,7 @@
 				DA98AA7F287D52F800434125 /* AccountVC.xib in Resources */,
 				A56D1CBC28770D0C008A508A /* LaunchScreen.storyboard in Resources */,
 				DA98AAA2287E7E3F00434125 /* IncomeExpenseTBVC.xib in Resources */,
+				DAF14ADC2887B04300A8C09A /* CategoryJSON.json in Resources */,
 				DA98AA73287D527000434125 /* ReportVC.xib in Resources */,
 				DA98AA7B287D52DC00434125 /* WalletVC.xib in Resources */,
 				DA98AA77287D52C600434125 /* AddTransactionVC.xib in Resources */,
@@ -466,7 +482,9 @@
 				DA98AAB7287FF38700434125 /* CategoryVC.xib in Resources */,
 				DA98AA94287E707000434125 /* AdsTBVC.xib in Resources */,
 				DA7BB0742884FC380068F257 /* HistoryVC.xib in Resources */,
+				DAF14AE02888003E00A8C09A /* TestJSON.json in Resources */,
 				A56D1CB928770D0C008A508A /* Assets.xcassets in Resources */,
+				DAF14AD62887AACF00A8C09A /* TestGetApiVC.xib in Resources */,
 				A56D1CE1287C755C008A508A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -532,12 +550,14 @@
 				DA7BB06E287FF7960068F257 /* ModelCategory.swift in Sources */,
 				A56D1CCF287715D5008A508A /* ConvertHelper.swift in Sources */,
 				DA98AA72287D527000434125 /* ReportVC.swift in Sources */,
+				DAF14AD52887AACF00A8C09A /* TestGetApiVC.swift in Sources */,
 				DA98AA97287E710C00434125 /* AdsCVC.swift in Sources */,
 				DA7BB07D28865F450068F257 /* ChartTBVC.swift in Sources */,
 				DA98AAB6287FF38700434125 /* CategoryVC.swift in Sources */,
 				DA7BB0732884FC380068F257 /* HistoryVC.swift in Sources */,
 				DA98AA7A287D52DC00434125 /* WalletVC.swift in Sources */,
 				DA98AA82287D540000434125 /* CustomTabBarController.swift in Sources */,
+				DAF14ADE2887F27A00A8C09A /* JSONKey.swift in Sources */,
 				A56D1CB728770D0B008A508A /* MoneyManagementApp.xcdatamodeld in Sources */,
 				DA7BB06A287FF42E0068F257 /* CategoryTBVC.swift in Sources */,
 				DA7BB08528868F670068F257 /* ModelCategories.swift in Sources */,

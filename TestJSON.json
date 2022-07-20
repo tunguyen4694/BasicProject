@@ -1,0 +1,93 @@
+
+{
+    "essentials": [
+        {
+            "image": "house.fill",
+            "name": "House Rent"
+        },
+        {
+            "image": "bolt.fill",
+            "name": "Electricity/Water"
+        },
+        {
+            "image": "fork.knife",
+            "name": "Foods"
+        },
+        {
+            "image": "fuelpump.fill",
+            "name": "Petroleum"
+        },
+        {
+            "image": "flame.fill",
+            "name": "Gas"
+        },
+        {
+            "image": "wifi",
+            "name": "Internet"
+        },
+        {
+            "image": "phone.fill",
+            "name": "Telephone"
+        }
+    ],
+    "entertaiments": [
+        {
+            "image": "cart.fill",
+            "name": "Shopping"
+        },
+        {
+            "image": "ticket.fill",
+            "name": "Cinema"
+        },
+        {
+            "image": "gamecontroller.fill",
+            "name": "Game"
+        },
+        {
+            "image": "sportscourt.fill",
+            "name": "Sport"
+        },
+        {
+            "image": "leaf.fill",
+            "name": "Spa"
+        }
+    ],
+    "educations": [
+        {
+            "image": "book.fill",
+            "name": "Book"
+        },
+        {
+            "image": "bag.fill",
+            "name": "Education"
+        }
+    ],
+    "investments": [
+        {
+            "image": "bitcoinsign.circle.fill",
+            "name": "Coin"
+        },
+        {
+            "image": "chart.xyaxis.line",
+            "name": "Securities"
+        },
+        {
+            "image": "globe.asia.australia.fill",
+            "name": "Real Estate"
+        }
+    ],
+    "incomes": [
+        {
+            "image": "dollarsign.circle.fill",
+            "name": "Salary"
+        },
+        {
+            "image": "network",
+            "name": "Freelancer"
+        },
+        {
+            "image": "chart.xyaxis.line",
+            "name": "Investment"
+        }
+    ]
+}
