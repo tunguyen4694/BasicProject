@@ -6,17 +6,22 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class CategoryVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var datas: Category = dataCategory()
+    var json: JSON = JSON.null
+    var datas = [Categories]()
+    
     var passData: ((_ name: String?, _ image: UIImage?, _ imageWidth: CGFloat, _ leadingTextField: CGFloat) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
+        getCategoryApi()
+        
         // Padding between section
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
@@ -26,6 +31,24 @@ class CategoryVC: UIViewController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: "CategoryTBVC", bundle: nil), forCellReuseIdentifier: "CategoryTBVC")
     }
+    
+    func getCategoryApi() {
+        guard let file = Bundle.main.path(forResource: "CategoryJSON", ofType: "json") else { return }
+        do {
+            let data = try Data(contentsOf: URL(fileURLWithPath: file))
+            json = try JSON(data: data)
+        } catch {
+            return
+        }
+        
+        let jsonData = json["categories"].arrayValue
+        
+        for item in jsonData {
+            let category = Categories(item)
+            datas.append(category)
+        }
+    }
+    
     @IBAction func onBack(_ sender: Any) {
         self.dismiss(animated: true)
     }
@@ -34,86 +57,56 @@ class CategoryVC: UIViewController {
 
 extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return datas.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
+        switch datas[section].category {
+        case "essentials":
             return "Essential"
-        case 1:
+        case "entertaiments":
             return "Entertaiment"
-        case 2:
+        case "educations":
             return "Education"
-        case 3:
+        case "investments":
             return "Investment"
-        case 4:
-            return "Income"
         default:
-            return ""
+            return "Income"
         }
     }
     
     // Set title header
-//    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-//        guard let header = view as? UITableViewHeaderFooterView else { return }
-//        header.textLabel?.textColor = .black
-//        header.textLabel?.font = .bold(ofSize: 18)
-//        header.textLabel?.frame = header.bounds
-//    }
+    //    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    //        guard let header = view as? UITableViewHeaderFooterView else { return }
+    //        header.textLabel?.textColor = .black
+    //        header.textLabel?.font = .bold(ofSize: 18)
+    //        header.textLabel?.frame = header.bounds
+    //    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return datas.essentials.count
-        case 1:
-            return datas.entertaiments.count
-        case 2:
-            return datas.educations.count
-        case 3:
-            return datas.investments.count
-        case 4:
-            return datas.incomes.count
-        default:
-            return 0
-        }
+        let number = datas[section].name.count
+        return number
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryTBVC", for: indexPath) as! CategoryTBVC
-        switch indexPath.section {
-        case 0:
-            cell.icon.image = datas.essentials[indexPath.row].image
-            cell.lblCategory.text = datas.essentials[indexPath.row].name
-        case 1:
-            cell.icon.image = datas.entertaiments[indexPath.row].image
-            cell.lblCategory.text = datas.entertaiments[indexPath.row].name
-        case 2:
-            cell.icon.image = datas.educations[indexPath.row].image
-            cell.lblCategory.text = datas.educations[indexPath.row].name
-        case 3:
-            cell.icon.image = datas.investments[indexPath.row].image
-            cell.lblCategory.text = datas.investments[indexPath.row].name
-        default:
-            cell.icon.image = datas.incomes[indexPath.row].image
-            cell.lblCategory.text = datas.incomes[indexPath.row].name
-        }
+        cell.selectionStyle = .none
+        
+        let name = datas[indexPath.section].name[indexPath.row]
+        let image = UIImage(systemName: datas[indexPath.section].image[indexPath.row])
+        
+        cell.lblCategory.text = name
+        cell.icon.image = image
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.section {
-        case 0:
-            passData?(datas.essentials[indexPath.row].name, datas.essentials[indexPath.row].image, 24, 8)
-        case 1:
-            passData?(datas.entertaiments[indexPath.row].name, datas.entertaiments[indexPath.row].image, 24, 8)
-        case 2:
-            passData?(datas.educations[indexPath.row].name, datas.educations[indexPath.row].image, 24, 8)
-        case 3:
-            passData?(datas.investments[indexPath.row].name, datas.investments[indexPath.row].image, 24, 8)
-        default:
-            passData?(datas.incomes[indexPath.row].name, datas.incomes[indexPath.row].image, 24, 8)
-        }
+        let name = datas[indexPath.section].name[indexPath.row]
+        let image = UIImage(systemName: datas[indexPath.section].image[indexPath.row])
+        
+        passData?(name, image, 24, 8)
+        
         dismiss(animated: true)
     }
 }
