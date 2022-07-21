@@ -8,12 +8,13 @@
 import Foundation
 
 struct JSONKey {
-    static let category = "category"
-    static let essentials = "essentials"
-    static let entertaiments = "entertaiments"
-    static let educations = "educations"
-    static let investments = "investments"
-    static let incomes = "incomes"
-    static let name = "name"
-    static let image = "image"
+    static let categories       = "categories"
+    static let category         = "category"
+    static let essentials       = "essentials"
+    static let entertaiments    = "entertaiments"
+    static let educations       = "educations"
+    static let investments      = "investments"
+    static let incomes          = "incomes"
+    static let name             = "name"
+    static let image            = "image"
 }

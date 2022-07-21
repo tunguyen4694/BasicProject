@@ -9,14 +9,13 @@ import UIKit
 import SwiftyJSON
 
 struct Categories: Decodable {
-    var essentials: [Item]
-    var entertaiments: [Item]
-    var educations: [Item]
-    var investments: [Item]
-    var incomes: [Item]
-}
-
-struct Item: Decodable {
-    var name: String
-    var image: String
+    var category: String
+    var name: [String]
+    var image: [String]
+    
+    init(_ json: JSON) {
+        self.category = json["category"].stringValue
+        self.name = json["name"].arrayValue.map { $0.stringValue }
+        self.image = json["image"].arrayValue.map { $0.stringValue }
+    }
 }
