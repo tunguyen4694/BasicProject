@@ -13,5 +13,6 @@ target 'MoneyManagementApp' do
   pod "MonthYearPicker", '~> 4.0.2'
   pod 'Charts'
   pod 'SwiftyJSON', '~> 4.0'
+  pod 'RealmSwift', '~>10'
   
 end

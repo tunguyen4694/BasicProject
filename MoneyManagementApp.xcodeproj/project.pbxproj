@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1D2AB6F7B010CC2842D8328A /* Pods_MoneyManagementApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC88FADAC7D912CEBC421A75 /* Pods_MoneyManagementApp.framework */; };
 		A56D1CAD28770D0B008A508A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56D1CAC28770D0B008A508A /* AppDelegate.swift */; };
-		A56D1CB728770D0B008A508A /* MoneyManagementApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A56D1CB528770D0B008A508A /* MoneyManagementApp.xcdatamodeld */; };
 		A56D1CB928770D0C008A508A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A56D1CB828770D0C008A508A /* Assets.xcassets */; };
 		A56D1CBC28770D0C008A508A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A56D1CBA28770D0C008A508A /* LaunchScreen.storyboard */; };
 		A56D1CC728770F39008A508A /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56D1CC628770F39008A508A /* Extension+UIColor.swift */; };
@@ -33,6 +32,8 @@
 		DA7BB07A28851E720068F257 /* MonthTBVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7BB07828851E720068F257 /* MonthTBVC.xib */; };
 		DA7BB07D28865F450068F257 /* ChartTBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BB07C28865F450068F257 /* ChartTBVC.swift */; };
 		DA7BB08528868F670068F257 /* ModelCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BB08428868F670068F257 /* ModelCategories.swift */; };
+		DA7CD0BE28892E3B0098FDB0 /* RealmTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7CD0BD28892E3B0098FDB0 /* RealmTest.swift */; };
+		DA7CD0C028892FC20098FDB0 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7CD0BF28892FC20098FDB0 /* DBManager.swift */; };
 		DA98AA72287D527000434125 /* ReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98AA70287D527000434125 /* ReportVC.swift */; };
 		DA98AA73287D527000434125 /* ReportVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA98AA71287D527000434125 /* ReportVC.xib */; };
 		DA98AA76287D52C600434125 /* AddTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98AA74287D52C600434125 /* AddTransactionVC.swift */; };
@@ -65,7 +66,6 @@
 		85E32A231D5E0E067E8F483E /* Pods-MoneyManagementApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoneyManagementApp.release.xcconfig"; path = "Target Support Files/Pods-MoneyManagementApp/Pods-MoneyManagementApp.release.xcconfig"; sourceTree = "<group>"; };
 		A56D1CA928770D0B008A508A /* MoneyManagementApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyManagementApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A56D1CAC28770D0B008A508A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A56D1CB628770D0B008A508A /* MoneyManagementApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MoneyManagementApp.xcdatamodel; sourceTree = "<group>"; };
 		A56D1CB828770D0C008A508A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A56D1CBB28770D0C008A508A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A56D1CBD28770D0C008A508A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -91,6 +91,8 @@
 		DA7BB07828851E720068F257 /* MonthTBVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthTBVC.xib; sourceTree = "<group>"; };
 		DA7BB07C28865F450068F257 /* ChartTBVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTBVC.swift; sourceTree = "<group>"; };
 		DA7BB08428868F670068F257 /* ModelCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCategories.swift; sourceTree = "<group>"; };
+		DA7CD0BD28892E3B0098FDB0 /* RealmTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmTest.swift; sourceTree = "<group>"; };
+		DA7CD0BF28892FC20098FDB0 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		DA98AA70287D527000434125 /* ReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportVC.swift; sourceTree = "<group>"; };
 		DA98AA71287D527000434125 /* ReportVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportVC.xib; sourceTree = "<group>"; };
 		DA98AA74287D52C600434125 /* AddTransactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionVC.swift; sourceTree = "<group>"; };
@@ -173,7 +175,6 @@
 				A56D1CB828770D0C008A508A /* Assets.xcassets */,
 				A56D1CBA28770D0C008A508A /* LaunchScreen.storyboard */,
 				A56D1CBD28770D0C008A508A /* Info.plist */,
-				A56D1CB528770D0B008A508A /* MoneyManagementApp.xcdatamodeld */,
 				A56D1CE0287C755C008A508A /* GoogleService-Info.plist */,
 			);
 			path = MoneyManagementApp;
@@ -255,6 +256,8 @@
 				DA7BB08428868F670068F257 /* ModelCategories.swift */,
 				DA7BB06F288131F20068F257 /* ModelTransaction.swift */,
 				DAF14ADD2887F27A00A8C09A /* JSONKey.swift */,
+				DA7CD0BD28892E3B0098FDB0 /* RealmTest.swift */,
+				DA7CD0BF28892FC20098FDB0 /* DBManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 				DA7BB06E287FF7960068F257 /* ModelCategory.swift in Sources */,
 				A56D1CCF287715D5008A508A /* ConvertHelper.swift in Sources */,
 				DA98AA72287D527000434125 /* ReportVC.swift in Sources */,
+				DA7CD0C028892FC20098FDB0 /* DBManager.swift in Sources */,
 				DA98AA97287E710C00434125 /* AdsCVC.swift in Sources */,
 				DA7BB07D28865F450068F257 /* ChartTBVC.swift in Sources */,
 				DA98AAB6287FF38700434125 /* CategoryVC.swift in Sources */,
@@ -546,11 +550,11 @@
 				DA98AA7A287D52DC00434125 /* WalletVC.swift in Sources */,
 				DA98AA82287D540000434125 /* CustomTabBarController.swift in Sources */,
 				DAF14ADE2887F27A00A8C09A /* JSONKey.swift in Sources */,
-				A56D1CB728770D0B008A508A /* MoneyManagementApp.xcdatamodeld in Sources */,
 				DA7BB06A287FF42E0068F257 /* CategoryTBVC.swift in Sources */,
 				DA7BB08528868F670068F257 /* ModelCategories.swift in Sources */,
 				DA98AA88287D773700434125 /* AccountTBVC.swift in Sources */,
 				DA98AA76287D52C600434125 /* AddTransactionVC.swift in Sources */,
+				DA7CD0BE28892E3B0098FDB0 /* RealmTest.swift in Sources */,
 				DA98AAA1287E7E3F00434125 /* IncomeExpenseTBVC.swift in Sources */,
 				A56D1CAD28770D0B008A508A /* AppDelegate.swift in Sources */,
 				A56D1CC728770F39008A508A /* Extension+UIColor.swift in Sources */,
@@ -768,19 +772,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		A56D1CB528770D0B008A508A /* MoneyManagementApp.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				A56D1CB628770D0B008A508A /* MoneyManagementApp.xcdatamodel */,
-			);
-			currentVersion = A56D1CB628770D0B008A508A /* MoneyManagementApp.xcdatamodel */;
-			path = MoneyManagementApp.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = A56D1CA128770D0B008A508A /* Project object */;
 }
