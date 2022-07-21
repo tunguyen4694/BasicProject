@@ -15,7 +15,8 @@ class CategoryVC: UIViewController {
     var json: JSON = JSON.null
     var datas = [Categories]()
     
-    var passData: ((_ name: String?, _ image: UIImage?, _ imageWidth: CGFloat, _ leadingTextField: CGFloat) -> Void)?
+//    var passData: ((_ name: String?, _ image: UIImage?, _ imageWidth: CGFloat, _ leadingTextField: CGFloat) -> Void)?
+    var passData: ((_ name: String?, _ image: String?, _ imageWidth: CGFloat, _ leadingTextField: CGFloat) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,7 +104,8 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let name = datas[indexPath.section].name[indexPath.row]
-        let image = UIImage(systemName: datas[indexPath.section].image[indexPath.row])
+//        let image = UIImage(systemName: datas[indexPath.section].image[indexPath.row])
+        let image = datas[indexPath.section].image[indexPath.row]
         
         passData?(name, image, 24, 8)
         

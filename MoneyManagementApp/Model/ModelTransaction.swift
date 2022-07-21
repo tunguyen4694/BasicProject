@@ -6,22 +6,28 @@
 //
 
 import Foundation
-import UIKit
+import RealmSwift
 
-struct Transaction {
-    init(image: UIImage? = nil, name: String? = nil, date: Date? = nil, amount: String? = nil, stt: String? = nil, color: UIColor? = nil) {
+class Transaction: Object {
+
+    @objc dynamic var ID = ""
+    @objc dynamic var image: String?
+    @objc dynamic var name: String?
+    @objc dynamic var date: Date?
+    @objc dynamic var amount: String?
+    @objc dynamic var stt: String?
+//    @objc dynamic var color: UIColor?
+    override class func primaryKey() -> String? {
+        return "ID"
+    }
+    
+    convenience init(image: String?, name: String?, date: Date?, amount: String?, stt: String) {
+        self.init()
         self.image = image
         self.name = name
         self.date = date
         self.amount = amount
         self.stt = stt
-        self.color = color
     }
     
-    var image: UIImage?
-    var name: String?
-    var date: Date?
-    var amount: String?
-    var stt: String?
-    var color: UIColor?
 }

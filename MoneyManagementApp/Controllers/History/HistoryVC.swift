@@ -7,6 +7,7 @@
 
 import UIKit
 import MonthYearPicker
+import RealmSwift
 
 class HistoryVC: UIViewController {
     
@@ -22,7 +23,7 @@ class HistoryVC: UIViewController {
         return tool
     }()
     
-    var transaction: [Transaction] = []
+    var transaction: Results<Transaction>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +62,7 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 2 {
-            return transaction.count
+            return transaction?.count ?? 0
         } else {
             return 1
         }
@@ -74,11 +75,11 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
             cell.stvContent.layer.borderWidth = 0
             var totalE = 0
             var totalI = 0
-            for i in 0..<transaction.count {
-                if transaction[i].stt == "-" {
-                    totalE += (ConvertHelper.share.numberFromCurrencyString(string: transaction[i].amount!).intValue)
+            for i in 0..<(transaction?.count ?? 0) {
+                if transaction?[i].stt == "-" {
+                    totalE += (ConvertHelper.share.numberFromCurrencyString(string: transaction?[i].amount ?? "").intValue)
                 } else {
-                    totalI += (ConvertHelper.share.numberFromCurrencyString(string: transaction[i].amount!).intValue)
+                    totalI += (ConvertHelper.share.numberFromCurrencyString(string: transaction?[i].amount ?? "").intValue)
                 }
             }
             cell.lblExpense.text = ConvertHelper.share.stringFromNumber(currency: totalE)
@@ -88,11 +89,18 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTBVC", for: indexPath) as! TransactionTBVC
             cell.selectionStyle = .none
             cell.separatorInset = .zero
-            cell.imgIcon.image = transaction[indexPath.row].image
-            cell.lblName.text = transaction[indexPath.row].name
-            cell.lblDate.text = ConvertHelper.share.stringFromDate(date: transaction[indexPath.row].date ?? Date(), format: "dd MMM yyyy")
-            cell.lblAmount.text = transaction[indexPath.row].stt?.appending(transaction[indexPath.row].amount ?? "")
-            cell.lblAmount.textColor = transaction[indexPath.row].color
+//            cell.imgIcon.image = transaction[indexPath.row].image
+            cell.imgIcon.image = UIImage(systemName: transaction?[indexPath.row].image ?? "")
+            cell.lblName.text = transaction?[indexPath.row].name
+            cell.lblDate.text = ConvertHelper.share.stringFromDate(date: transaction?[indexPath.row].date ?? Date(), format: "dd MMM yyyy")
+            cell.lblAmount.text = transaction?[indexPath.row].stt?.appending(transaction?[indexPath.row].amount ?? "")
+//            cell.lblAmount.textColor = transaction[indexPath.row].color
+            switch transaction?[indexPath.row].stt {
+            case "-":
+                cell.lblAmount.textColor = .expenseColor()
+            default:
+                cell.lblAmount.textColor = .incomeColor()
+            }
             
             return cell
         } else {

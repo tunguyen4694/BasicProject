@@ -16,24 +16,31 @@ class DBManager {
         database = try!Realm()
     }
     
-    func addData(_ object: TransactionDetail) {
+    func addData(_ object: Transaction) {
         try! database.write({
             object.ID = UUID().uuidString
             database.add(object)
         })
     }
     
-    func getData() -> Results<TransactionDetail> {
-        let results: Results<TransactionDetail> = database.objects(TransactionDetail.self)
+    func getData() -> Results<Transaction> {
+        let results: Results<Transaction> = database.objects(Transaction.self).sorted(byKeyPath: "date", ascending: false)
         return results
     }
     
-    func deleteAnObject(_ object: TransactionDetail) {
+    func updateObject(_ object: Transaction, _ newObject: Transaction) {
         try! database.write({
-            let item = database.objects(TransactionDetail.self).where {
-                $0.ID == object.ID
-            }
-            database.delete(item)
+            object.image = newObject.image
+            object.name = newObject.name
+            object.date = newObject.date
+            object.amount = newObject.amount
+            object.stt = newObject.stt
+        })
+    }
+    
+    func deleteAnObject(_ object: Transaction) {
+        try! database.write({
+            database.delete(object)
         })
     }
     
@@ -41,22 +48,5 @@ class DBManager {
         try! database.write({
             database.deleteAll()
         })
-    }
-    
-    func getDataArray() -> [TransactionDetail] {
-        let result = database.objects(TransactionDetail.self).toArray(ofType: TransactionDetail.self)
-        return result
-    }
-}
-
-extension Results {
-    func toArray<T>(ofType: T.Type) -> [T] {
-        var array = [T]()
-        for i in 0..<count {
-            if let result = self[i] as? T {
-                array.append(result)
-            }
-        }
-        return array
     }
 }

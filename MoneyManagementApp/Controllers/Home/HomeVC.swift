@@ -35,7 +35,7 @@ class HomeVC: UIViewController {
     // OffSet trước khi scroll
     var previousScrollOffSet: CGFloat = 0
     
-    var transaction: [Transaction] = []
+    var transaction = DBManager.shareInstance.getData()
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -201,7 +201,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTBVC", for: indexPath) as? TransactionTBVC else { return UITableViewCell() }
             cell.selectionStyle = .none
-            cell.imgIcon.image = transaction[indexPath.row].image
+            cell.imgIcon.image = UIImage(systemName: transaction[indexPath.row].image ?? "") 
             cell.lblName.text = transaction[indexPath.row].name
             cell.lblDate.text = ConvertHelper.share.stringFromDate(date: transaction[indexPath.row].date ?? Date(), format: "dd/MM/yyyy")
             
@@ -210,7 +210,13 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
             let a = stt.appending(amount)
             
             cell.lblAmount.text = a
-            cell.lblAmount.textColor = transaction[indexPath.row].color
+//            cell.lblAmount.textColor = transaction[indexPath.row].color
+            switch transaction[indexPath.row].stt {
+            case "-":
+                cell.lblAmount.textColor = .expenseColor()
+            default:
+                cell.lblAmount.textColor = .incomeColor()
+            }
             
             return cell
         }
@@ -230,7 +236,8 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.section == 2 {
             let delete = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
-                self.transaction.remove(at: indexPath.row)
+//                self.transaction.remove(at: indexPath.row)
+                DBManager.shareInstance.deleteAnObject(self.transaction[indexPath.row])
                 tableView.deleteRows(at: [indexPath], with: .automatic)
                 tableView.reloadData()
             }
@@ -240,8 +247,9 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
                 editVC.transaction = self.transaction[indexPath.row]
                 editVC.passData = { [weak self] transaction in
                     guard let strongSelf = self, let transaction = transaction else { return }
-                    strongSelf.transaction[indexPath.row] = transaction
-                    strongSelf.transaction.sort(by: { $1.date ?? Date() < $0.date ?? Date() })
+//                    strongSelf.transaction[indexPath.row] = transaction
+//                    strongSelf.transaction.sort(by: { $1.date ?? Date() < $0.date ?? Date() })
+                    DBManager.shareInstance.updateObject(strongSelf.transaction[indexPath.row], transaction)
                     strongSelf.tableView.reloadData()
                 }
                 self.present(editVC, animated: true)

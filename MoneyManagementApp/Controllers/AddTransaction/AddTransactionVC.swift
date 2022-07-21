@@ -39,6 +39,7 @@ class AddTransactionVC: UIViewController {
         return datePicker
     }()
     
+    var imgStr = ""
     var transaction: Transaction?
     var passData: ((_ transaction: Transaction?) -> Void)?
     
@@ -51,13 +52,14 @@ class AddTransactionVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        guard let transaction = transaction else {
-            return
-        }
+        guard let transaction = transaction else { return }
         if transaction.stt == "+" {
             addIncome(self)
         }
-        imgIcon.image = transaction.image
+        iconWithConstraint.constant = 24
+        categoryLeadingConstraint.constant = 8
+        imgStr = transaction.image ?? ""
+        imgIcon.image = UIImage(systemName: transaction.image ?? "")
         tfCategory.text = transaction.name
         tfAmount.text = transaction.amount
         tfDate.text = ConvertHelper.share.stringFromDate(date: transaction.date ?? Date(), format: "dd MMM yyyy")
@@ -98,7 +100,8 @@ class AddTransactionVC: UIViewController {
         vc.passData = { [weak self] name, image, imageWidth, leadingTextField in
             guard let strongSelf = self, let name = name, let image = image else { return }
             strongSelf.tfCategory.text = name
-            strongSelf.imgIcon.image = image
+            strongSelf.imgStr = image
+            strongSelf.imgIcon.image = UIImage(systemName: image)
             strongSelf.iconWithConstraint.constant = imageWidth
             strongSelf.categoryLeadingConstraint.constant = leadingTextField
         }
@@ -109,9 +112,9 @@ class AddTransactionVC: UIViewController {
         let date = ConvertHelper.share.dateFormString(string: tfDate.text ?? "", format: "dd MMM yyyy")
         if tfCategory.text != "" && tfAmount.text != "" && tfDate.text != "" {
             if btnSave.tag == 0 {
-                transaction = Transaction(image: imgIcon.image, name: tfCategory.text, date: date, amount: tfAmount.text, stt: "-", color: .expenseColor())
+                transaction = Transaction(image: imgStr, name: tfCategory.text, date: date, amount: tfAmount.text, stt: "-")
             } else if btnSave.tag == 1 {
-                transaction = Transaction(image: imgIcon.image, name: tfCategory.text, date: date, amount: tfAmount.text, stt: "+", color: .incomeColor())
+                transaction = Transaction(image: imgStr, name: tfCategory.text, date: date, amount: tfAmount.text, stt: "+")
             }
             passData?(transaction)
             dismiss(animated: true)
