@@ -33,6 +33,11 @@
 		DA7BB07D28865F450068F257 /* ChartTBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BB07C28865F450068F257 /* ChartTBVC.swift */; };
 		DA7BB08528868F670068F257 /* ModelCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BB08428868F670068F257 /* ModelCategories.swift */; };
 		DA7CD0C028892FC20098FDB0 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7CD0BF28892FC20098FDB0 /* DBManager.swift */; };
+		DA7CD0C7288A45CC0098FDB0 /* PieChartTBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7CD0C5288A45CC0098FDB0 /* PieChartTBVC.swift */; };
+		DA7CD0C8288A45CC0098FDB0 /* PieChartTBVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7CD0C6288A45CC0098FDB0 /* PieChartTBVC.xib */; };
+		DA7CD0CB288A49760098FDB0 /* HorizontalChartTBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7CD0C9288A49760098FDB0 /* HorizontalChartTBVC.swift */; };
+		DA7CD0CC288A49760098FDB0 /* HorizontalChartTBVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7CD0CA288A49760098FDB0 /* HorizontalChartTBVC.xib */; };
+		DA7CD0CF288AA5B90098FDB0 /* ModelReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7CD0CE288AA5B90098FDB0 /* ModelReport.swift */; };
 		DA98AA72287D527000434125 /* ReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98AA70287D527000434125 /* ReportVC.swift */; };
 		DA98AA73287D527000434125 /* ReportVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA98AA71287D527000434125 /* ReportVC.xib */; };
 		DA98AA76287D52C600434125 /* AddTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98AA74287D52C600434125 /* AddTransactionVC.swift */; };
@@ -91,6 +96,11 @@
 		DA7BB07C28865F450068F257 /* ChartTBVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTBVC.swift; sourceTree = "<group>"; };
 		DA7BB08428868F670068F257 /* ModelCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelCategories.swift; sourceTree = "<group>"; };
 		DA7CD0BF28892FC20098FDB0 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		DA7CD0C5288A45CC0098FDB0 /* PieChartTBVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartTBVC.swift; sourceTree = "<group>"; };
+		DA7CD0C6288A45CC0098FDB0 /* PieChartTBVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PieChartTBVC.xib; sourceTree = "<group>"; };
+		DA7CD0C9288A49760098FDB0 /* HorizontalChartTBVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalChartTBVC.swift; sourceTree = "<group>"; };
+		DA7CD0CA288A49760098FDB0 /* HorizontalChartTBVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HorizontalChartTBVC.xib; sourceTree = "<group>"; };
+		DA7CD0CE288AA5B90098FDB0 /* ModelReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelReport.swift; sourceTree = "<group>"; };
 		DA98AA70287D527000434125 /* ReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportVC.swift; sourceTree = "<group>"; };
 		DA98AA71287D527000434125 /* ReportVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportVC.xib; sourceTree = "<group>"; };
 		DA98AA74287D52C600434125 /* AddTransactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionVC.swift; sourceTree = "<group>"; };
@@ -255,6 +265,7 @@
 				DA7BB06F288131F20068F257 /* ModelTransaction.swift */,
 				DAF14ADD2887F27A00A8C09A /* JSONKey.swift */,
 				DA7CD0BF28892FC20098FDB0 /* DBManager.swift */,
+				DA7CD0CE288AA5B90098FDB0 /* ModelReport.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -282,6 +293,10 @@
 			isa = PBXGroup;
 			children = (
 				DA7BB07C28865F450068F257 /* ChartTBVC.swift */,
+				DA7CD0C5288A45CC0098FDB0 /* PieChartTBVC.swift */,
+				DA7CD0C6288A45CC0098FDB0 /* PieChartTBVC.xib */,
+				DA7CD0C9288A49760098FDB0 /* HorizontalChartTBVC.swift */,
+				DA7CD0CA288A49760098FDB0 /* HorizontalChartTBVC.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -472,8 +487,10 @@
 				DA98AA9E287E7A2B00434125 /* ads2.png in Resources */,
 				DA98AAB7287FF38700434125 /* CategoryVC.xib in Resources */,
 				DA98AA94287E707000434125 /* AdsTBVC.xib in Resources */,
+				DA7CD0CC288A49760098FDB0 /* HorizontalChartTBVC.xib in Resources */,
 				DA7BB0742884FC380068F257 /* HistoryVC.xib in Resources */,
 				A56D1CB928770D0C008A508A /* Assets.xcassets in Resources */,
+				DA7CD0C8288A45CC0098FDB0 /* PieChartTBVC.xib in Resources */,
 				A56D1CE1287C755C008A508A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -534,6 +551,7 @@
 				DA98AAA5287E809000434125 /* TransactionTBVC.swift in Sources */,
 				A56D1CD228771CBC008A508A /* NormalLabel.swift in Sources */,
 				DA7BB07928851E720068F257 /* MonthTBVC.swift in Sources */,
+				DA7CD0CB288A49760098FDB0 /* HorizontalChartTBVC.swift in Sources */,
 				DA7BB070288131F20068F257 /* ModelTransaction.swift in Sources */,
 				DA98AA93287E707000434125 /* AdsTBVC.swift in Sources */,
 				DA7BB06E287FF7960068F257 /* ModelCategory.swift in Sources */,
@@ -546,6 +564,7 @@
 				DA7BB0732884FC380068F257 /* HistoryVC.swift in Sources */,
 				DA98AA7A287D52DC00434125 /* WalletVC.swift in Sources */,
 				DA98AA82287D540000434125 /* CustomTabBarController.swift in Sources */,
+				DA7CD0C7288A45CC0098FDB0 /* PieChartTBVC.swift in Sources */,
 				DAF14ADE2887F27A00A8C09A /* JSONKey.swift in Sources */,
 				DA7BB06A287FF42E0068F257 /* CategoryTBVC.swift in Sources */,
 				DA7BB08528868F670068F257 /* ModelCategories.swift in Sources */,
@@ -553,6 +572,7 @@
 				DA98AA76287D52C600434125 /* AddTransactionVC.swift in Sources */,
 				DA98AAA1287E7E3F00434125 /* IncomeExpenseTBVC.swift in Sources */,
 				A56D1CAD28770D0B008A508A /* AppDelegate.swift in Sources */,
+				DA7CD0CF288AA5B90098FDB0 /* ModelReport.swift in Sources */,
 				A56D1CC728770F39008A508A /* Extension+UIColor.swift in Sources */,
 				DA98AA7E287D52F800434125 /* AccountVC.swift in Sources */,
 			);

@@ -18,7 +18,7 @@ class ChartTBVC: UITableViewCell {
     
     func createChart() {
         // Create bar chat
-        let barChart = HorizontalBarChartView()
+        let barChart = BarChartView(frame: .init(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.width))
         
         // Configure the axis
 //        let xAxis = barChart.xAxis
@@ -30,13 +30,13 @@ class ChartTBVC: UITableViewCell {
         for x in 0..<10 {
             entries.append(BarChartDataEntry(x: Double(x), y: Double.random(in: 0...30)))
         }
-        let set = ChartDataSet(entries: entries, label: "Cost")
+        let set = BarChartDataSet(entries: entries, label: "Cost")
         set.colors = ChartColorTemplates.pastel()
-        let data = ChartData(dataSet: set)
+        let data = BarChartData(dataSet: set)
         barChart.data = data
         
         self.addSubview(barChart)
-        barChart.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: 300)
+//        barChart.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: 300)
         barChart.center = self.center
     }
 }
