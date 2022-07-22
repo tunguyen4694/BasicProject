@@ -12,6 +12,7 @@ class CustomTabBarController: UITabBarController {
     let vTopLineTabbar = UIView()
     
     let controller1 = HomeVC()
+    let controller2 = ReportVC()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,15 +20,14 @@ class CustomTabBarController: UITabBarController {
         
         tabBar.tintColor = .mainColor()
         tabBar.unselectedItemTintColor = .iconTabBarColor()
-//        tabBar.shadowImage = UIImage()
-//        tabBar.backgroundImage = UIImage()
+        //        tabBar.shadowImage = UIImage()
+        //        tabBar.backgroundImage = UIImage()
         
         let iconConfig = UIImage.SymbolConfiguration(pointSize: 18, weight: .medium, scale: .default)
         
         controller1.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house.fill", withConfiguration: iconConfig), tag: 1)
         let nav1 = UINavigationController(rootViewController: controller1)
         
-        let controller2 = ReportVC()
         controller2.tabBarItem = UITabBarItem(title: "Report", image: UIImage(systemName: "chart.bar.fill", withConfiguration: iconConfig), tag: 2)
         let nav2 = UINavigationController(rootViewController: controller2)
         
@@ -53,7 +53,8 @@ class CustomTabBarController: UITabBarController {
              NSAttributedString.Key.foregroundColor: UIColor.mainColor()], for: .selected)
         
         configTabBar()
-                tabBar.items![2].isEnabled = false
+        passDataToReport()
+        tabBar.items![2].isEnabled = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,11 +77,11 @@ class CustomTabBarController: UITabBarController {
         
         tabBar.layer.insertSublayer(shadowLayer, at: 0)
         
-//        let vClear = UIView()
-//        tabBar.addSubview(vClear)
-//        vClear.frame = .init(x: 0, y: tabBar.bounds.minY, width: 60, height: 60)
-//        vClear.center.x = tabBar.center.x
-//        vClear.backgroundColor = .clear
+        //        let vClear = UIView()
+        //        tabBar.addSubview(vClear)
+        //        vClear.frame = .init(x: 0, y: tabBar.bounds.minY, width: 60, height: 60)
+        //        vClear.center.x = tabBar.center.x
+        //        vClear.backgroundColor = .clear
         
         let vBigCircle = UIView()
         tabBar.addSubview(vBigCircle)
@@ -108,19 +109,23 @@ class CustomTabBarController: UITabBarController {
         btnAdd.addTarget(self, action: #selector(onAdd(_:)), for: .touchUpInside)
     }
     
+    func passDataToReport() {
+        controller2.transaction = controller1.transaction
+    }
+    
     @objc func onAdd(_ sender: UIButton) {
         let vc = AddTransactionVC()
         
         vc.passData = {[weak self] transaction in
             guard let strongSelf = self, let transaction = transaction else { return }
-//            strongSelf.controller1.transaction.insert(transaction, at: 0)
-//            strongSelf.controller1.transaction.sort(by: { $1.date ?? Date() < $0.date ?? Date() })
+            //            strongSelf.controller1.transaction.insert(transaction, at: 0)
+            //            strongSelf.controller1.transaction.sort(by: { $1.date ?? Date() < $0.date ?? Date() })
             DBManager.shareInstance.addData(transaction)
             strongSelf.controller1.transaction = DBManager.shareInstance.getData()
             strongSelf.controller1.tableView.reloadData()
         }
         present(vc, animated: true)
-//        navigationController?.pushViewController(vc, animated: false)
+        //        navigationController?.pushViewController(vc, animated: false)
     }
 }
 
