@@ -19,6 +19,7 @@ class ReportVC: UIViewController {
     var amountE: [Int] = []
     var totalE = 0
     var totalI = 0
+    var dict: [String: Int] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +52,16 @@ class ReportVC: UIViewController {
                 detail.append(Report(name: transaction?[i].name, amount: amountInt))
             }
         }
-        print(detail)
+        dict = convertToDict(name: nameE, amount: amountE)
+    }
+    
+    func convertToDict(name: [String], amount: [Int]) -> [String: Int] {
+        var result: [String: Int] = [:]
+        for i in 0..<name.count {
+            let total = result[name[i]] ?? 0
+            result[name[i]] = total + amount[i]
+        }
+        return result
     }
 }
 
@@ -135,8 +145,8 @@ extension ReportVC: UITableViewDelegate, UITableViewDataSource {
             
             var entries = [PieChartDataEntry()]
             
-            for i in 0..<nameE.count {
-                entries.append(PieChartDataEntry(value: Double(amountE[i]), label: nameE[i]))
+            for (key, value) in dict {
+                entries.append(PieChartDataEntry(value: Double(value), label: key))
             }
             
             let set = PieChartDataSet(entries: entries, label: "")
