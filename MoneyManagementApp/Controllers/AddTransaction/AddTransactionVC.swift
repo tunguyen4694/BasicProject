@@ -39,6 +39,7 @@ class AddTransactionVC: UIViewController {
         return datePicker
     }()
     
+    var category = ""
     var imgStr = ""
     var transaction: Transaction?
     var passData: ((_ transaction: Transaction?) -> Void)?
@@ -97,8 +98,9 @@ class AddTransactionVC: UIViewController {
     
     @IBAction func enterCategory(_ sender: Any) {
         let vc = CategoryVC()
-        vc.passData = { [weak self] name, image, imageWidth, leadingTextField in
-            guard let strongSelf = self, let name = name, let image = image else { return }
+        vc.passData = { [weak self] category, name, image, imageWidth, leadingTextField in
+            guard let strongSelf = self, let category = category, let name = name, let image = image else { return }
+            strongSelf.category = category
             strongSelf.tfCategory.text = name
             strongSelf.imgStr = image
             strongSelf.imgIcon.image = UIImage(systemName: image)
@@ -112,9 +114,11 @@ class AddTransactionVC: UIViewController {
         let date = ConvertHelper.share.dateFormString(string: tfDate.text ?? "", format: "dd MMM yyyy")
         if tfCategory.text != "" && tfAmount.text != "" && tfDate.text != "" {
             if btnSave.tag == 0 {
-                transaction = Transaction(image: imgStr, name: tfCategory.text, date: date, amount: tfAmount.text, stt: "-")
+                transaction = Transaction(category: category, image: imgStr, name: tfCategory.text, date: date, amount: tfAmount.text, stt: "-")
+//                transaction = Transaction(image: imgStr, name: tfCategory.text, date: date, amount: tfAmount.text, stt: "-")
             } else if btnSave.tag == 1 {
-                transaction = Transaction(image: imgStr, name: tfCategory.text, date: date, amount: tfAmount.text, stt: "+")
+                transaction = Transaction(category: category, image: imgStr, name: tfCategory.text, date: date, amount: tfAmount.text, stt: "+")
+//                transaction = Transaction(image: imgStr, name: tfCategory.text, date: date, amount: tfAmount.text, stt: "+")
             }
             passData?(transaction)
             dismiss(animated: true)

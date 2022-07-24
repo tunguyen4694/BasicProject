@@ -15,11 +15,13 @@ class ReportVC: UIViewController {
     
     var detail = [Report]()
     var transaction: Results<Transaction>?
+    var categoryE: [String] = []
     var nameE: [String] = []
     var amountE: [Int] = []
     var totalE = 0
     var totalI = 0
     var dict: [String: Int] = [:]
+    var dictCategory: [String: Int] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,11 +50,12 @@ class ReportVC: UIViewController {
                 amountInt = ConvertHelper.share.numberFromCurrencyString(string: transaction?[i].amount ?? "").intValue
                 nameE.append(transaction?[i].name ?? "")
                 amountE.append(amountInt)
-                
+                categoryE.append(transaction?[i].category ?? "")
                 detail.append(Report(name: transaction?[i].name, amount: amountInt))
             }
         }
         dict = convertToDict(name: nameE, amount: amountE)
+        dictCategory = convertToDict(name: categoryE, amount: amountE)
     }
     
     func convertToDict(name: [String], amount: [Int]) -> [String: Int] {
@@ -67,7 +70,7 @@ class ReportVC: UIViewController {
 
 extension ReportVC: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 5
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -138,7 +141,7 @@ extension ReportVC: UITableViewDelegate, UITableViewDataSource {
 //            cell.chartBar.drawHoleEnabled = false
             
             return cell
-        default:
+        case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PieChartTBVC", for: indexPath) as! PieChartTBVC
             cell.selectionStyle = .none
             cell.lblChartName.text = "Expenses"
@@ -167,6 +170,32 @@ extension ReportVC: UITableViewDelegate, UITableViewDataSource {
             
             cell.chartBar.legend.enabled = false
 //            cell.chartBar.drawHoleEnabled = false
+            
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PieChartTBVC", for: indexPath) as! PieChartTBVC
+            cell.selectionStyle = .none
+            cell.lblChartName.text = "Caterogy"
+            
+            var entries = [PieChartDataEntry()]
+            
+            for (key, value) in dictCategory {
+                entries.append(PieChartDataEntry(value: Double(value), label: key))
+            }
+            
+            let set = PieChartDataSet(entries: entries, label: "")
+            set.colors = ChartColorTemplates.pastel()
+            set.sliceSpace = 2
+            let data = PieChartData(dataSet: set)
+            cell.chartBar.data = data
+            
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            formatter.locale = Locale(identifier: "vi_VN")
+            formatter.groupingSeparator = "."
+            data.setValueFormatter(DefaultValueFormatter(formatter: formatter))
+            data.setValueFont(.regular(ofSize: 12))
+            data.setValueTextColor(.black)
             
             return cell
         }

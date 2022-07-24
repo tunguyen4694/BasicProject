@@ -16,7 +16,7 @@ class CategoryVC: UIViewController {
     var datas = [Categories]()
     
 //    var passData: ((_ name: String?, _ image: UIImage?, _ imageWidth: CGFloat, _ leadingTextField: CGFloat) -> Void)?
-    var passData: ((_ name: String?, _ image: String?, _ imageWidth: CGFloat, _ leadingTextField: CGFloat) -> Void)?
+    var passData: ((_ category: String?,_ name: String?, _ image: String?, _ imageWidth: CGFloat, _ leadingTextField: CGFloat) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,11 +103,12 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let category = datas[indexPath.section].category
         let name = datas[indexPath.section].name[indexPath.row]
 //        let image = UIImage(systemName: datas[indexPath.section].image[indexPath.row])
         let image = datas[indexPath.section].image[indexPath.row]
         
-        passData?(name, image, 24, 8)
+        passData?(category, name, image, 24, 8)
         
         dismiss(animated: true)
     }

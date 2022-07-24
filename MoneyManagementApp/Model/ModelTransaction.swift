@@ -11,6 +11,7 @@ import RealmSwift
 class Transaction: Object {
 
     @objc dynamic var ID = ""
+    @objc dynamic var category: String?
     @objc dynamic var image: String?
     @objc dynamic var name: String?
     @objc dynamic var date: Date?
@@ -21,8 +22,10 @@ class Transaction: Object {
         return "ID"
     }
     
-    convenience init(image: String?, name: String?, date: Date?, amount: String?, stt: String) {
+    convenience init(category: String?, image: String?, name: String?, date: Date?, amount: String?, stt: String) {
+//        convenience init(image: String?, name: String?, date: Date?, amount: String?, stt: String) {
         self.init()
+        self.category = category
         self.image = image
         self.name = name
         self.date = date

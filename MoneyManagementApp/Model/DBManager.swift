@@ -30,6 +30,7 @@ class DBManager {
     
     func updateObject(_ object: Transaction, _ newObject: Transaction) {
         try! database.write({
+            object.category = newObject.category
             object.image = newObject.image
             object.name = newObject.name
             object.date = newObject.date
