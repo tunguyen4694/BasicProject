@@ -24,6 +24,7 @@ class HistoryVC: UIViewController {
     }()
     
     var transaction: Results<Transaction>?
+    var monthTransaction: [Transaction]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,6 +123,7 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             
+            datePicker.backgroundColor = .white
             datePicker.addTarget(self, action: #selector(self.monthChanged(_:)), for: .valueChanged)
             
             toolBar.items = [UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.onDoneButtonClick))]
@@ -134,12 +136,31 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
 
 extension HistoryVC {
     @objc func monthChanged(_ sender: MonthYearPickerView) {
-        month = ConvertHelper.share.stringFromDate(date: sender.date, format: "MMM yyy")
+        if Calendar.current.dateComponents([.month, .year], from: sender.date) != Calendar.current.dateComponents([.month, .year], from: Date()) {
+            month = ConvertHelper.share.stringFromDate(date: sender.date, format: "MMM yyyy")
+        } else {
+            month = "This month"
+        }
+        var dict: [DateComponents: Transaction] = [:]
+        for i in 0..<(transaction?.count ?? 0) {
+            if Calendar.current.dateComponents([.month, .year], from: transaction?[i].date ?? Date()) == Calendar.current.dateComponents([.month, .year], from: sender.date) {
+                dict[Calendar.current.dateComponents([.month, .year], from: transaction?[i].date ?? Date())] = transaction?[i]
+            }
+            print("\(i): \(dict)")
+        }
         tableView.reloadData()
     }
     
     @objc func onDoneButtonClick() {
         toolBar.removeFromSuperview()
         datePicker.removeFromSuperview()
+    }
+}
+
+extension Date {
+    var month: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM"
+        return dateFormatter.string(from: self)
     }
 }
