@@ -24,10 +24,11 @@ class HistoryVC: UIViewController {
     }()
     
     var transaction: Results<Transaction>?
-    var monthTransaction: [Transaction]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        updateTransactionData(Date())
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -37,6 +38,13 @@ class HistoryVC: UIViewController {
         if #available(iOS 15.0, *) {        // Xoá line phân cách và padding giữa section và cell
             tableView.sectionHeaderTopPadding = 0.0
         }
+    }
+    
+    func updateTransactionData(_ date: Date) {
+        let firstDayOfMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: date))
+        let lastDayOfMonth = Calendar.current.date(from: DateComponents(year: Calendar.current.component(.year, from: date), month: Calendar.current.component(.month, from: date)+1))
+        
+        transaction = DBManager.shareInstance.getMonthData(firstDayOfMonth ?? Date(), lastDayOfMonth ?? Date())
     }
     
     @IBAction func onDismiss(_ sender: Any) {
@@ -90,12 +98,10 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTBVC", for: indexPath) as! TransactionTBVC
             cell.selectionStyle = .none
             cell.separatorInset = .zero
-//            cell.imgIcon.image = transaction[indexPath.row].image
             cell.imgIcon.image = UIImage(systemName: transaction?[indexPath.row].image ?? "")
             cell.lblName.text = transaction?[indexPath.row].name
             cell.lblDate.text = ConvertHelper.share.stringFromDate(date: transaction?[indexPath.row].date ?? Date(), format: "dd MMM yyyy")
             cell.lblAmount.text = transaction?[indexPath.row].stt?.appending(transaction?[indexPath.row].amount ?? "")
-//            cell.lblAmount.textColor = transaction[indexPath.row].color
             switch transaction?[indexPath.row].stt {
             case "-":
                 cell.lblAmount.textColor = .expenseColor()
@@ -120,6 +126,32 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        if indexPath.section == 2 {
+            let delete = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
+                DBManager.shareInstance.deleteAnObject(self.transaction?[indexPath.row] ?? Transaction())
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                tableView.reloadData()
+            }
+            
+            let edit = UIContextualAction(style: .normal, title: "Edit") { _, _, _ in
+                let editVC = AddTransactionVC()
+                editVC.transaction = self.transaction?[indexPath.row]
+                editVC.passData = { [weak self] transaction in
+                    guard let strongSelf = self, let transaction = transaction else { return }
+                    DBManager.shareInstance.updateObject(strongSelf.transaction?[indexPath.row] ?? Transaction(), transaction)
+                    strongSelf.tableView.reloadData()
+                }
+                self.present(editVC, animated: true)
+            }
+            
+            let configure = UISwipeActionsConfiguration(actions: [delete, edit])
+            return configure
+        } else {
+            return UISwipeActionsConfiguration()
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             
@@ -138,29 +170,18 @@ extension HistoryVC {
     @objc func monthChanged(_ sender: MonthYearPickerView) {
         if Calendar.current.dateComponents([.month, .year], from: sender.date) != Calendar.current.dateComponents([.month, .year], from: Date()) {
             month = ConvertHelper.share.stringFromDate(date: sender.date, format: "MMM yyyy")
+            updateTransactionData(sender.date)
         } else {
             month = "This month"
+            updateTransactionData(Date())
         }
-        var dict: [DateComponents: Transaction] = [:]
-        for i in 0..<(transaction?.count ?? 0) {
-            if Calendar.current.dateComponents([.month, .year], from: transaction?[i].date ?? Date()) == Calendar.current.dateComponents([.month, .year], from: sender.date) {
-                dict[Calendar.current.dateComponents([.month, .year], from: transaction?[i].date ?? Date())] = transaction?[i]
-            }
-            print("\(i): \(dict)")
-        }
-        tableView.reloadData()
+        let range = NSMakeRange(0, self.tableView.numberOfSections)
+        let sections = NSIndexSet(indexesIn: range)
+        self.tableView.reloadSections(sections as IndexSet, with: .automatic)
     }
     
     @objc func onDoneButtonClick() {
         toolBar.removeFromSuperview()
         datePicker.removeFromSuperview()
-    }
-}
-
-extension Date {
-    var month: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM"
-        return dateFormatter.string(from: self)
     }
 }
