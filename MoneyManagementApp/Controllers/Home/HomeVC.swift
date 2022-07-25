@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import RealmSwift
 
 class HomeVC: UIViewController {
     @IBOutlet weak var lblHello: UILabel!
@@ -35,7 +36,9 @@ class HomeVC: UIViewController {
     // OffSet trước khi scroll
     var previousScrollOffSet: CGFloat = 0
     
-    var transaction = DBManager.shareInstance.getData()
+    var transaction: Results<Transaction>?
+    var firstDayOfMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Date()))
+    var lastDayOfMonth = Calendar.current.date(from: DateComponents(year: Calendar.current.component(.year, from: Date()), month: Calendar.current.component(.month, from: Date())+1))
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -52,9 +55,12 @@ class HomeVC: UIViewController {
         subHeaderConstraint.constant = maxSubHeight
         btnNotiTopConstraint.constant = 18
         updateHeader()
+        tableView.reloadData()
     }
     
     func setupUI() {
+        transaction = DBManager.shareInstance.getMonthData(firstDayOfMonth ?? Date(), lastDayOfMonth ?? Date())
+        
         vBalance.layer.cornerRadius = 10
         vBalance.layer.masksToBounds = false
         vBalance.layer.shadowColor = UIColor.black.cgColor
@@ -160,7 +166,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 2 {
-            return transaction.count
+            return transaction?.count ?? 0
         } else {
             return 1
         }
@@ -174,12 +180,12 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
             var totalE: Int = 0
             var totalI: Int = 0
             
-            for i in 0..<transaction.count {
-                switch transaction[i].stt {
+            for i in 0..<(transaction?.count ?? 0) {
+                switch transaction?[i].stt {
                 case "-":
-                    totalE += (ConvertHelper.share.numberFromCurrencyString(string: transaction[i].amount!).intValue)
+                    totalE += (ConvertHelper.share.numberFromCurrencyString(string: transaction?[i].amount! ?? "").intValue)
                 default:
-                    totalI += (ConvertHelper.share.numberFromCurrencyString(string: transaction[i].amount!).intValue)
+                    totalI += (ConvertHelper.share.numberFromCurrencyString(string: transaction?[i].amount! ?? "").intValue)
                 }
             }
             
@@ -201,17 +207,17 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTBVC", for: indexPath) as? TransactionTBVC else { return UITableViewCell() }
             cell.selectionStyle = .none
-            cell.imgIcon.image = UIImage(systemName: transaction[indexPath.row].image ?? "") 
-            cell.lblName.text = transaction[indexPath.row].name
-            cell.lblDate.text = ConvertHelper.share.stringFromDate(date: transaction[indexPath.row].date ?? Date(), format: "dd/MM/yyyy")
+            cell.imgIcon.image = UIImage(systemName: transaction?[indexPath.row].image ?? "")
+            cell.lblName.text = transaction?[indexPath.row].name
+            cell.lblDate.text = ConvertHelper.share.stringFromDate(date: transaction?[indexPath.row].date ?? Date(), format: "dd/MM/yyyy")
             
-            let stt = transaction[indexPath.row].stt ?? ""
-            let amount = transaction[indexPath.row].amount ?? ""
+            let stt = transaction?[indexPath.row].stt ?? ""
+            let amount = transaction?[indexPath.row].amount ?? ""
             let a = stt.appending(amount)
             
             cell.lblAmount.text = a
 //            cell.lblAmount.textColor = transaction[indexPath.row].color
-            switch transaction[indexPath.row].stt {
+            switch transaction?[indexPath.row].stt {
             case "-":
                 cell.lblAmount.textColor = .expenseColor()
             default:
@@ -237,19 +243,19 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 2 {
             let delete = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
 //                self.transaction.remove(at: indexPath.row)
-                DBManager.shareInstance.deleteAnObject(self.transaction[indexPath.row])
+                DBManager.shareInstance.deleteAnObject(self.transaction?[indexPath.row] ?? Transaction())
                 tableView.deleteRows(at: [indexPath], with: .automatic)
                 tableView.reloadData()
             }
             
             let edit = UIContextualAction(style: .normal, title: "Edit") { _, _, _ in
                 let editVC = AddTransactionVC()
-                editVC.transaction = self.transaction[indexPath.row]
+                editVC.transaction = self.transaction?[indexPath.row]
                 editVC.passData = { [weak self] transaction in
                     guard let strongSelf = self, let transaction = transaction else { return }
 //                    strongSelf.transaction[indexPath.row] = transaction
 //                    strongSelf.transaction.sort(by: { $1.date ?? Date() < $0.date ?? Date() })
-                    DBManager.shareInstance.updateObject(strongSelf.transaction[indexPath.row], transaction)
+                    DBManager.shareInstance.updateObject(strongSelf.transaction?[indexPath.row] ?? Transaction(), transaction)
                     strongSelf.tableView.reloadData()
                 }
                 self.present(editVC, animated: true)
