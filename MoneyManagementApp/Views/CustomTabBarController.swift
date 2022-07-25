@@ -20,8 +20,6 @@ class CustomTabBarController: UITabBarController {
         
         tabBar.tintColor = .mainColor()
         tabBar.unselectedItemTintColor = .iconTabBarColor()
-        //        tabBar.shadowImage = UIImage()
-        //        tabBar.backgroundImage = UIImage()
         
         let iconConfig = UIImage.SymbolConfiguration(pointSize: 18, weight: .medium, scale: .default)
         
@@ -53,7 +51,6 @@ class CustomTabBarController: UITabBarController {
              NSAttributedString.Key.foregroundColor: UIColor.mainColor()], for: .selected)
         
         configTabBar()
-        passDataToReport()
         tabBar.items![2].isEnabled = false
     }
     
@@ -76,12 +73,6 @@ class CustomTabBarController: UITabBarController {
         shadowLayer.path = shadowPath.cgPath
         
         tabBar.layer.insertSublayer(shadowLayer, at: 0)
-        
-        //        let vClear = UIView()
-        //        tabBar.addSubview(vClear)
-        //        vClear.frame = .init(x: 0, y: tabBar.bounds.minY, width: 60, height: 60)
-        //        vClear.center.x = tabBar.center.x
-        //        vClear.backgroundColor = .clear
         
         let vBigCircle = UIView()
         tabBar.addSubview(vBigCircle)
@@ -109,19 +100,17 @@ class CustomTabBarController: UITabBarController {
         btnAdd.addTarget(self, action: #selector(onAdd(_:)), for: .touchUpInside)
     }
     
-    func passDataToReport() {
-        controller2.transaction = controller1.transaction
-    }
-    
     @objc func onAdd(_ sender: UIButton) {
         let vc = AddTransactionVC()
+        let firstDayOfMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Date()))
+        let lastDayOfMonth = Calendar.current.date(from: DateComponents(year: Calendar.current.component(.year, from: Date()), month: Calendar.current.component(.month, from: Date())+1))
         
         vc.passData = {[weak self] transaction in
             guard let strongSelf = self, let transaction = transaction else { return }
             //            strongSelf.controller1.transaction.insert(transaction, at: 0)
             //            strongSelf.controller1.transaction.sort(by: { $1.date ?? Date() < $0.date ?? Date() })
             DBManager.shareInstance.addData(transaction)
-            strongSelf.controller1.transaction = DBManager.shareInstance.getData()
+            strongSelf.controller1.transaction = DBManager.shareInstance.getMonthData(firstDayOfMonth ?? Date(), lastDayOfMonth ?? Date())
             strongSelf.controller1.tableView.reloadData()
         }
         present(vc, animated: true)

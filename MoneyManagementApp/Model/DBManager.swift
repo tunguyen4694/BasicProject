@@ -28,6 +28,11 @@ class DBManager {
         return results
     }
     
+    func getMonthData(_ beginningOfMonth: Date, _ endOfMonth: Date) -> Results<Transaction> {
+        let results: Results<Transaction> = database.objects(Transaction.self).filter("date >= %@ AND date < %@", beginningOfMonth, endOfMonth).sorted(byKeyPath: "date", ascending: false)
+        return results
+    }
+    
     func updateObject(_ object: Transaction, _ newObject: Transaction) {
         try! database.write({
             object.category = newObject.category
