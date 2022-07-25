@@ -8,12 +8,12 @@
 import UIKit
 import RealmSwift
 import Charts
+import MonthYearPicker
 
 class ReportVC: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
-    var detail = [Report]()
     var transaction: Results<Transaction>?
     var categoryE: [String] = []
     var nameE: [String] = []
@@ -23,9 +23,19 @@ class ReportVC: UIViewController {
     var dict: [String: Int] = [:]
     var dictCategory: [String: Int] = [:]
     
+    var month = "This month"
+    var datePicker  = MonthYearPickerView(frame: .init(x: 0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300))
+    var toolBar: UIToolbar = {
+        let tool = UIToolbar(frame: CGRect(origin: CGPoint(x: 0, y: UIScreen.main.bounds.size.height - 300), size: CGSize(width: UIScreen.main.bounds.size.width, height: 44)))
+        tool.barStyle = .default
+        tool.sizeToFit()
+        
+        return tool
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         navigationController?.isNavigationBarHidden = true
         
         tableView.separatorStyle = .none
@@ -39,10 +49,25 @@ class ReportVC: UIViewController {
         if #available(iOS 15.0, *) {        // Xoá line phân cách và padding giữa section và cell
             tableView.sectionHeaderTopPadding = 0.0
         }
+        updateTransactionData(Date())
         getReportData()
     }
-
+    
+    func updateTransactionData(_ date: Date) {
+        let firstDayOfMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: date))
+        let lastDayOfMonth = Calendar.current.date(from: DateComponents(year: Calendar.current.component(.year, from: date), month: Calendar.current.component(.month, from: date)+1))
+        
+        transaction = DBManager.shareInstance.getMonthData(firstDayOfMonth ?? Date(), lastDayOfMonth ?? Date())
+        getReportData()
+    }
+    
     func getReportData() {
+        
+        categoryE = []
+        nameE = []
+        amountE = []
+        totalE = 0
+        totalI = 0
         
         var amountInt = 0
         for i in 0..<(transaction?.count ?? 0) {
@@ -51,11 +76,8 @@ class ReportVC: UIViewController {
                 nameE.append(transaction?[i].name ?? "")
                 amountE.append(amountInt)
                 categoryE.append(transaction?[i].category ?? "")
-                detail.append(Report(name: transaction?[i].name, amount: amountInt))
             }
         }
-        dict = convertToDict(name: nameE, amount: amountE)
-        dictCategory = convertToDict(name: categoryE, amount: amountE)
     }
     
     func convertToDict(name: [String], amount: [Int]) -> [String: Int] {
@@ -102,11 +124,15 @@ extension ReportVC: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "IncomeExpenseTBVC", for: indexPath) as! IncomeExpenseTBVC
             cell.selectionStyle = .none
             cell.stvContent.layer.borderWidth = 0
+            var expenseAmount = 0
+            var incomeAmount = 0
             for i in 0..<(transaction?.count ?? 0) {
                 if transaction?[i].stt == "-" {
-                    totalE += (ConvertHelper.share.numberFromCurrencyString(string: transaction?[i].amount ?? "").intValue)
+                    expenseAmount += (ConvertHelper.share.numberFromCurrencyString(string: transaction?[i].amount ?? "").intValue)
+                    totalE = expenseAmount
                 } else {
-                    totalI += (ConvertHelper.share.numberFromCurrencyString(string: transaction?[i].amount ?? "").intValue)
+                    incomeAmount += (ConvertHelper.share.numberFromCurrencyString(string: transaction?[i].amount ?? "").intValue)
+                    totalI = incomeAmount
                 }
             }
             cell.lblExpense.text = ConvertHelper.share.stringFromNumber(currency: totalE)
@@ -114,11 +140,11 @@ extension ReportVC: UITableViewDelegate, UITableViewDataSource {
             
             return cell
         case 2:
-//            let cell = UITableViewCell(style: .default, reuseIdentifier: "test")
-//            cell.textLabel?.text = "Charts will update"
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "ChartTBVC", for: indexPath)
+            //            let cell = UITableViewCell(style: .default, reuseIdentifier: "test")
+            //            cell.textLabel?.text = "Charts will update"
+            //            let cell = tableView.dequeueReusableCell(withIdentifier: "ChartTBVC", for: indexPath)
             let cell = tableView.dequeueReusableCell(withIdentifier: "PieChartTBVC", for: indexPath) as! PieChartTBVC
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "HorizontalChartTBVC", for: indexPath) as! HorizontalChartTBVC
+            //            let cell = tableView.dequeueReusableCell(withIdentifier: "HorizontalChartTBVC", for: indexPath) as! HorizontalChartTBVC
             cell.selectionStyle = .none
             cell.lblChartName.text = "Expense / Income"
             var entries = [PieChartDataEntry()]
@@ -138,7 +164,7 @@ extension ReportVC: UITableViewDelegate, UITableViewDataSource {
             data.setValueFormatter(DefaultValueFormatter(formatter: formatter))
             
             cell.chartBar.legend.enabled = false
-//            cell.chartBar.drawHoleEnabled = false
+            //            cell.chartBar.drawHoleEnabled = false
             
             return cell
         case 3:
@@ -147,6 +173,8 @@ extension ReportVC: UITableViewDelegate, UITableViewDataSource {
             cell.lblChartName.text = "Expenses"
             
             var entries = [PieChartDataEntry()]
+            
+            dict = convertToDict(name: nameE, amount: amountE)
             
             for (key, value) in dict {
                 entries.append(PieChartDataEntry(value: Double(value), label: key))
@@ -169,7 +197,7 @@ extension ReportVC: UITableViewDelegate, UITableViewDataSource {
             data.setValueTextColor(.black)
             
             cell.chartBar.legend.enabled = false
-//            cell.chartBar.drawHoleEnabled = false
+            //            cell.chartBar.drawHoleEnabled = false
             
             return cell
         default:
@@ -178,6 +206,8 @@ extension ReportVC: UITableViewDelegate, UITableViewDataSource {
             cell.lblChartName.text = "Caterogy"
             
             var entries = [PieChartDataEntry()]
+            
+            dictCategory = convertToDict(name: categoryE, amount: amountE)
             
             for (key, value) in dictCategory {
                 entries.append(PieChartDataEntry(value: Double(value), label: key))
@@ -196,6 +226,7 @@ extension ReportVC: UITableViewDelegate, UITableViewDataSource {
             data.setValueFormatter(DefaultValueFormatter(formatter: formatter))
             data.setValueFont(.regular(ofSize: 12))
             data.setValueTextColor(.black)
+            cell.chartBar.legend.enabled = false
             
             return cell
         }
@@ -210,5 +241,36 @@ extension ReportVC: UITableViewDelegate, UITableViewDataSource {
         default:
             return UITableView.automaticDimension
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            
+            datePicker.backgroundColor = .white
+            datePicker.addTarget(self, action: #selector(self.monthChanged(_:)), for: .valueChanged)
+            
+            toolBar.items = [UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.onDoneButtonClick))]
+            
+            view.addSubview(datePicker)
+            view.addSubview(toolBar)
+        }
+    }
+}
+
+extension ReportVC {
+    @objc func monthChanged(_ sender: MonthYearPickerView) {
+        if Calendar.current.dateComponents([.month, .year], from: sender.date) != Calendar.current.dateComponents([.month, .year], from: Date()) {
+            month = ConvertHelper.share.stringFromDate(date: sender.date, format: "MMM yyyy")
+            updateTransactionData(sender.date)
+        } else {
+            month = "This month"
+            updateTransactionData(Date())
+        }
+        UIView.transition(with: tableView, duration: 1.0, options: .transitionCrossDissolve, animations: {self.tableView.reloadData()}, completion: nil)
+    }
+    
+    @objc func onDoneButtonClick() {
+        toolBar.removeFromSuperview()
+        datePicker.removeFromSuperview()
     }
 }
