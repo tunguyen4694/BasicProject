@@ -112,6 +112,7 @@ class CustomTabBarController: UITabBarController {
             DBManager.shareInstance.addData(transaction)
             strongSelf.controller1.transaction = DBManager.shareInstance.getMonthData(firstDayOfMonth ?? Date(), lastDayOfMonth ?? Date())
             strongSelf.controller1.tableView.reloadData()
+            strongSelf.controller2.tableView.reloadData()
         }
         present(vc, animated: true)
         //        navigationController?.pushViewController(vc, animated: false)
