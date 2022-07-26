@@ -27,6 +27,7 @@ class PieChartTBVC: UITableViewCell {
 //        let data = PieChartData(dataSet: set)
 //        chartBar.data = data
 //
+        chartBar.setExtraOffsets(left: 30, top: 30, right: 30, bottom: 30)
         chartBar.animate(xAxisDuration: 1.4, easingOption: .easeOutBack)
 
     }
