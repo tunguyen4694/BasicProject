@@ -18,10 +18,22 @@ class ReportVC: UIViewController {
     var categoryE: [String] = []
     var nameE: [String] = []
     var amountE: [Int] = []
+    var nameI: [String] = []
+    var amountI: [Int] = []
     var totalE = 0
     var totalI = 0
-    var dict: [String: Int] = [:]
+    var dictExpenseDetail: [String: Int] = [:]
+    var dictIncomeDetail: [String: Int] = [:]
     var dictCategory: [String: Int] = [:]
+    
+    var categoryNameCell: [String] = []
+    var categoryAmountCell: [Int] = []
+    
+    var expenseDetailName: [String] = []
+    var expenseDetailAmount: [Int] = []
+    
+    var incomeDetailName: [String] = []
+    var incomeDetailAmount: [Int] = []
     
     var month = "This month"
     var datePicker  = MonthYearPickerView(frame: .init(x: 0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300))
@@ -43,13 +55,17 @@ class ReportVC: UIViewController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: "MonthTBVC", bundle: nil), forCellReuseIdentifier: "MonthTBVC")
         tableView.register(UINib(nibName: "IncomeExpenseTBVC", bundle: nil), forCellReuseIdentifier: "IncomeExpenseTBVC")
-        tableView.register(ChartTBVC.self, forCellReuseIdentifier: "ChartTBVC")
         tableView.register(UINib(nibName: "PieChartTBVC", bundle: nil), forCellReuseIdentifier: "PieChartTBVC")
-        tableView.register(UINib(nibName: "HorizontalChartTBVC", bundle: nil), forCellReuseIdentifier: "HorizontalChartTBVC")
+        tableView.register(UINib(nibName: "ReportTBVC", bundle: nil), forCellReuseIdentifier: "ReportTBVC")
         if #available(iOS 15.0, *) {        // Xoá line phân cách và padding giữa section và cell
             tableView.sectionHeaderTopPadding = 0.0
         }
         updateTransactionData(Date())
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.reloadData()
         getReportData()
     }
     
@@ -66,17 +82,41 @@ class ReportVC: UIViewController {
         categoryE = []
         nameE = []
         amountE = []
+        nameI = []
+        amountI = []
         totalE = 0
         totalI = 0
+        categoryNameCell = []
+        categoryAmountCell = []
         
-        var amountInt = 0
+        expenseDetailName = []
+        expenseDetailAmount = []
+        
+        incomeDetailName = []
+        incomeDetailAmount = []
+        
         for i in 0..<(transaction?.count ?? 0) {
             if transaction?[i].stt == "-" {
-                amountInt = ConvertHelper.share.numberFromCurrencyString(string: transaction?[i].amount ?? "").intValue
                 nameE.append(transaction?[i].name ?? "")
-                amountE.append(amountInt)
+                amountE.append(ConvertHelper.share.numberFromCurrencyString(string: transaction?[i].amount ?? "").intValue)
                 categoryE.append(transaction?[i].category ?? "")
+            } else {
+                nameI.append(transaction?[i].name ?? "")
+                amountI.append(ConvertHelper.share.numberFromCurrencyString(string: transaction?[i].amount ?? "").intValue)
             }
+        }
+        dictIncomeDetail = convertToDict(name: nameI, amount: amountI)
+        incomeDetailName = Array(dictIncomeDetail.keys)
+        incomeDetailAmount = Array(dictIncomeDetail.values)
+        dictExpenseDetail = convertToDict(name: nameE, amount: amountE)
+        for (key, value) in dictExpenseDetail {
+            expenseDetailName.append(key)
+            expenseDetailAmount.append(value)
+        }
+        dictCategory = convertToDict(name: categoryE, amount: amountE)
+        for (key, value) in dictCategory {
+            categoryNameCell.append(key)
+            categoryAmountCell.append(value)
         }
     }
     
@@ -92,7 +132,7 @@ class ReportVC: UIViewController {
 
 extension ReportVC: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return 9
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -106,8 +146,12 @@ extension ReportVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 2 {
-            return 1
+        if section == 4 {
+            return categoryNameCell.count
+        } else if section == 6 {
+            return expenseDetailName.count
+        } else if section == 8 {
+            return incomeDetailName.count
         } else {
             return 1
         }
@@ -140,11 +184,7 @@ extension ReportVC: UITableViewDelegate, UITableViewDataSource {
             
             return cell
         case 2:
-            //            let cell = UITableViewCell(style: .default, reuseIdentifier: "test")
-            //            cell.textLabel?.text = "Charts will update"
-            //            let cell = tableView.dequeueReusableCell(withIdentifier: "ChartTBVC", for: indexPath)
             let cell = tableView.dequeueReusableCell(withIdentifier: "PieChartTBVC", for: indexPath) as! PieChartTBVC
-            //            let cell = tableView.dequeueReusableCell(withIdentifier: "HorizontalChartTBVC", for: indexPath) as! HorizontalChartTBVC
             cell.selectionStyle = .none
             cell.lblChartName.text = "Expense / Income"
             var entries = [PieChartDataEntry()]
@@ -153,6 +193,7 @@ extension ReportVC: UITableViewDelegate, UITableViewDataSource {
             entries.append(PieChartDataEntry(value: Double(totalI), label: "Income"))
             let set = PieChartDataSet(entries: entries, label: "")
             set.colors = ChartColorTemplates.pastel()
+            set.sliceSpace = 2
             
             let data = PieChartData(dataSet: set)
             cell.chartBar.data = data
@@ -168,39 +209,6 @@ extension ReportVC: UITableViewDelegate, UITableViewDataSource {
             
             return cell
         case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PieChartTBVC", for: indexPath) as! PieChartTBVC
-            cell.selectionStyle = .none
-            cell.lblChartName.text = "Expenses"
-            
-            var entries = [PieChartDataEntry()]
-            
-            dict = convertToDict(name: nameE, amount: amountE)
-            
-            for (key, value) in dict {
-                entries.append(PieChartDataEntry(value: Double(value), label: key))
-            }
-            
-            let set = PieChartDataSet(entries: entries, label: "")
-            set.colors = ChartColorTemplates.pastel()
-            set.yValuePosition = .outsideSlice
-            set.xValuePosition = .outsideSlice
-            set.sliceSpace = 2
-            let data = PieChartData(dataSet: set)
-            cell.chartBar.data = data
-            
-            let formatter = NumberFormatter()
-            formatter.numberStyle = .decimal
-            formatter.locale = Locale(identifier: "vi_VN")
-            formatter.groupingSeparator = "."
-            data.setValueFormatter(DefaultValueFormatter(formatter: formatter))
-            data.setValueFont(.regular(ofSize: 12))
-            data.setValueTextColor(.black)
-            
-            cell.chartBar.legend.enabled = false
-            //            cell.chartBar.drawHoleEnabled = false
-            
-            return cell
-        default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PieChartTBVC", for: indexPath) as! PieChartTBVC
             cell.selectionStyle = .none
             cell.lblChartName.text = "Caterogy"
@@ -227,6 +235,97 @@ extension ReportVC: UITableViewDelegate, UITableViewDataSource {
             data.setValueFont(.regular(ofSize: 12))
             data.setValueTextColor(.black)
             cell.chartBar.legend.enabled = false
+            
+            return cell
+        case 4:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ReportTBVC", for: indexPath) as! ReportTBVC
+            cell.selectionStyle = .none
+            
+            cell.lblName.text = categoryNameCell[indexPath.row].prefix(1).uppercased() + categoryNameCell[indexPath.row].dropFirst()
+            cell.lblAmount.text = "-" + ConvertHelper.share.stringFromNumber(currency: categoryAmountCell[indexPath.row])
+            cell.lblAmount.textColor = .expenseColor()
+            
+            return cell
+        case 5:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PieChartTBVC", for: indexPath) as! PieChartTBVC
+            cell.selectionStyle = .none
+            cell.lblChartName.text = "Expenses"
+            
+            var entries = [PieChartDataEntry()]
+            
+            dictExpenseDetail = convertToDict(name: nameE, amount: amountE)
+            
+            for (key, value) in dictExpenseDetail {
+                entries.append(PieChartDataEntry(value: Double(value), label: key))
+            }
+            
+            let set = PieChartDataSet(entries: entries, label: "")
+            set.colors = ChartColorTemplates.pastel()
+            set.yValuePosition = .outsideSlice
+            set.xValuePosition = .outsideSlice
+            set.sliceSpace = 2
+            let data = PieChartData(dataSet: set)
+            cell.chartBar.data = data
+            
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            formatter.locale = Locale(identifier: "vi_VN")
+            formatter.groupingSeparator = "."
+            data.setValueFormatter(DefaultValueFormatter(formatter: formatter))
+            data.setValueFont(.regular(ofSize: 12))
+            data.setValueTextColor(.black)
+            
+            cell.chartBar.legend.enabled = false
+            //            cell.chartBar.drawHoleEnabled = false
+            
+            return cell
+        case 6:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ReportTBVC", for: indexPath) as! ReportTBVC
+            cell.selectionStyle = .none
+            
+            cell.lblName.text = expenseDetailName[indexPath.row]
+            cell.lblAmount.text = "-" + ConvertHelper.share.stringFromNumber(currency: expenseDetailAmount[indexPath.row])
+            cell.lblAmount.textColor = .expenseColor()
+            
+            return cell
+        case 7:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PieChartTBVC", for: indexPath) as! PieChartTBVC
+            cell.selectionStyle = .none
+            
+            cell.lblChartName.text = "Incomes"
+            
+            var entries = [PieChartDataEntry()]
+            
+            for (key, value) in dictIncomeDetail {
+                entries.append(PieChartDataEntry(value: Double(value), label: key))
+            }
+            
+            let set = PieChartDataSet(entries: entries, label: "")
+            set.colors = ChartColorTemplates.pastel()
+            set.yValuePosition = .outsideSlice
+            set.xValuePosition = .outsideSlice
+            set.sliceSpace = 2
+            let data = PieChartData(dataSet: set)
+            cell.chartBar.data = data
+            
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            formatter.locale = Locale(identifier: "vi_VN")
+            formatter.groupingSeparator = "."
+            data.setValueFormatter(DefaultValueFormatter(formatter: formatter))
+            data.setValueFont(.regular(ofSize: 12))
+            data.setValueTextColor(.black)
+            
+            cell.chartBar.legend.enabled = false
+            
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ReportTBVC", for: indexPath) as! ReportTBVC
+            cell.selectionStyle = .none
+            
+            cell.lblName.text = incomeDetailName[indexPath.row]
+            cell.lblAmount.text = "+" + ConvertHelper.share.stringFromNumber(currency: incomeDetailAmount[indexPath.row])
+            cell.lblAmount.textColor = .incomeColor()
             
             return cell
         }

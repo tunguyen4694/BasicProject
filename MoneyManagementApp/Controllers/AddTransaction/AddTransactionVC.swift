@@ -61,6 +61,7 @@ class AddTransactionVC: UIViewController {
         categoryLeadingConstraint.constant = 8
         imgStr = transaction.image ?? ""
         imgIcon.image = UIImage(systemName: transaction.image ?? "")
+        category = transaction.category ?? ""
         tfCategory.text = transaction.name
         tfAmount.text = transaction.amount
         tfDate.text = ConvertHelper.share.stringFromDate(date: transaction.date ?? Date(), format: "dd MMM yyyy")
