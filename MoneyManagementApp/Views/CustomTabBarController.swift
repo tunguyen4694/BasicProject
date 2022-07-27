@@ -26,7 +26,7 @@ class CustomTabBarController: UITabBarController {
         controller1.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house.fill", withConfiguration: iconConfig), tag: 1)
         let nav1 = UINavigationController(rootViewController: controller1)
         
-        controller2.tabBarItem = UITabBarItem(title: "Report", image: UIImage(systemName: "chart.bar.fill", withConfiguration: iconConfig), tag: 2)
+        controller2.tabBarItem = UITabBarItem(title: "Report", image: UIImage(systemName: "chart.pie.fill", withConfiguration: iconConfig), tag: 2)
         let nav2 = UINavigationController(rootViewController: controller2)
         
         let controller3 = AddTransactionVC()
@@ -34,7 +34,7 @@ class CustomTabBarController: UITabBarController {
         nav3.title = ""
         
         let controller4 = WalletVC()
-        controller4.tabBarItem = UITabBarItem(title: "Wallet", image: UIImage(systemName: "creditcard.fill", withConfiguration: iconConfig), tag: 4)
+        controller4.tabBarItem = UITabBarItem(title: "Analytics", image: UIImage(systemName: "chart.bar.fill", withConfiguration: iconConfig), tag: 4)
         let nav4 = UINavigationController(rootViewController: controller4)
         
         let controller5 = AccountVC()
@@ -112,7 +112,6 @@ class CustomTabBarController: UITabBarController {
             DBManager.shareInstance.addData(transaction)
             strongSelf.controller1.transaction = DBManager.shareInstance.getMonthData(firstDayOfMonth ?? Date(), lastDayOfMonth ?? Date())
             strongSelf.controller1.tableView.reloadData()
-            strongSelf.controller2.tableView.reloadData()
         }
         present(vc, animated: true)
         //        navigationController?.pushViewController(vc, animated: false)
