@@ -139,10 +139,16 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         } else if section == 0 {
             lblTitleHeader.text = "This month"
             btnHeader.setTitle("View report", for: .normal)
+            btnHeader.addTarget(self, action: #selector(onReport(_:)), for: .touchUpInside)
             return headerView
         } else {
             return nil
         }
+    }
+    
+    @objc func onReport(_ sender: UIButton) {
+        let vc = ReportVC()
+        present(vc, animated: true)
     }
     
     @objc func onHistory(_ sender: UIButton) {
