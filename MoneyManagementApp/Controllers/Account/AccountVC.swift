@@ -66,7 +66,7 @@ extension AccountVC: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AccountTBVC", for: indexPath) as! AccountTBVC
             cell.lblElement.text = arrElement[indexPath.row]
             cell.separatorInset = .zero
-            cell.selectionStyle = .none
+            
             return cell
         } else {
             let cell = UITableViewCell(style: .default, reuseIdentifier: "logout")
@@ -74,7 +74,7 @@ extension AccountVC: UITableViewDelegate, UITableViewDataSource {
             cell.textLabel?.font = .semibold(ofSize: 16)
             cell.textLabel?.textAlignment = .center
             cell.separatorInset = .zero
-            cell.selectionStyle = .none
+            
             return cell
         }
     }

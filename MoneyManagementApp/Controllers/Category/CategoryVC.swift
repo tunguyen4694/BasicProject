@@ -91,7 +91,6 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryTBVC", for: indexPath) as! CategoryTBVC
-        cell.selectionStyle = .none
         
         let name = datas[indexPath.section].name[indexPath.row]
         let image = UIImage(systemName: datas[indexPath.section].image[indexPath.row])

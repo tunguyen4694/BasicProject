@@ -15,6 +15,7 @@ class CategoryTBVC: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
         icon.tintColor = .white
         vIcon.layer.cornerRadius = 20
         vIcon.backgroundColor = .iconColor()

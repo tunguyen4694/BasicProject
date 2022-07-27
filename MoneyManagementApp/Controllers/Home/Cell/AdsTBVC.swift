@@ -14,6 +14,7 @@ class AdsTBVC: UITableViewCell {
     var arrAds = ["ads1", "ads2"]
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
         setupCollectionView()
     }
     

@@ -17,6 +17,7 @@ class TransactionTBVC: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
         vIcon.layer.cornerRadius = 20
         vIcon.backgroundColor = .iconColor()
         imgIcon.tintColor = .white

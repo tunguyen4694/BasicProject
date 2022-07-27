@@ -16,6 +16,8 @@ class IncomeExpenseTBVC: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.selectionStyle = .none
+        
         stvContent.clipsToBounds = true
         stvContent.layer.cornerRadius = 10
         stvContent.layer.borderWidth = 1
