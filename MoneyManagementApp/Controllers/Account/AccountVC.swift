@@ -21,15 +21,6 @@ class AccountVC: UIViewController {
     
     func setupUI() {
         imgAvatar.tintColor = .mainColor()
-        if let user = Auth.auth().currentUser {
-            guard let urlImage = user.photoURL else { return }
-            do {
-                let imgData = try Data(contentsOf: urlImage)
-                imgAvatar.image = UIImage(data: imgData)
-            } catch {
-                print("Error when get image: \(error.localizedDescription)")
-            }
-        }
         
         tableView.backgroundColor = .borderColor()
         if #available(iOS 15.0, *) {        // Xoá line phân cách và padding giữa section và cell
@@ -39,6 +30,16 @@ class AccountVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "AccountTBVC", bundle: nil), forCellReuseIdentifier: "AccountTBVC")
+        
+        if let user = Auth.auth().currentUser {
+            guard let urlImage = user.photoURL else { return }
+            do {
+                let imgData = try Data(contentsOf: urlImage)
+                imgAvatar.image = UIImage(data: imgData)
+            } catch {
+                print("Error when get image: \(error.localizedDescription)")
+            }
+        }
     }
 }
 
