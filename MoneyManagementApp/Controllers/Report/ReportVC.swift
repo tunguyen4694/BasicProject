@@ -61,6 +61,8 @@ class ReportVC: UIViewController {
             tableView.sectionHeaderTopPadding = 0.0
         }
         updateTransactionData(Date())
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: NSNotification.Name(rawValue: "loadData"), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -69,65 +71,9 @@ class ReportVC: UIViewController {
         getReportData()
     }
     
-    func updateTransactionData(_ date: Date) {
-        let firstDayOfMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: date))
-        let lastDayOfMonth = Calendar.current.date(from: DateComponents(year: Calendar.current.component(.year, from: date), month: Calendar.current.component(.month, from: date)+1))
-        
-        transaction = DBManager.shareInstance.getMonthData(firstDayOfMonth ?? Date(), lastDayOfMonth ?? Date())
-        getReportData()
-    }
-    
-    func getReportData() {
-        
-        categoryE = []
-        nameE = []
-        amountE = []
-        nameI = []
-        amountI = []
-        totalE = 0
-        totalI = 0
-        categoryNameCell = []
-        categoryAmountCell = []
-        
-        expenseDetailName = []
-        expenseDetailAmount = []
-        
-        incomeDetailName = []
-        incomeDetailAmount = []
-        
-        for i in 0..<(transaction?.count ?? 0) {
-            if transaction?[i].stt == "-" {
-                nameE.append(transaction?[i].name ?? "")
-                amountE.append(ConvertHelper.share.numberFromCurrencyString(string: transaction?[i].amount ?? "").intValue)
-                categoryE.append(transaction?[i].category ?? "")
-            } else {
-                nameI.append(transaction?[i].name ?? "")
-                amountI.append(ConvertHelper.share.numberFromCurrencyString(string: transaction?[i].amount ?? "").intValue)
-            }
-        }
-        dictIncomeDetail = convertToDict(name: nameI, amount: amountI)
-        incomeDetailName = Array(dictIncomeDetail.keys)
-        incomeDetailAmount = Array(dictIncomeDetail.values)
-        dictExpenseDetail = convertToDict(name: nameE, amount: amountE)
-        for (key, value) in dictExpenseDetail {
-            expenseDetailName.append(key)
-            expenseDetailAmount.append(value)
-        }
-        dictCategory = convertToDict(name: categoryE, amount: amountE)
-        for (key, value) in dictCategory {
-            categoryNameCell.append(key)
-            categoryAmountCell.append(value)
-        }
-    }
-    
-    func convertToDict(name: [String], amount: [Int]) -> [String: Int] {
-        var result: [String: Int] = [:]
-        for i in 0..<name.count {
-            let total = result[name[i]] ?? 0
-            result[name[i]] = total + amount[i]
-        }
-        return result
-    }
+    @objc func refresh() {
+       self.tableView.reloadData()
+   }
 }
 
 extension ReportVC: UITableViewDelegate, UITableViewDataSource {
@@ -161,12 +107,11 @@ extension ReportVC: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "MonthTBVC", for: indexPath) as! MonthTBVC
-            cell.selectionStyle = .none
-            
+            cell.lblMonth.text = month
             return cell
+            
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "IncomeExpenseTBVC", for: indexPath) as! IncomeExpenseTBVC
-            cell.selectionStyle = .none
             cell.stvContent.layer.borderWidth = 0
             var expenseAmount = 0
             var incomeAmount = 0
@@ -181,152 +126,53 @@ extension ReportVC: UITableViewDelegate, UITableViewDataSource {
             }
             cell.lblExpense.text = ConvertHelper.share.stringFromNumber(currency: totalE)
             cell.lblIncome.text = ConvertHelper.share.stringFromNumber(currency: totalI)
-            
             return cell
+            
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PieChartTBVC", for: indexPath) as! PieChartTBVC
-            cell.selectionStyle = .none
             cell.lblChartName.text = "Expense / Income"
-            var entries = [PieChartDataEntry()]
-            
-            entries.append(PieChartDataEntry(value: Double(totalE), label: "Expense"))
-            entries.append(PieChartDataEntry(value: Double(totalI), label: "Income"))
-            let set = PieChartDataSet(entries: entries, label: "")
-            set.colors = ChartColorTemplates.pastel()
-            set.sliceSpace = 2
-            
-            let data = PieChartData(dataSet: set)
-            cell.chartBar.data = data
-            
-            let formatter = NumberFormatter()
-            formatter.numberStyle = .decimal
-            formatter.locale = Locale(identifier: "vi_VN")
-            formatter.groupingSeparator = "."
-            data.setValueFormatter(DefaultValueFormatter(formatter: formatter))
-            
-            cell.chartBar.legend.enabled = false
-            //            cell.chartBar.drawHoleEnabled = false
-            
+            cell.setPieChart(Double(totalE), Double(totalI), chartView: cell.chartBar)
             return cell
+            
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PieChartTBVC", for: indexPath) as! PieChartTBVC
-            cell.selectionStyle = .none
             cell.lblChartName.text = "Caterogy"
-            
-            var entries = [PieChartDataEntry()]
-            
-            dictCategory = convertToDict(name: categoryE, amount: amountE)
-            
-            for (key, value) in dictCategory {
-                entries.append(PieChartDataEntry(value: Double(value), label: key))
-            }
-            
-            let set = PieChartDataSet(entries: entries, label: "")
-            set.colors = ChartColorTemplates.pastel()
-            set.sliceSpace = 2
-            let data = PieChartData(dataSet: set)
-            cell.chartBar.data = data
-            
-            let formatter = NumberFormatter()
-            formatter.numberStyle = .decimal
-            formatter.locale = Locale(identifier: "vi_VN")
-            formatter.groupingSeparator = "."
-            data.setValueFormatter(DefaultValueFormatter(formatter: formatter))
-            data.setValueFont(.regular(ofSize: 12))
-            data.setValueTextColor(.black)
-            cell.chartBar.legend.enabled = false
-            
+            dictCategory = ConvertHelper.share.convertToDict(name: categoryE, amount: amountE)
+            cell.setCategoryPieChart(dictCategory, chartView: cell.chartBar)
             return cell
+            
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReportTBVC", for: indexPath) as! ReportTBVC
-            cell.selectionStyle = .none
-            
             cell.lblName.text = categoryNameCell[indexPath.row].prefix(1).uppercased() + categoryNameCell[indexPath.row].dropFirst()
             cell.lblAmount.text = "-" + ConvertHelper.share.stringFromNumber(currency: categoryAmountCell[indexPath.row])
             cell.lblAmount.textColor = .expenseColor()
-            
             return cell
+            
         case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PieChartTBVC", for: indexPath) as! PieChartTBVC
-            cell.selectionStyle = .none
             cell.lblChartName.text = "Expenses"
-            
-            var entries = [PieChartDataEntry()]
-            
-            dictExpenseDetail = convertToDict(name: nameE, amount: amountE)
-            
-            for (key, value) in dictExpenseDetail {
-                entries.append(PieChartDataEntry(value: Double(value), label: key))
-            }
-            
-            let set = PieChartDataSet(entries: entries, label: "")
-            set.colors = ChartColorTemplates.pastel()
-            set.yValuePosition = .outsideSlice
-            set.xValuePosition = .outsideSlice
-            set.sliceSpace = 2
-            let data = PieChartData(dataSet: set)
-            cell.chartBar.data = data
-            
-            let formatter = NumberFormatter()
-            formatter.numberStyle = .decimal
-            formatter.locale = Locale(identifier: "vi_VN")
-            formatter.groupingSeparator = "."
-            data.setValueFormatter(DefaultValueFormatter(formatter: formatter))
-            data.setValueFont(.regular(ofSize: 12))
-            data.setValueTextColor(.black)
-            
-            cell.chartBar.legend.enabled = false
-            //            cell.chartBar.drawHoleEnabled = false
-            
+            dictExpenseDetail = ConvertHelper.share.convertToDict(name: nameE, amount: amountE)
+            cell.setCategoryPieChart(dictExpenseDetail, chartView: cell.chartBar)
             return cell
+            
         case 6:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReportTBVC", for: indexPath) as! ReportTBVC
-            cell.selectionStyle = .none
-            
             cell.lblName.text = expenseDetailName[indexPath.row]
             cell.lblAmount.text = "-" + ConvertHelper.share.stringFromNumber(currency: expenseDetailAmount[indexPath.row])
             cell.lblAmount.textColor = .expenseColor()
-            
             return cell
+            
         case 7:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PieChartTBVC", for: indexPath) as! PieChartTBVC
-            cell.selectionStyle = .none
-            
             cell.lblChartName.text = "Incomes"
-            
-            var entries = [PieChartDataEntry()]
-            
-            for (key, value) in dictIncomeDetail {
-                entries.append(PieChartDataEntry(value: Double(value), label: key))
-            }
-            
-            let set = PieChartDataSet(entries: entries, label: "")
-            set.colors = ChartColorTemplates.pastel()
-            set.yValuePosition = .outsideSlice
-            set.xValuePosition = .outsideSlice
-            set.sliceSpace = 2
-            let data = PieChartData(dataSet: set)
-            cell.chartBar.data = data
-            
-            let formatter = NumberFormatter()
-            formatter.numberStyle = .decimal
-            formatter.locale = Locale(identifier: "vi_VN")
-            formatter.groupingSeparator = "."
-            data.setValueFormatter(DefaultValueFormatter(formatter: formatter))
-            data.setValueFont(.regular(ofSize: 12))
-            data.setValueTextColor(.black)
-            
-            cell.chartBar.legend.enabled = false
-            
+            cell.setCategoryPieChart(dictIncomeDetail, chartView: cell.chartBar)
             return cell
+            
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReportTBVC", for: indexPath) as! ReportTBVC
-            cell.selectionStyle = .none
-            
             cell.lblName.text = incomeDetailName[indexPath.row]
             cell.lblAmount.text = "+" + ConvertHelper.share.stringFromNumber(currency: incomeDetailAmount[indexPath.row])
             cell.lblAmount.textColor = .incomeColor()
-            
             return cell
         }
     }
@@ -335,8 +181,6 @@ extension ReportVC: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.section {
         case 1:
             return 68
-        case 2:
-            return UITableView.automaticDimension
         default:
             return UITableView.automaticDimension
         }
@@ -371,5 +215,55 @@ extension ReportVC {
     @objc func onDoneButtonClick() {
         toolBar.removeFromSuperview()
         datePicker.removeFromSuperview()
+    }
+    
+    func updateTransactionData(_ date: Date) {
+        let firstDayOfMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: date))
+        let lastDayOfMonth = Calendar.current.date(from: DateComponents(year: Calendar.current.component(.year, from: date), month: Calendar.current.component(.month, from: date)+1))
+        
+        transaction = DBManager.shareInstance.getMonthData(firstDayOfMonth ?? Date(), lastDayOfMonth ?? Date())
+        getReportData()
+    }
+    
+    func getReportData() {
+        categoryE = []
+        nameE = []
+        amountE = []
+        nameI = []
+        amountI = []
+        totalE = 0
+        totalI = 0
+        categoryNameCell = []
+        categoryAmountCell = []
+        
+        expenseDetailName = []
+        expenseDetailAmount = []
+        
+        incomeDetailName = []
+        incomeDetailAmount = []
+        
+        for i in 0..<(transaction?.count ?? 0) {
+            if transaction?[i].stt == "-" {
+                nameE.append(transaction?[i].name ?? "")
+                amountE.append(ConvertHelper.share.numberFromCurrencyString(string: transaction?[i].amount ?? "").intValue)
+                categoryE.append(transaction?[i].category ?? "")
+            } else {
+                nameI.append(transaction?[i].name ?? "")
+                amountI.append(ConvertHelper.share.numberFromCurrencyString(string: transaction?[i].amount ?? "").intValue)
+            }
+        }
+        dictIncomeDetail = ConvertHelper.share.convertToDict(name: nameI, amount: amountI)
+        incomeDetailName = Array(dictIncomeDetail.keys)
+        incomeDetailAmount = Array(dictIncomeDetail.values)
+        dictExpenseDetail = ConvertHelper.share.convertToDict(name: nameE, amount: amountE)
+        for (key, value) in dictExpenseDetail {
+            expenseDetailName.append(key)
+            expenseDetailAmount.append(value)
+        }
+        dictCategory = ConvertHelper.share.convertToDict(name: categoryE, amount: amountE)
+        for (key, value) in dictCategory {
+            categoryNameCell.append(key)
+            categoryAmountCell.append(value)
+        }
     }
 }

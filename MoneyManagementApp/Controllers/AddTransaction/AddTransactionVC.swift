@@ -121,6 +121,7 @@ class AddTransactionVC: UIViewController {
                 transaction = Transaction(category: category, image: imgStr, name: tfCategory.text, date: date, amount: tfAmount.text, stt: "+")
 //                transaction = Transaction(image: imgStr, name: tfCategory.text, date: date, amount: tfAmount.text, stt: "+")
             }
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadData"), object: nil)
             passData?(transaction)
             dismiss(animated: true)
             //        navigationController?.popViewController(animated: true)
