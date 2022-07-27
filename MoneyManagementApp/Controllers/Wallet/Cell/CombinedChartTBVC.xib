@@ -11,21 +11,21 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="344" id="KGk-i7-Jjw" customClass="CombinedChartTBVC" customModule="MoneyManagementApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="344"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="371" id="KGk-i7-Jjw" customClass="CombinedChartTBVC" customModule="MoneyManagementApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="371"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="344"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="371"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Combined Chart" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xoc-al-ppj">
-                        <rect key="frame" x="16" y="8" width="288" height="24"/>
+                        <rect key="frame" x="16" y="8" width="288" height="19"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sbn-4F-QGo" customClass="CombinedChartView" customModule="Charts">
-                        <rect key="frame" x="16" y="48" width="288" height="288"/>
+                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sbn-4F-QGo" customClass="CombinedChartView" customModule="Charts">
+                        <rect key="frame" x="0.0" y="43" width="320" height="320"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="sbn-4F-QGo" secondAttribute="height" id="w7W-W0-5fR"/>
@@ -37,9 +37,9 @@
                     <constraint firstItem="sbn-4F-QGo" firstAttribute="top" secondItem="Xoc-al-ppj" secondAttribute="bottom" constant="16" id="H1d-I1-RPa"/>
                     <constraint firstItem="Xoc-al-ppj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="RyI-Bn-V86"/>
                     <constraint firstAttribute="bottom" secondItem="sbn-4F-QGo" secondAttribute="bottom" constant="8" id="Wbn-Qp-Chx"/>
-                    <constraint firstItem="sbn-4F-QGo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Z6j-7Y-7s2"/>
+                    <constraint firstItem="sbn-4F-QGo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Z6j-7Y-7s2"/>
                     <constraint firstAttribute="trailing" secondItem="Xoc-al-ppj" secondAttribute="trailing" constant="16" id="cQH-Y1-wNn"/>
-                    <constraint firstAttribute="trailing" secondItem="sbn-4F-QGo" secondAttribute="trailing" constant="16" id="jlq-Tz-Zha"/>
+                    <constraint firstAttribute="trailing" secondItem="sbn-4F-QGo" secondAttribute="trailing" id="jlq-Tz-Zha"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -47,7 +47,7 @@
                 <outlet property="chartBar" destination="sbn-4F-QGo" id="iLK-IF-EC0"/>
                 <outlet property="lblChartName" destination="Xoc-al-ppj" id="Diu-fI-trZ"/>
             </connections>
-            <point key="canvasLocation" x="131.8840579710145" y="192.85714285714286"/>
+            <point key="canvasLocation" x="131.8840579710145" y="201.89732142857142"/>
         </tableViewCell>
     </objects>
     <resources>
