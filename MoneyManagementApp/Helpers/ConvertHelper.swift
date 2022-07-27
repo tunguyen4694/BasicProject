@@ -47,12 +47,13 @@ class ConvertHelper {
         return date
     }
     
-//     Convert NSNumber Array to Int Array
-    func totalTransactionArr(arr: [NSNumber]) -> Int {
-        let arrNSSet = NSSet(array: arr)
-        let arrMap = arrNSSet.map { $0 as! NSNumber}
-        let newArr = arrMap.map {Int(truncating: $0)}
-        let total = newArr.reduce(0, +)
-        return total
+    // Convert 2 arrays to dictionary
+    func convertToDict(name: [String], amount: [Int]) -> [String: Int] {
+        var result: [String: Int] = [:]
+        for i in 0..<name.count {
+            let total = result[name[i]] ?? 0
+            result[name[i]] = total + amount[i]
+        }
+        return result
     }
 }
