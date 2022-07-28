@@ -7,16 +7,8 @@ Thống kê chi tiết giúp người dùng biết được nguồn tiền ra v�
 
 ## Ảnh chụp màn hình
 
-|<img src="MoneyManagementApp/Resource/Image/login.png" alt="Login" width="200"/> | <img src="MoneyManagementApp/Resource/Image/home.png" alt="Home" width="200"/> | <img src="MoneyManagementApp/Resource/Image/add.png" alt="Add" width="200"/> | <img src="MoneyManagementApp/Resource/Image/category.png" alt="Category" width="200"/>|
-|<img src="MoneyManagementApp/Resource/Image/history.png" alt="History" width="200"/> | <img src="MoneyManagementApp/Resource/Image/month.png" alt="Month Report" width="200"/> | <img src="MoneyManagementApp/Resource/Image/year.png" alt="Year Report" width="200"/> | <img src="MoneyManagementApp/Resource/Image/setting.png" alt="Setting" width="200"/>|
-
-<!--![Login](MoneyManagementApp/Resource/Image/login.png)-->
-<!--![Home](MoneyManagementApp/Resource/Image/home.png)-->
-<!--![Add](MoneyManagementApp/Resource/Image/add.png)-->
-<!--![Category](MoneyManagementApp/Resource/Image/category.png)-->
-<!--![Month Report](MoneyManagementApp/Resource/Image/month.png)-->
-<!--![Year Report](MoneyManagementApp/Resource/Image/year.png)-->
-<!--![Setting](MoneyManagementApp/Resource/Image/setting.png)-->
+<kbd><img src="MoneyManagementApp/Resource/Image/login.png" alt="Login" width="200"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Image/home.png" alt="Home" width="200"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Image/add.png" alt="Add" width="200"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Image/category.png" alt="Category" width="200"/></kbd>
+|<kbd><img src="MoneyManagementApp/Resource/Image/history.png" alt="History" width="200"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Image/month.png" alt="Month Report" width="200"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Image/year.png" alt="Year Report" width="200"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Image/setting.png" alt="Setting" width="200"/></kbd>
 
 ## Chức năng chính
 - Tạo và đăng nhập tài khoản
