@@ -38,6 +38,15 @@
 		DA7CD0D3288F7CF00098FDB0 /* ReportTBVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7CD0D1288F7CF00098FDB0 /* ReportTBVC.xib */; };
 		DA7CD0DA288FE03C0098FDB0 /* CombinedChartTBVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7CD0D8288FE03C0098FDB0 /* CombinedChartTBVC.swift */; };
 		DA7CD0DB288FE03C0098FDB0 /* CombinedChartTBVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA7CD0D9288FE03C0098FDB0 /* CombinedChartTBVC.xib */; };
+		DA7CD0DF289266910098FDB0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = DA7CD0DE289266910098FDB0 /* README.md */; };
+		DA7CD0E8289277AD0098FDB0 /* category.png in Resources */ = {isa = PBXBuildFile; fileRef = DA7CD0E0289277AA0098FDB0 /* category.png */; };
+		DA7CD0E9289277AD0098FDB0 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = DA7CD0E1289277AA0098FDB0 /* home.png */; };
+		DA7CD0EA289277AD0098FDB0 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = DA7CD0E2289277AB0098FDB0 /* add.png */; };
+		DA7CD0EB289277AD0098FDB0 /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = DA7CD0E3289277AB0098FDB0 /* setting.png */; };
+		DA7CD0EC289277AD0098FDB0 /* year.png in Resources */ = {isa = PBXBuildFile; fileRef = DA7CD0E4289277AC0098FDB0 /* year.png */; };
+		DA7CD0ED289277AD0098FDB0 /* history.png in Resources */ = {isa = PBXBuildFile; fileRef = DA7CD0E5289277AC0098FDB0 /* history.png */; };
+		DA7CD0EE289277AD0098FDB0 /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = DA7CD0E6289277AC0098FDB0 /* login.png */; };
+		DA7CD0EF289277AD0098FDB0 /* month.png in Resources */ = {isa = PBXBuildFile; fileRef = DA7CD0E7289277AD0098FDB0 /* month.png */; };
 		DA98AA72287D527000434125 /* ReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98AA70287D527000434125 /* ReportVC.swift */; };
 		DA98AA73287D527000434125 /* ReportVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA98AA71287D527000434125 /* ReportVC.xib */; };
 		DA98AA76287D52C600434125 /* AddTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98AA74287D52C600434125 /* AddTransactionVC.swift */; };
@@ -101,6 +110,15 @@
 		DA7CD0D1288F7CF00098FDB0 /* ReportTBVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportTBVC.xib; sourceTree = "<group>"; };
 		DA7CD0D8288FE03C0098FDB0 /* CombinedChartTBVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinedChartTBVC.swift; sourceTree = "<group>"; };
 		DA7CD0D9288FE03C0098FDB0 /* CombinedChartTBVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CombinedChartTBVC.xib; sourceTree = "<group>"; };
+		DA7CD0DE289266910098FDB0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		DA7CD0E0289277AA0098FDB0 /* category.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = category.png; sourceTree = "<group>"; };
+		DA7CD0E1289277AA0098FDB0 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
+		DA7CD0E2289277AB0098FDB0 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
+		DA7CD0E3289277AB0098FDB0 /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
+		DA7CD0E4289277AC0098FDB0 /* year.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = year.png; sourceTree = "<group>"; };
+		DA7CD0E5289277AC0098FDB0 /* history.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = history.png; sourceTree = "<group>"; };
+		DA7CD0E6289277AC0098FDB0 /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login.png; sourceTree = "<group>"; };
+		DA7CD0E7289277AD0098FDB0 /* month.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = month.png; sourceTree = "<group>"; };
 		DA98AA70287D527000434125 /* ReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportVC.swift; sourceTree = "<group>"; };
 		DA98AA71287D527000434125 /* ReportVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportVC.xib; sourceTree = "<group>"; };
 		DA98AA74287D52C600434125 /* AddTransactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionVC.swift; sourceTree = "<group>"; };
@@ -153,6 +171,7 @@
 		A56D1CA028770D0B008A508A = {
 			isa = PBXGroup;
 			children = (
+				DA7CD0DE289266910098FDB0 /* README.md */,
 				DAF14ADB2887B04300A8C09A /* CategoryJSON.json */,
 				A56D1CAB28770D0B008A508A /* MoneyManagementApp */,
 				A56D1CAA28770D0B008A508A /* Products */,
@@ -410,6 +429,14 @@
 		DA98AA9A287E799A00434125 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				DA7CD0E6289277AC0098FDB0 /* login.png */,
+				DA7CD0E1289277AA0098FDB0 /* home.png */,
+				DA7CD0E2289277AB0098FDB0 /* add.png */,
+				DA7CD0E0289277AA0098FDB0 /* category.png */,
+				DA7CD0E5289277AC0098FDB0 /* history.png */,
+				DA7CD0E7289277AD0098FDB0 /* month.png */,
+				DA7CD0E4289277AC0098FDB0 /* year.png */,
+				DA7CD0E3289277AB0098FDB0 /* setting.png */,
 				DA98AA9B287E7A2A00434125 /* ads1.png */,
 				DA98AA9C287E7A2B00434125 /* ads2.png */,
 			);
@@ -480,23 +507,32 @@
 				A56D1CD62879F1FA008A508A /* LoginVC.xib in Resources */,
 				A56D1CDE287AD360008A508A /* HomeVC.xib in Resources */,
 				DA7BB07A28851E720068F257 /* MonthTBVC.xib in Resources */,
+				DA7CD0E8289277AD0098FDB0 /* category.png in Resources */,
+				DA7CD0DF289266910098FDB0 /* README.md in Resources */,
 				DA98AA89287D773700434125 /* AccountTBVC.xib in Resources */,
+				DA7CD0EC289277AD0098FDB0 /* year.png in Resources */,
 				DA7CD0DB288FE03C0098FDB0 /* CombinedChartTBVC.xib in Resources */,
+				DA7CD0EB289277AD0098FDB0 /* setting.png in Resources */,
 				DA7BB06B287FF42E0068F257 /* CategoryTBVC.xib in Resources */,
 				DA98AA9D287E7A2B00434125 /* ads1.png in Resources */,
 				DA98AAA6287E809000434125 /* TransactionTBVC.xib in Resources */,
 				DA98AA98287E710C00434125 /* AdsCVC.xib in Resources */,
 				DA98AA7F287D52F800434125 /* AccountVC.xib in Resources */,
 				A56D1CBC28770D0C008A508A /* LaunchScreen.storyboard in Resources */,
+				DA7CD0ED289277AD0098FDB0 /* history.png in Resources */,
 				DA98AAA2287E7E3F00434125 /* IncomeExpenseTBVC.xib in Resources */,
 				DAF14ADC2887B04300A8C09A /* CategoryJSON.json in Resources */,
+				DA7CD0E9289277AD0098FDB0 /* home.png in Resources */,
 				DA7CD0D3288F7CF00098FDB0 /* ReportTBVC.xib in Resources */,
 				DA98AA73287D527000434125 /* ReportVC.xib in Resources */,
+				DA7CD0EF289277AD0098FDB0 /* month.png in Resources */,
 				DA98AA7B287D52DC00434125 /* WalletVC.xib in Resources */,
+				DA7CD0EA289277AD0098FDB0 /* add.png in Resources */,
 				DA98AA77287D52C600434125 /* AddTransactionVC.xib in Resources */,
 				DA98AA9E287E7A2B00434125 /* ads2.png in Resources */,
 				DA98AAB7287FF38700434125 /* CategoryVC.xib in Resources */,
 				DA98AA94287E707000434125 /* AdsTBVC.xib in Resources */,
+				DA7CD0EE289277AD0098FDB0 /* login.png in Resources */,
 				DA7BB0742884FC380068F257 /* HistoryVC.xib in Resources */,
 				A56D1CB928770D0C008A508A /* Assets.xcassets in Resources */,
 				DA7CD0C8288A45CC0098FDB0 /* PieChartTBVC.xib in Resources */,
