@@ -296,6 +296,7 @@ extension WalletVC {
             expenseMonthArr.append(expenseAmount)
             incomeMonthArr.append(incomeAmount)
         }
+        tableView.reloadData()
     }
     
     func addDataToArray() {
@@ -330,6 +331,8 @@ extension WalletVC {
         dictIncomeDetail = ConvertHelper.share.convertToDict(name: nameI, amount: amountI)
         incomeDetailName = Array(dictIncomeDetail.keys)
         incomeDetailAmount = Array(dictIncomeDetail.values)
+        
+        tableView.reloadData()
     }
 }
 

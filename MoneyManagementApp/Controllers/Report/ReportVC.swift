@@ -67,7 +67,6 @@ class ReportVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        tableView.reloadData()
         getReportData()
     }
     
@@ -265,5 +264,6 @@ extension ReportVC {
             categoryNameCell.append(key)
             categoryAmountCell.append(value)
         }
+        tableView.reloadData()
     }
 }
