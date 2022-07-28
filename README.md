@@ -1,6 +1,6 @@
 #  Ứng dụng quản lý chi tiêu
-***
-<center><img src="MoneyManagementApp/Resource/Image/icon.png" alt="Icon" width="100"/></center>
+![Icon](MoneyManagementApp/Resource/Image/icon.png#center)
+<!--<center><img src="MoneyManagementApp/Resource/Image/icon.png" alt="Icon" width="200"/></center>-->
 
 Thay thế cuốn sổ tay ghi chép lại mọi hoạt động thu chi hàng ngày, hàng tháng, hàng năm.
 Thống kê chi tiết giúp người dùng biết được nguồn tiền ra vào, tối ưu hoá mục đích sử dụng nguồn tiền và quản lý chi tiêu hợp lý.
