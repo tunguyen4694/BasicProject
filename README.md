@@ -8,11 +8,7 @@ Thống kê chi tiết giúp người dùng biết được nguồn tiền ra v�
 
 ## Ảnh chụp màn hình
 
-<kbd><img src="MoneyManagementApp/Resource/Image/login.png" alt="Login" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Image/home.png" alt="Home" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Image/add.png" alt="Add" width="250"/></kbd>
-
-<kbd><img src="MoneyManagementApp/Resource/Image/category.png" alt="Category" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Image/history.png" alt="History" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Image/setting.png" alt="Setting" width="250"/></kbd>
-
-<kbd><img src="MoneyManagementApp/Resource/Image/month.png" alt="Month Report" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Image/year.png" alt="Year Report" width="250"/></kbd> 
+<kbd><img src="MoneyManagementApp/Resource/Image/login.png" alt="Login" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Image/home.png" alt="Home" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Image/add.png" alt="Add" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Image/category.png" alt="Category" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Image/history.png" alt="History" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Image/setting.png" alt="Setting" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Image/month.png" alt="Month Report" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Image/year.png" alt="Year Report" width="250"/></kbd> 
 
 ## Chức năng chính
 - Tạo và đăng nhập tài khoản
@@ -24,7 +20,7 @@ Thống kê chi tiết giúp người dùng biết được nguồn tiền ra v�
     pod 'FirebaseFirestore'
     pod 'FBSDKLoginKit'
     pod 'GoogleSignIn'
-    pod "MonthYearPicker", '~> 4.0.2'
+    pod 'MonthYearPicker', '~> 4.0.2'
     pod 'Charts'
     pod 'SwiftyJSON', '~> 4.0'
     pod 'RealmSwift', '~>10'
