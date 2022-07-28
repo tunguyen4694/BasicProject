@@ -47,6 +47,7 @@
 		DA7CD0ED289277AD0098FDB0 /* history.png in Resources */ = {isa = PBXBuildFile; fileRef = DA7CD0E5289277AC0098FDB0 /* history.png */; };
 		DA7CD0EE289277AD0098FDB0 /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = DA7CD0E6289277AC0098FDB0 /* login.png */; };
 		DA7CD0EF289277AD0098FDB0 /* month.png in Resources */ = {isa = PBXBuildFile; fileRef = DA7CD0E7289277AD0098FDB0 /* month.png */; };
+		DA7CD0F12892818C0098FDB0 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA7CD0F02892818C0098FDB0 /* icon.png */; };
 		DA98AA72287D527000434125 /* ReportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98AA70287D527000434125 /* ReportVC.swift */; };
 		DA98AA73287D527000434125 /* ReportVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA98AA71287D527000434125 /* ReportVC.xib */; };
 		DA98AA76287D52C600434125 /* AddTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA98AA74287D52C600434125 /* AddTransactionVC.swift */; };
@@ -119,6 +120,7 @@
 		DA7CD0E5289277AC0098FDB0 /* history.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = history.png; sourceTree = "<group>"; };
 		DA7CD0E6289277AC0098FDB0 /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login.png; sourceTree = "<group>"; };
 		DA7CD0E7289277AD0098FDB0 /* month.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = month.png; sourceTree = "<group>"; };
+		DA7CD0F02892818C0098FDB0 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		DA98AA70287D527000434125 /* ReportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportVC.swift; sourceTree = "<group>"; };
 		DA98AA71287D527000434125 /* ReportVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportVC.xib; sourceTree = "<group>"; };
 		DA98AA74287D52C600434125 /* AddTransactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionVC.swift; sourceTree = "<group>"; };
@@ -429,6 +431,7 @@
 		DA98AA9A287E799A00434125 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				DA7CD0F02892818C0098FDB0 /* icon.png */,
 				DA7CD0E6289277AC0098FDB0 /* login.png */,
 				DA7CD0E1289277AA0098FDB0 /* home.png */,
 				DA7CD0E2289277AB0098FDB0 /* add.png */,
@@ -515,6 +518,7 @@
 				DA7CD0EB289277AD0098FDB0 /* setting.png in Resources */,
 				DA7BB06B287FF42E0068F257 /* CategoryTBVC.xib in Resources */,
 				DA98AA9D287E7A2B00434125 /* ads1.png in Resources */,
+				DA7CD0F12892818C0098FDB0 /* icon.png in Resources */,
 				DA98AAA6287E809000434125 /* TransactionTBVC.xib in Resources */,
 				DA98AA98287E710C00434125 /* AdsCVC.xib in Resources */,
 				DA98AA7F287D52F800434125 /* AccountVC.xib in Resources */,
