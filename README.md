@@ -3,8 +3,8 @@
 <img src="MoneyManagementApp/Resource/Image/icon.png" alt="Icon" width="200"/>
 </p>
 
-Thay thế cuốn sổ tay ghi chép lại mọi hoạt động thu chi hàng ngày, hàng tháng, hàng năm.
-Thống kê chi tiết giúp người dùng biết được nguồn tiền ra vào, tối ưu hoá mục đích sử dụng nguồn tiền và quản lý chi tiêu hợp lý.
+- Thay thế cuốn sổ tay ghi chép lại mọi hoạt động thu chi hàng ngày, hàng tháng, hàng năm.
+- Thống kê chi tiết giúp người dùng biết được nguồn tiền ra vào, tối ưu hoá mục đích sử dụng nguồn tiền và quản lý chi tiêu hợp lý.
 
 ## Ảnh chụp màn hình
 
@@ -12,7 +12,7 @@ Thống kê chi tiết giúp người dùng biết được nguồn tiền ra v�
 
 ## Thao tác
 
-<kbd><img src="MoneyManagementApp/Resource/Gif/login.gif" alt="Login" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Gif/add.gif" alt="Add" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Gif/edit.gif" alt="Edit" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Gif/history.gif" alt="History" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Gif/report.gif" alt="Report" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Gif/analytics.gif" alt="Analytics" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Gif/logout.gif" alt="Logout" width="250"/></kbd> 
+<kbd><img src="MoneyManagementApp/Resource/Gif/login.gif" alt="Login" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Gif/add.gif" alt="Add" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Gif/edit.gif" alt="Edit" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Gif/history.gif" alt="History" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Gif/report.gif" alt="Report" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Gif/analytics.gif" alt="Analytics" width="250"/></kbd>
 
 ## Chức năng chính
 - Tạo và đăng nhập tài khoản
