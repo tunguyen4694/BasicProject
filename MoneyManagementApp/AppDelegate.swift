@@ -23,11 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
             if error != nil || user == nil {
-              // Show the app's signed-out state.
+                // Show the app's signed-out state.
             } else {
-              // Show the app's signed-in state.
+                // Show the app's signed-in state.
             }
-          }
+        }
         
         ApplicationDelegate.shared.application(
             application,
@@ -36,10 +36,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
+        // Check user login to HomeVC
         if Auth.auth().currentUser != nil {
-        self.window?.rootViewController = UINavigationController.init(rootViewController: CustomTabBarController())
+            self.window?.rootViewController = UINavigationController.init(rootViewController: CustomTabBarController())
         } else {
-        self.window?.rootViewController = UINavigationController.init(rootViewController: LoginVC())
+            self.window?.rootViewController = UINavigationController.init(rootViewController: LoginVC())
         }
         
         window?.makeKeyAndVisible()
@@ -60,14 +61,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         )
         
         var handled: Bool
-
+        
         handled = GIDSignIn.sharedInstance.handle(url)
         if handled {
-          return true
+            return true
         }
-
+        
         // Handle other custom URL types.
-
+        
         // If not handled by this app, return false.
         return false
     }
