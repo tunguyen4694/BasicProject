@@ -9,7 +9,7 @@ import UIKit
 import Charts
 
 class CombinedChartTBVC: UITableViewCell {
-
+    
     @IBOutlet weak var lblChartName: UILabel!
     @IBOutlet weak var chartBar: CombinedChartView!
     
@@ -19,6 +19,7 @@ class CombinedChartTBVC: UITableViewCell {
         chartBar.setExtraOffsets(left: 20, top: 0, right: 20, bottom: 0)
     }
     
+    // MARK: Set Combined Chart
     func setCombinedChart(_ xValues: [String], _ yValuesLineChart: [Int], _ yValuesBarChart: [Int], _ chartView: CombinedChartView) {
         chartView.noDataText = "Please provide data for the chart."
         
@@ -57,7 +58,7 @@ class CombinedChartTBVC: UITableViewCell {
         chartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: xValues)
         chartView.xAxis.granularity = 1
         chartView.animate(xAxisDuration: 5, yAxisDuration: 5, easingOption: .easeOutBack)
-//        chartView.xAxis.labelRotationAngle = -90
+        //        chartView.xAxis.labelRotationAngle = -90
         chartView.xAxis.setLabelCount(xValues.count, force: false)
         chartView.legend.enabled = false
         let formatter = NumberFormatter()

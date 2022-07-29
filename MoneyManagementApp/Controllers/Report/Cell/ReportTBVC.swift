@@ -8,7 +8,7 @@
 import UIKit
 
 class ReportTBVC: UITableViewCell {
-
+    
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblAmount: UILabel!
     

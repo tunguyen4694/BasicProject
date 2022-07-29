@@ -14,6 +14,7 @@ class ReportVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    // MARK: Variable
     var transaction: Results<Transaction>?
     var categoryE: [String] = []
     var nameE: [String] = []
@@ -36,6 +37,7 @@ class ReportVC: UIViewController {
     var incomeDetailAmount: [Int] = []
     
     var month = "This month"
+    // MARK: datePicker & toolBar
     var datePicker  = MonthYearPickerView(frame: .init(x: 0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300))
     var toolBar: UIToolbar = {
         let tool = UIToolbar(frame: CGRect(origin: CGPoint(x: 0, y: UIScreen.main.bounds.size.height - 300), size: CGSize(width: UIScreen.main.bounds.size.width, height: 44)))
@@ -47,6 +49,7 @@ class ReportVC: UIViewController {
     
     var checkData: [Transaction]? = []
     
+    // MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,9 +67,11 @@ class ReportVC: UIViewController {
         }
         updateTransactionData(Date())
         
+        // Load data now form AddTransactionVC
         NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: NSNotification.Name(rawValue: "loadData"), object: nil)
     }
     
+    // MARK: viewDidAppear
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         getReportData()
@@ -77,6 +82,7 @@ class ReportVC: UIViewController {
     }
 }
 
+// MARK: - UITableViewDelegate, DataSource
 extension ReportVC: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 9
@@ -97,6 +103,7 @@ extension ReportVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    // MARK: numberOfRowsInSection
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 4 {
             return categoryNameCell.count
@@ -109,6 +116,7 @@ extension ReportVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    // MARK: cellForRowAt
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
@@ -194,6 +202,7 @@ extension ReportVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    // MARK: didSelectRowAt
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             
@@ -208,7 +217,9 @@ extension ReportVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+// MARK: -
 extension ReportVC {
+    // MARK: Picker action
     @objc func monthChanged(_ sender: MonthYearPickerView) {
         if Calendar.current.dateComponents([.month, .year], from: sender.date) != Calendar.current.dateComponents([.month, .year], from: Date()) {
             month = ConvertHelper.share.stringFromDate(date: sender.date, format: "MMM yyyy")
@@ -225,6 +236,7 @@ extension ReportVC {
         datePicker.removeFromSuperview()
     }
     
+    // MARK: updateTransactionData
     func updateTransactionData(_ date: Date) {
         let firstDayOfMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: date))
         let lastDayOfMonth = Calendar.current.date(from: DateComponents(year: Calendar.current.component(.year, from: date), month: Calendar.current.component(.month, from: date)+1))
@@ -234,6 +246,7 @@ extension ReportVC {
         getReportData()
     }
     
+    // MARK: getReportData
     func getReportData() {
         categoryE = []
         nameE = []

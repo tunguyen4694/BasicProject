@@ -9,7 +9,7 @@ import UIKit
 import Charts
 
 class PieChartTBVC: UITableViewCell {
-
+    
     @IBOutlet weak var lblChartName: UILabel!
     @IBOutlet weak var chartBar: PieChartView!
     
@@ -18,12 +18,13 @@ class PieChartTBVC: UITableViewCell {
         self.selectionStyle = .none
         chartBar.setExtraOffsets(left: 30, top: 30, right: 30, bottom: 30)
         chartBar.animate(xAxisDuration: 1.4, easingOption: .easeOutBack)
-
+        
         chartBar.noDataText = "No transaction data"
         chartBar.legend.enabled = false
-//        chartBar.drawHoleEnabled = false
+        //        chartBar.drawHoleEnabled = false
     }
     
+    // MARK: Set E/I Pie Chart
     func setPieChart(_ totalExpense: Double, _ totalIncome: Double, chartView: PieChartView) {
         var entries = [PieChartDataEntry]()
         
@@ -45,6 +46,7 @@ class PieChartTBVC: UITableViewCell {
         data.setValueTextColor(.black)
     }
     
+    // MARK: Set Category Pie Chart
     func setCategoryPieChart(_ dictCategory: [String:Int], chartView: PieChartView) {
         var entries = [PieChartDataEntry]()
         
@@ -72,5 +74,5 @@ class PieChartTBVC: UITableViewCell {
         data.setValueFont(.regular(ofSize: 12))
         data.setValueTextColor(.black)
     }
-
+    
 }

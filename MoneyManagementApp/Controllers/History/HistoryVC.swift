@@ -11,6 +11,7 @@ import RealmSwift
 
 class HistoryVC: UIViewController {
     
+    // MARK: IBOutlet & variable
     @IBOutlet weak var tableView: UITableView!
     
     var month = "This month"
@@ -25,6 +26,7 @@ class HistoryVC: UIViewController {
     
     var transaction: Results<Transaction>?
     
+    // MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,6 +42,7 @@ class HistoryVC: UIViewController {
         }
     }
     
+    // MARK: updateTransactionData
     func updateTransactionData(_ date: Date) {
         let firstDayOfMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: date))
         let lastDayOfMonth = Calendar.current.date(from: DateComponents(year: Calendar.current.component(.year, from: date), month: Calendar.current.component(.month, from: date)+1))
@@ -53,6 +56,7 @@ class HistoryVC: UIViewController {
     
 }
 
+// MARK: - UITableViewDelegate, DataSource
 extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -77,6 +81,7 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    // MARK: cellRowForAt
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "IncomeExpenseTBVC", for: indexPath) as! IncomeExpenseTBVC
@@ -123,6 +128,7 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    // MARK: Cell Swipe Action
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         if indexPath.section == 2 {
             let delete = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
@@ -149,6 +155,7 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    // MARK: didSelectRowAt
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             
@@ -163,7 +170,9 @@ extension HistoryVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+// MARK: -
 extension HistoryVC {
+    // MARK: Picker action
     @objc func monthChanged(_ sender: MonthYearPickerView) {
         if Calendar.current.dateComponents([.month, .year], from: sender.date) != Calendar.current.dateComponents([.month, .year], from: Date()) {
             month = ConvertHelper.share.stringFromDate(date: sender.date, format: "MMM yyyy")

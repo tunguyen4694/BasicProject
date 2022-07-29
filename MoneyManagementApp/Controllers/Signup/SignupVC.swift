@@ -9,7 +9,8 @@ import UIKit
 import FirebaseAuth
 
 class SignupVC: UIViewController {
-
+    
+    // MARK: IBOutlet
     @IBOutlet weak var vUser: UIView!
     @IBOutlet weak var tfUser: UITextField!
     @IBOutlet weak var vPassword: UIView!
@@ -25,6 +26,7 @@ class SignupVC: UIViewController {
         setupUI()
     }
     
+    // MARK: Setup UI
     func setupUI() {
         vUser.layer.borderWidth = 1
         vUser.layer.borderColor = UIColor.borderColor().cgColor
@@ -42,11 +44,13 @@ class SignupVC: UIViewController {
         btnSignup.layer.opacity = 0.5
     }
     
+    // MARK: Show Password
     @IBAction func onShowPassword(_ sender: Any) {
         tfPassword.isSecureTextEntry = !tfPassword.isSecureTextEntry
         tfPassword.isSecureTextEntry ? btnShowPassword.setImage(UIImage(systemName: "eye"), for: .normal    ) : btnShowPassword.setImage(UIImage(systemName: "eye.slash"), for: .normal)
     }
     
+    // MARK: Sign Up
     @IBAction func signUp(_ sender: Any) {
         let user = tfUser.text ?? ""
         let password = tfPassword.text ?? ""
@@ -94,13 +98,14 @@ class SignupVC: UIViewController {
     }
 }
 
+// MARK: - Extension TextFieldDelegate
 extension SignupVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-//        if textField.text == nil {
-//            btnShowPassword.isHidden = true
-//        } else {
-//            btnShowPassword.isHidden = false
-//        }
+        //        if textField.text == nil {
+        //            btnShowPassword.isHidden = true
+        //        } else {
+        //            btnShowPassword.isHidden = false
+        //        }
         btnShowPassword.isHidden = textField.text == nil
     }
 }

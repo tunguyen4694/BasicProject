@@ -8,7 +8,7 @@
 import UIKit
 
 class AccountTBVC: UITableViewCell {
-
+    
     @IBOutlet weak var lblElement: UILabel!
     
     override func awakeFromNib() {

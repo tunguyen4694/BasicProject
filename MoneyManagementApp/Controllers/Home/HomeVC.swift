@@ -10,6 +10,8 @@ import FirebaseAuth
 import RealmSwift
 
 class HomeVC: UIViewController {
+    
+    // MARK: IBOutlet & variable
     @IBOutlet weak var lblHello: UILabel!
     @IBOutlet weak var lblUserName: UILabel!
     
@@ -40,6 +42,7 @@ class HomeVC: UIViewController {
     var firstDayOfMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Date()))
     var lastDayOfMonth = Calendar.current.date(from: DateComponents(year: Calendar.current.component(.year, from: Date()), month: Calendar.current.component(.month, from: Date())+1))
     
+    // MARK: viewDidLoad
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +51,7 @@ class HomeVC: UIViewController {
         welcomeUser()
     }
     
+    // MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         headerHeightConstraint.constant = maxHeaderHeight
@@ -58,6 +62,7 @@ class HomeVC: UIViewController {
         tableView.reloadData()
     }
     
+    // MARK: Setup UI
     func setupUI() {
         transaction = DBManager.shareInstance.getMonthData(firstDayOfMonth ?? Date(), lastDayOfMonth ?? Date())
         
@@ -76,6 +81,7 @@ class HomeVC: UIViewController {
         tableView.register(UINib(nibName: "TransactionTBVC", bundle: nil), forCellReuseIdentifier: "TransactionTBVC")
     }
     
+    // MARK: Welcome Username
     func welcomeUser() {
         let hourStr = ConvertHelper.share.stringFromDate(date: Date(), format: "HH")
         guard let hourInt = Int(hourStr) else { return }
@@ -107,13 +113,14 @@ class HomeVC: UIViewController {
     }
 }
 
+// MARK: - UITableViewDelegate, DataSource
 extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
     
-    // Custom view in header
+    // MARK: Custom view in header
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView(frame: .init(x: 0, y: 0, width: tableView.frame.width, height: 40))
         headerView.backgroundColor = .clear
@@ -219,7 +226,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
             let a = stt.appending(amount)
             
             cell.lblAmount.text = a
-//            cell.lblAmount.textColor = transaction[indexPath.row].color
+            
             switch transaction?[indexPath.row].stt {
             case "-":
                 cell.lblAmount.textColor = .expenseColor()
@@ -241,11 +248,11 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    // MARK: Swipe action cell
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         if indexPath.section == 2 {
             let delete = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
-//                self.transaction.remove(at: indexPath.row)
                 DBManager.shareInstance.deleteAnObject(self.transaction?[indexPath.row] ?? Transaction())
                 tableView.deleteRows(at: [indexPath], with: .automatic)
                 tableView.reloadData()
@@ -256,8 +263,8 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
                 editVC.transaction = self.transaction?[indexPath.row]
                 editVC.passData = { [weak self] transaction in
                     guard let strongSelf = self, let transaction = transaction else { return }
-//                    strongSelf.transaction[indexPath.row] = transaction
-//                    strongSelf.transaction.sort(by: { $1.date ?? Date() < $0.date ?? Date() })
+                    //                    strongSelf.transaction[indexPath.row] = transaction
+                    //                    strongSelf.transaction.sort(by: { $1.date ?? Date() < $0.date ?? Date() })
                     DBManager.shareInstance.updateObject(strongSelf.transaction?[indexPath.row] ?? Transaction(), transaction)
                     strongSelf.tableView.reloadData()
                 }
@@ -271,7 +278,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    // Animate header when scroll
+    // MARK: Animate header when scroll
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let scrollDiff = scrollView.contentOffset.y - previousScrollOffSet
         
@@ -324,6 +331,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+// MARK: - Extension HomeVC
 // Animate header when scroll
 extension HomeVC {
     func canAnimateHeader(_ scrollView: UIScrollView) -> Bool {

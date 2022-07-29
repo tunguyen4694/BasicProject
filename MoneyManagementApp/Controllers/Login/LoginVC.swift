@@ -15,6 +15,7 @@ import FBSDKLoginKit
 
 class LoginVC: UIViewController {
     
+    // MARK: IBOutlet
     @IBOutlet weak var vUser: UIView!
     @IBOutlet weak var tfUser: UITextField!
     @IBOutlet weak var vPassword: UIView!
@@ -28,6 +29,7 @@ class LoginVC: UIViewController {
         setupUI()
     }
     
+    // MARK: Setup UI
     func setupUI() {
         vUser.layer.borderWidth = 1
         vUser.layer.borderColor = UIColor.borderColor().cgColor
@@ -44,6 +46,7 @@ class LoginVC: UIViewController {
         btnLogin.layer.cornerRadius = 10
     }
     
+    // MARK: Show Password
     @IBAction func onShowPassword(_ sender: Any) {
         tfPassword.isSecureTextEntry = !tfPassword.isSecureTextEntry
         tfPassword.isSecureTextEntry ? btnShowPassword.setImage(UIImage(systemName: "eye"), for: .normal    ) : btnShowPassword.setImage(UIImage(systemName: "eye.slash"), for: .normal)
@@ -58,6 +61,7 @@ class LoginVC: UIViewController {
     @IBAction func onForgotPassword(_ sender: Any) {
     }
     
+    // MARK: Login with Google
     @IBAction func loginWithGoogle(_ sender: Any) {
         let signInConfig = GIDConfiguration(clientID: "431516803603-9pc91p60dj7mb6jic8v3gg9vv1hljon3.apps.googleusercontent.com")
         GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: self) { user, error in
@@ -103,6 +107,7 @@ class LoginVC: UIViewController {
         }
     }
     
+    // MARK: Login with FB
     @IBAction func loginWithFB(_ sender: Any) {
         let loginManager = LoginManager()
         loginManager.logIn(permissions: ["public_profile"], from: self) { result, error in
@@ -142,6 +147,7 @@ class LoginVC: UIViewController {
         }
     }
     
+    // MARK: Login
     @IBAction func onHome(_ sender: Any) {
         let email = tfUser.text ?? ""
         let password = tfPassword.text ?? ""
@@ -160,14 +166,14 @@ class LoginVC: UIViewController {
         
     }
 }
-// MARK: -
+// MARK: - Extention TextFieldDelegate
 extension LoginVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-//        if textField.text != nil {
-//            btnShowPassword.isHidden = false
-//        } else {
-//            btnShowPassword.isHidden = true
-//        }
+        //        if textField.text != nil {
+        //            btnShowPassword.isHidden = false
+        //        } else {
+        //            btnShowPassword.isHidden = true
+        //        }
         btnShowPassword.isHidden = textField.text == nil
     }
 }

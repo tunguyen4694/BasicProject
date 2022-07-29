@@ -10,14 +10,15 @@ import SwiftyJSON
 
 class CategoryVC: UIViewController {
     
+    // MARK: IBOutlet & variable
     @IBOutlet weak var tableView: UITableView!
     
     var json: JSON = JSON.null
     var datas = [Categories]()
     
-//    var passData: ((_ name: String?, _ image: UIImage?, _ imageWidth: CGFloat, _ leadingTextField: CGFloat) -> Void)?
     var passData: ((_ category: String?,_ name: String?, _ image: String?, _ imageWidth: CGFloat, _ leadingTextField: CGFloat) -> Void)?
     
+    // MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
@@ -33,6 +34,7 @@ class CategoryVC: UIViewController {
         tableView.register(UINib(nibName: "CategoryTBVC", bundle: nil), forCellReuseIdentifier: "CategoryTBVC")
     }
     
+    // MARK: Get Api from JSON
     func getCategoryApi() {
         guard let file = Bundle.main.path(forResource: "CategoryJSON", ofType: "json") else { return }
         do {
@@ -56,6 +58,7 @@ class CategoryVC: UIViewController {
     
 }
 
+// MARK: - UITableViewDelegate, DataSource
 extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return datas.count
@@ -104,7 +107,6 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let category = datas[indexPath.section].category
         let name = datas[indexPath.section].name[indexPath.row]
-//        let image = UIImage(systemName: datas[indexPath.section].image[indexPath.row])
         let image = datas[indexPath.section].image[indexPath.row]
         
         passData?(category, name, image, 24, 8)

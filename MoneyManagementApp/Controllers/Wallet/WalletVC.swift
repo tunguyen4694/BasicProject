@@ -11,6 +11,7 @@ import RealmSwift
 
 class WalletVC: UIViewController {
     
+    // MARK: IBOutlet & variable
     @IBOutlet weak var tableView: UITableView!
     
     var yearPicker = UIPickerView(frame: .init(x: 0, y: UIScreen.main.bounds.size.height-300, width: UIScreen.main
@@ -56,6 +57,7 @@ class WalletVC: UIViewController {
     
     var checkData: [Transaction]? = []
     
+    // MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
@@ -78,9 +80,11 @@ class WalletVC: UIViewController {
         
         updateTransactionData(Date())
         
+        // Load data now form AddTransactionVC
         NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: NSNotification.Name(rawValue: "loadData"), object: nil)
     }
     
+    // MARK: viewDidAppear
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         getDataMonth()
@@ -92,11 +96,13 @@ class WalletVC: UIViewController {
     }
 }
 
+// MARK: - UITableViewDelegate, DataSource
 extension WalletVC: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 10
     }
     
+    // MARK: numberOfRowsInSection
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 5 {
             return categoryNameCell.count
@@ -109,6 +115,7 @@ extension WalletVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    // MARK: CellForRowAt
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
@@ -247,6 +254,7 @@ extension WalletVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    // MARK: didSelectRowAt
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             toolBar.barStyle = .default
@@ -273,12 +281,14 @@ extension WalletVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+// MARK: -
 extension WalletVC {
     @objc func onDoneButtonClick() {
         yearPicker.removeFromSuperview()
         toolBar.removeFromSuperview()
     }
     
+    // MARK: updateTransationData
     func updateTransactionData(_ date: Date) {
         beginningOfYear = Calendar.current.date(from: DateComponents(year: Calendar.current.component(.year, from: date), month: 1, day: 1))
         endOfYear = Calendar.current.date(from: DateComponents(year: Calendar.current.component(.year, from: date)+1, month: 1, day: 1))
@@ -296,6 +306,7 @@ extension WalletVC {
         addDataToArray()
     }
     
+    // MARK: getDataMonth
     func getDataMonth() {
         var expenseAmount = 0
         var incomeAmount = 0
@@ -317,6 +328,7 @@ extension WalletVC {
         tableView.reloadData()
     }
     
+    // MARK: addDataToArray
     func addDataToArray() {
         categoryE = []
         nameE = []
@@ -354,6 +366,7 @@ extension WalletVC {
     }
 }
 
+// MARK: - UIPickerDelegate, DataSource
 extension WalletVC: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -371,6 +384,7 @@ extension WalletVC: UIPickerViewDataSource, UIPickerViewDelegate {
         return 44
     }
     
+    // MARK: didSelectRowAt
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         var date: Date = Date()
         if yearArr[row] != Calendar.current.component(.year, from: Date()) {
@@ -395,6 +409,7 @@ extension WalletVC: UIPickerViewDataSource, UIPickerViewDelegate {
     }
 }
 
+// MARK: - Extension Results
 extension Results {
     func toArray<T>(ofType: T.Type) -> [T] {
         var array = [T]()

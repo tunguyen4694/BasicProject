@@ -9,16 +9,21 @@ import UIKit
 import FirebaseAuth
 
 class AccountVC: UIViewController {
+    
+    // MARK: IBOutlet
     @IBOutlet weak var imgAvatar: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     
     var arrElement = ["General setting", "Edit account", "Rate application", "Share", "Help & About"]
+    
+    // MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
         setupUI()
     }
     
+    // MARK: Setup UI
     func setupUI() {
         imgAvatar.tintColor = .mainColor()
         
@@ -31,6 +36,7 @@ class AccountVC: UIViewController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: "AccountTBVC", bundle: nil), forCellReuseIdentifier: "AccountTBVC")
         
+        // MARK: Get user avatar
         if let user = Auth.auth().currentUser {
             guard let urlImage = user.photoURL else { return }
             do {
@@ -43,6 +49,7 @@ class AccountVC: UIViewController {
     }
 }
 
+// MARK: - UITableViewDelegate, DataSource
 extension AccountVC: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -88,17 +95,18 @@ extension AccountVC: UITableViewDelegate, UITableViewDataSource {
         return UITableView.automaticDimension
     }
     
+    // MARK: Logout
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
             let firebaseAuth = Auth.auth()
-        do {
-          try firebaseAuth.signOut()
-            let vc = LoginVC()
-            vc.modalPresentationStyle = .fullScreen
-            present(vc, animated: true)
-        } catch let signOutError as NSError {
-          print("Error signing out: %@", signOutError)
-        }
+            do {
+                try firebaseAuth.signOut()
+                let vc = LoginVC()
+                vc.modalPresentationStyle = .fullScreen
+                present(vc, animated: true)
+            } catch let signOutError as NSError {
+                print("Error signing out: %@", signOutError)
+            }
         }
     }
 }

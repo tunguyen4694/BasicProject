@@ -9,6 +9,7 @@ import UIKit
 
 class AddTransactionVC: UIViewController {
     
+    // MARK: IBOutlet & var
     @IBOutlet weak var vSafe: UIView!
     @IBOutlet weak var vLine: UIView!
     
@@ -29,6 +30,7 @@ class AddTransactionVC: UIViewController {
     @IBOutlet weak var btnSave: UIButton!
     var currentString = ""
     
+    // MARK: datePicker
     var datePicker: UIDatePicker = {
         let datePicker = UIDatePicker(frame: .zero)
         datePicker.datePickerMode = .date
@@ -44,6 +46,7 @@ class AddTransactionVC: UIViewController {
     var transaction: Transaction?
     var passData: ((_ transaction: Transaction?) -> Void)?
     
+    // MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         tfAmount.delegate = self
@@ -51,6 +54,7 @@ class AddTransactionVC: UIViewController {
         configNavigationBar()
     }
     
+    // MARK: viewDidAppear
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         guard let transaction = transaction else { return }
@@ -68,11 +72,12 @@ class AddTransactionVC: UIViewController {
     }
     
     @IBAction func onBack(_ sender: Any) {
-//        let vc = CustomTabBarController()
-//        navigationController?.pushViewController(vc, animated: true)
+        //        let vc = CustomTabBarController()
+        //        navigationController?.pushViewController(vc, animated: true)
         dismiss(animated: true)
     }
     
+    // MARK: Add Expense
     @IBAction func addExpense(_ sender: Any) {
         btnSave.tag = 0
         btnExpense.tintColor = .mainColor()
@@ -85,6 +90,7 @@ class AddTransactionVC: UIViewController {
         }, completion: nil)
     }
     
+    // MARK: Add Income
     @IBAction func addIncome(_ sender: Any) {
         btnSave.tag = 1
         btnExpense.titleLabel?.font = .medium(ofSize: 16)
@@ -97,6 +103,7 @@ class AddTransactionVC: UIViewController {
         }, completion: nil)
     }
     
+    // MARK: Add Category
     @IBAction func enterCategory(_ sender: Any) {
         let vc = CategoryVC()
         vc.passData = { [weak self] category, name, image, imageWidth, leadingTextField in
@@ -111,16 +118,17 @@ class AddTransactionVC: UIViewController {
         present(vc, animated: true)
     }
     
+    // MARK: Save
     @IBAction func onSave(_ sender: Any) {
         let date = ConvertHelper.share.dateFormString(string: tfDate.text ?? "", format: "dd MMM yyyy")
         if tfCategory.text != "" && tfAmount.text != "" && tfDate.text != "" {
             if btnSave.tag == 0 {
                 transaction = Transaction(category: category, image: imgStr, name: tfCategory.text, date: date, amount: tfAmount.text, stt: "-")
-//                transaction = Transaction(image: imgStr, name: tfCategory.text, date: date, amount: tfAmount.text, stt: "-")
             } else if btnSave.tag == 1 {
                 transaction = Transaction(category: category, image: imgStr, name: tfCategory.text, date: date, amount: tfAmount.text, stt: "+")
-//                transaction = Transaction(image: imgStr, name: tfCategory.text, date: date, amount: tfAmount.text, stt: "+")
             }
+            
+            // Load data now to another VC by NotificationCenter
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "loadData"), object: nil)
             passData?(transaction)
             dismiss(animated: true)
@@ -133,6 +141,7 @@ class AddTransactionVC: UIViewController {
         }
     }
     
+    // MARK: Picker action
     @objc func handleDatePicker(_ sender: UIDatePicker) {
         tfDate.text = ConvertHelper.share.stringFromDate(date: sender.date, format: "dd MMM yyyy")
     }
@@ -141,6 +150,7 @@ class AddTransactionVC: UIViewController {
         tfDate.resignFirstResponder()
     }
     
+    // MARK: Set NavigationBar
     func configNavigationBar() {
         navigationController?.isNavigationBarHidden = true
         navigationController?.navigationBar.tintColor = .white
@@ -152,6 +162,7 @@ class AddTransactionVC: UIViewController {
         navigationController?.navigationBar.backItem?.title = ""
     }
     
+    // MARK: Setup UI
     func setupUI() {
         vLine.backgroundColor = .mainColor()
         
@@ -184,7 +195,7 @@ class AddTransactionVC: UIViewController {
         tfDate.inputAccessoryView = toolBar
     }
     
-    // Currenct Fomatter in TextField
+    // MARK: Currenct Fomatter in TextField
     func formatCurrency(string: String) {
         let formatter = NumberFormatter()
         formatter.numberStyle = NumberFormatter.Style.currency

@@ -8,12 +8,13 @@
 import UIKit
 
 class CustomTabBarController: UITabBarController {
-
+    
     let vTopLineTabbar = UIView()
     
     let controller1 = HomeVC()
     let controller2 = ReportVC()
     
+    // MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBar.backgroundColor = .white
@@ -43,6 +44,7 @@ class CustomTabBarController: UITabBarController {
         
         viewControllers = [nav1, nav2, nav3, nav4, nav5]
         
+        // Set title propeties by event
         UITabBarItem.appearance().setTitleTextAttributes(
             [NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 12),
              NSAttributedString.Key.foregroundColor: UIColor.borderColor()], for: .normal)
@@ -51,14 +53,16 @@ class CustomTabBarController: UITabBarController {
              NSAttributedString.Key.foregroundColor: UIColor.mainColor()], for: .selected)
         
         configTabBar()
-        tabBar.items![2].isEnabled = false
+        tabBar.items![2].isEnabled = false  // Disable tabbar at index 2
     }
     
+    // MARK: viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
     }
     
+    // MARK: configTabbar
     func configTabBar() {
         tabBar.addSubview(vTopLineTabbar)
         vTopLineTabbar.frame = .init(x: tabBar.frame.width/20, y: 0, width: tabBar.frame.width/10, height: 2)
@@ -91,6 +95,7 @@ class CustomTabBarController: UITabBarController {
         vSmallCircle.layer.shadowOffset = .init(width: 0, height: 2)
         vSmallCircle.layer.shadowOpacity = 0.3
         
+        // Middle Button
         let btnAdd = UIButton()
         vBigCircle.addSubview(btnAdd)
         btnAdd.setImage(UIImage(systemName: "plus"), for: .normal)
@@ -100,6 +105,7 @@ class CustomTabBarController: UITabBarController {
         btnAdd.addTarget(self, action: #selector(onAdd(_:)), for: .touchUpInside)
     }
     
+    // MARK: Middle button action
     @objc func onAdd(_ sender: UIButton) {
         let vc = AddTransactionVC()
         let firstDayOfMonth = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Date()))
@@ -118,6 +124,7 @@ class CustomTabBarController: UITabBarController {
     }
 }
 
+// MARK: Animation didSelect
 extension CustomTabBarController: UITabBarControllerDelegate {
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         
