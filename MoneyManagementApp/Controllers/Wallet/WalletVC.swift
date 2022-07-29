@@ -54,6 +54,8 @@ class WalletVC: UIViewController {
     var dictIncomeDetail: [String: Int] = [:]
     var dictCategory: [String: Int] = [:]
     
+    var checkData: [Transaction]? = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = true
@@ -86,8 +88,8 @@ class WalletVC: UIViewController {
     }
     
     @objc func refresh() {
-       self.tableView.reloadData()
-   }
+        self.tableView.reloadData()
+    }
 }
 
 extension WalletVC: UITableViewDelegate, UITableViewDataSource {
@@ -131,40 +133,80 @@ extension WalletVC: UITableViewDelegate, UITableViewDataSource {
             return cell
             
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CombinedChartTBVC", for: indexPath) as! CombinedChartTBVC
-            cell.lblChartName.text = "Monthly Expense/Income In Year"
-            cell.setCombinedChart(monthArr, expenseMonthArr, incomeMonthArr, cell.chartBar)
-            return cell
-            
-        case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PieChartTBVC", for: indexPath) as! PieChartTBVC
-            var expenseAmount = 0
-            var incomeAmount = 0
-            for i in 0..<(transaction?.count ?? 0) {
-                if transaction?[i].stt == "-" {
-                    expenseAmount += (ConvertHelper.share.numberFromCurrencyString(string: transaction?[i].amount ?? "").intValue)
-                } else {
-                    incomeAmount += (ConvertHelper.share.numberFromCurrencyString(string: transaction?[i].amount ?? "").intValue)
-                }
+            if checkData == [] {
+                let cell = UITableViewCell(style: .default, reuseIdentifier: "No Combined Chart Data")
+                cell.textLabel?.text = "No transaction data"
+                cell.textLabel?.font = .italicSystemFont(ofSize: 12)
+                cell.textLabel?.textAlignment = .center
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "CombinedChartTBVC", for: indexPath) as! CombinedChartTBVC
+                cell.lblChartName.text = "Monthly Expense/Income In Year"
+                cell.setCombinedChart(monthArr, expenseMonthArr, incomeMonthArr, cell.chartBar)
+                return cell
             }
-            cell.lblChartName.text = "Expense/Income"
-            cell.setPieChart(Double(expenseAmount), Double(incomeAmount), chartView: cell.chartBar)
-            return cell
             
-        case 4:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PieChartTBVC", for: indexPath) as! PieChartTBVC
-            cell.lblChartName.text = "Category"
-            var categoryE: [String] = []
-            var amountE: [Int] = []
-            for i in 0..<(transaction?.count ?? 0) {
-                if transaction?[i].stt == "-" {
-                    amountE.append(ConvertHelper.share.numberFromCurrencyString(string: transaction?[i].amount ?? "").intValue)
-                    categoryE.append(transaction?[i].category ?? "")
+        case 3, 4, 6, 8:
+            if checkData == [] {
+                let cell = UITableViewCell(style: .default, reuseIdentifier: "No Pie Chart Data")
+                cell.textLabel?.text = "No transaction data"
+                cell.textLabel?.font = .italicSystemFont(ofSize: 12)
+                cell.textLabel?.textAlignment = .center
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "PieChartTBVC", for: indexPath) as! PieChartTBVC
+                switch indexPath.section {
+                case 3:
+                    var expenseAmount = 0
+                    var incomeAmount = 0
+                    for i in 0..<(transaction?.count ?? 0) {
+                        if transaction?[i].stt == "-" {
+                            expenseAmount += (ConvertHelper.share.numberFromCurrencyString(string: transaction?[i].amount ?? "").intValue)
+                        } else {
+                            incomeAmount += (ConvertHelper.share.numberFromCurrencyString(string: transaction?[i].amount ?? "").intValue)
+                        }
+                    }
+                    cell.lblChartName.text = "Expense/Income"
+                    cell.setPieChart(Double(expenseAmount), Double(incomeAmount), chartView: cell.chartBar)
+                case 4:
+                    cell.lblChartName.text = "Category"
+                    var categoryE: [String] = []
+                    var amountE: [Int] = []
+                    for i in 0..<(transaction?.count ?? 0) {
+                        if transaction?[i].stt == "-" {
+                            amountE.append(ConvertHelper.share.numberFromCurrencyString(string: transaction?[i].amount ?? "").intValue)
+                            categoryE.append(transaction?[i].category ?? "")
+                        }
+                    }
+                    let dictCategory = ConvertHelper.share.convertToDict(name: categoryE, amount: amountE)
+                    cell.setCategoryPieChart(dictCategory, chartView: cell.chartBar)
+                case 6:
+                    cell.lblChartName.text = "Expense"
+                    var categoryE: [String] = []
+                    var amountE: [Int] = []
+                    for i in 0..<(transaction?.count ?? 0) {
+                        if transaction?[i].stt == "-" {
+                            amountE.append(ConvertHelper.share.numberFromCurrencyString(string: transaction?[i].amount ?? "").intValue)
+                            categoryE.append(transaction?[i].name ?? "")
+                        }
+                    }
+                    let dictCategory = ConvertHelper.share.convertToDict(name: categoryE, amount: amountE)
+                    cell.setCategoryPieChart(dictCategory, chartView: cell.chartBar)
+                default:
+                    cell.lblChartName.text = "Income"
+                    var categoryE: [String] = []
+                    var amountE: [Int] = []
+                    for i in 0..<(transaction?.count ?? 0) {
+                        if transaction?[i].stt == "+" {
+                            amountE.append(ConvertHelper.share.numberFromCurrencyString(string: transaction?[i].amount ?? "").intValue)
+                            categoryE.append(transaction?[i].name ?? "")
+                        }
+                    }
+                    let dictCategory = ConvertHelper.share.convertToDict(name: categoryE, amount: amountE)
+                    cell.setCategoryPieChart(dictCategory, chartView: cell.chartBar)
                 }
+                return cell
             }
-            let dictCategory = ConvertHelper.share.convertToDict(name: categoryE, amount: amountE)
-            cell.setCategoryPieChart(dictCategory, chartView: cell.chartBar)
-            return cell
             
         case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReportTBVC", for: indexPath) as! ReportTBVC
@@ -173,41 +215,11 @@ extension WalletVC: UITableViewDelegate, UITableViewDataSource {
             cell.lblAmount.textColor = .expenseColor()
             return cell
             
-        case 6:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PieChartTBVC", for: indexPath) as! PieChartTBVC
-            cell.lblChartName.text = "Expense"
-            var categoryE: [String] = []
-            var amountE: [Int] = []
-            for i in 0..<(transaction?.count ?? 0) {
-                if transaction?[i].stt == "-" {
-                    amountE.append(ConvertHelper.share.numberFromCurrencyString(string: transaction?[i].amount ?? "").intValue)
-                    categoryE.append(transaction?[i].name ?? "")
-                }
-            }
-            let dictCategory = ConvertHelper.share.convertToDict(name: categoryE, amount: amountE)
-            cell.setCategoryPieChart(dictCategory, chartView: cell.chartBar)
-            return cell
-            
         case 7:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReportTBVC", for: indexPath) as! ReportTBVC
             cell.lblName.text = expenseDetailName[indexPath.row]
             cell.lblAmount.text = "-" + ConvertHelper.share.stringFromNumber(currency: expenseDetailAmount[indexPath.row])
             cell.lblAmount.textColor = .expenseColor()
-            return cell
-            
-        case 8:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PieChartTBVC", for: indexPath) as! PieChartTBVC
-            cell.lblChartName.text = "Income"
-            var categoryE: [String] = []
-            var amountE: [Int] = []
-            for i in 0..<(transaction?.count ?? 0) {
-                if transaction?[i].stt == "+" {
-                    amountE.append(ConvertHelper.share.numberFromCurrencyString(string: transaction?[i].amount ?? "").intValue)
-                    categoryE.append(transaction?[i].name ?? "")
-                }
-            }
-            let dictCategory = ConvertHelper.share.convertToDict(name: categoryE, amount: amountE)
-            cell.setCategoryPieChart(dictCategory, chartView: cell.chartBar)
             return cell
             
         default:
@@ -227,7 +239,12 @@ extension WalletVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 5
+        switch section {
+        case 5, 7, 9:
+            return 0
+        default:
+            return 5
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -274,6 +291,7 @@ extension WalletVC {
             endOfMonth = Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: beginningOfMonth ?? Date())
             transactionMonth.append(DBManager.shareInstance.getMonthData(beginningOfMonth ?? Date(), endOfMonth ?? Date()))
         }
+        checkData = transaction?.toArray(ofType: Transaction.self)
         getDataMonth()
         addDataToArray()
     }
@@ -374,5 +392,17 @@ extension WalletVC: UIPickerViewDataSource, UIPickerViewDelegate {
         }
         
         UIView.transition(with: tableView, duration: 0.5, options: .transitionCrossDissolve, animations: {self.tableView.reloadData()}, completion: nil)
+    }
+}
+
+extension Results {
+    func toArray<T>(ofType: T.Type) -> [T] {
+        var array = [T]()
+        for i in 0 ..< count {
+            if let result = self[i] as? T {
+                array.append(result)
+            }
+        }
+        return array
     }
 }

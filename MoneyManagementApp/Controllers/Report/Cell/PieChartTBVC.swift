@@ -12,7 +12,6 @@ class PieChartTBVC: UITableViewCell {
 
     @IBOutlet weak var lblChartName: UILabel!
     @IBOutlet weak var chartBar: PieChartView!
-    var entries = [ChartDataEntry()]
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,6 +19,9 @@ class PieChartTBVC: UITableViewCell {
         chartBar.setExtraOffsets(left: 30, top: 30, right: 30, bottom: 30)
         chartBar.animate(xAxisDuration: 1.4, easingOption: .easeOutBack)
 
+        chartBar.noDataText = "No transaction data"
+        chartBar.legend.enabled = false
+//        chartBar.drawHoleEnabled = false
     }
     
     func setPieChart(_ totalExpense: Double, _ totalIncome: Double, chartView: PieChartView) {
@@ -41,9 +43,6 @@ class PieChartTBVC: UITableViewCell {
         formatter.groupingSeparator = "."
         data.setValueFormatter(DefaultValueFormatter(formatter: formatter))
         data.setValueTextColor(.black)
-        
-        chartView.legend.enabled = false
-        //            cell.chartBar.drawHoleEnabled = false
     }
     
     func setCategoryPieChart(_ dictCategory: [String:Int], chartView: PieChartView) {
@@ -72,8 +71,6 @@ class PieChartTBVC: UITableViewCell {
         data.setValueFormatter(DefaultValueFormatter(formatter: formatter))
         data.setValueFont(.regular(ofSize: 12))
         data.setValueTextColor(.black)
-        chartView.legend.enabled = false
-        //            cell.chartBar.drawHoleEnabled = false
     }
 
 }

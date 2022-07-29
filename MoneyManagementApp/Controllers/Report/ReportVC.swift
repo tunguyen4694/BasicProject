@@ -45,6 +45,8 @@ class ReportVC: UIViewController {
         return tool
     }()
     
+    var checkData: [Transaction]? = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,8 +73,8 @@ class ReportVC: UIViewController {
     }
     
     @objc func refresh() {
-       self.tableView.reloadData()
-   }
+        self.tableView.reloadData()
+    }
 }
 
 extension ReportVC: UITableViewDelegate, UITableViewDataSource {
@@ -87,7 +89,12 @@ extension ReportVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 5
+        switch section {
+        case 4, 6, 8:
+            return 0
+        default:
+            return 5
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -127,18 +134,33 @@ extension ReportVC: UITableViewDelegate, UITableViewDataSource {
             cell.lblIncome.text = ConvertHelper.share.stringFromNumber(currency: totalI)
             return cell
             
-        case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PieChartTBVC", for: indexPath) as! PieChartTBVC
-            cell.lblChartName.text = "Expense / Income"
-            cell.setPieChart(Double(totalE), Double(totalI), chartView: cell.chartBar)
-            return cell
-            
-        case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PieChartTBVC", for: indexPath) as! PieChartTBVC
-            cell.lblChartName.text = "Caterogy"
-            dictCategory = ConvertHelper.share.convertToDict(name: categoryE, amount: amountE)
-            cell.setCategoryPieChart(dictCategory, chartView: cell.chartBar)
-            return cell
+        case 2, 3, 5 ,7:
+            if checkData == [] {
+                let cell = UITableViewCell(style: .default, reuseIdentifier: "No Pie Chart Data")
+                cell.textLabel?.text = "No transaction data"
+                cell.textLabel?.font = .italicSystemFont(ofSize: 12)
+                cell.textLabel?.textAlignment = .center
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "PieChartTBVC", for: indexPath) as! PieChartTBVC
+                switch indexPath.section {
+                case 2:
+                    cell.lblChartName.text = "Expense / Income"
+                    cell.setPieChart(Double(totalE), Double(totalI), chartView: cell.chartBar)
+                case 3:
+                    cell.lblChartName.text = "Caterogy"
+                    dictCategory = ConvertHelper.share.convertToDict(name: categoryE, amount: amountE)
+                    cell.setCategoryPieChart(dictCategory, chartView: cell.chartBar)
+                case 5:
+                    cell.lblChartName.text = "Expenses"
+                    dictExpenseDetail = ConvertHelper.share.convertToDict(name: nameE, amount: amountE)
+                    cell.setCategoryPieChart(dictExpenseDetail, chartView: cell.chartBar)
+                default:
+                    cell.lblChartName.text = "Incomes"
+                    cell.setCategoryPieChart(dictIncomeDetail, chartView: cell.chartBar)
+                }
+                return cell
+            }
             
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReportTBVC", for: indexPath) as! ReportTBVC
@@ -147,24 +169,11 @@ extension ReportVC: UITableViewDelegate, UITableViewDataSource {
             cell.lblAmount.textColor = .expenseColor()
             return cell
             
-        case 5:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PieChartTBVC", for: indexPath) as! PieChartTBVC
-            cell.lblChartName.text = "Expenses"
-            dictExpenseDetail = ConvertHelper.share.convertToDict(name: nameE, amount: amountE)
-            cell.setCategoryPieChart(dictExpenseDetail, chartView: cell.chartBar)
-            return cell
-            
         case 6:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ReportTBVC", for: indexPath) as! ReportTBVC
             cell.lblName.text = expenseDetailName[indexPath.row]
             cell.lblAmount.text = "-" + ConvertHelper.share.stringFromNumber(currency: expenseDetailAmount[indexPath.row])
             cell.lblAmount.textColor = .expenseColor()
-            return cell
-            
-        case 7:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PieChartTBVC", for: indexPath) as! PieChartTBVC
-            cell.lblChartName.text = "Incomes"
-            cell.setCategoryPieChart(dictIncomeDetail, chartView: cell.chartBar)
             return cell
             
         default:
@@ -221,6 +230,7 @@ extension ReportVC {
         let lastDayOfMonth = Calendar.current.date(from: DateComponents(year: Calendar.current.component(.year, from: date), month: Calendar.current.component(.month, from: date)+1))
         
         transaction = DBManager.shareInstance.getMonthData(firstDayOfMonth ?? Date(), lastDayOfMonth ?? Date())
+        checkData = transaction?.toArray(ofType: Transaction.self)
         getReportData()
     }
     
