@@ -10,6 +10,10 @@ Thống kê chi tiết giúp người dùng biết được nguồn tiền ra v�
 
 <kbd><img src="MoneyManagementApp/Resource/Image/login.png" alt="Login" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Image/home.png" alt="Home" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Image/add.png" alt="Add" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Image/category.png" alt="Category" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Image/history.png" alt="History" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Image/setting.png" alt="Setting" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Image/month.png" alt="Month Report" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Image/year.png" alt="Year Report" width="250"/></kbd> 
 
+## Thao tác
+
+<kbd><img src="MoneyManagementApp/Resource/Gif/login.gif" alt="Login" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Gif/add.gif" alt="Add" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Gif/edit.gif" alt="Edit" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Gif/history.gif" alt="History" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Gif/report.gif" alt="Report" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Gif/analytics.gif" alt="Analytics" width="250"/></kbd> <kbd><img src="MoneyManagementApp/Resource/Gif/logout.gif" alt="Logout" width="250"/></kbd> 
+
 ## Chức năng chính
 - Tạo và đăng nhập tài khoản
 - Thêm, sửa, xoá thu chi giao dịch
